@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Africana Tech & Branding Ltd</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- 1️⃣ Tailwind CDN FIRST -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 2️⃣ script.js SECOND — sets tailwind.config correctly -->
+    <script src="script.js"></script>
+</head>
+
+<body class="bg-brandWhite font-poppins text-brandBlack antialiased">
+
+    <!-- Fixed header is injected here -->
+    <div id="site-header"></div>
+
+    <!-- Spacer auto-sized by JS so content starts below fixed header -->
+    <div id="header-spacer"></div>
+
+    <!-- ================= SCROLL + LOADING ANIMATIONS ================= -->
+    <style>
+        @keyframes heroReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heroSlideLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-32px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes heroSlideRight {
+            0% {
+                opacity: 0;
+                transform: translateX(32px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes heroFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Shimmer sweep */
+        @keyframes barShimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(200%);
+            }
+        }
+
+        /* Pulsing glow on the active bar */
+        @keyframes barPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+
+            50% {
+                box-shadow: 0 0 12px 2px rgba(255, 255, 255, .25);
+            }
+        }
+
+        /* Blinking dot while loading */
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .25;
+            }
+        }
+
+        .hero-anim {
+            opacity: 0;
+            will-change: opacity, transform;
+        }
+
+        .hero-anim.in-view {
+            animation: heroReveal .9s cubic-bezier(.22, .61, .36, 1) forwards;
+        }
+
+        .hero-anim-left.in-view {
+            animation: heroSlideLeft .9s cubic-bezier(.22, .61, .36, 1) forwards;
+        }
+
+        .hero-anim-right.in-view {
+            animation: heroSlideRight .9s cubic-bezier(.22, .61, .36, 1) forwards;
+        }
+
+        .hero-float {
+            animation: heroFloat 5s ease-in-out infinite;
+        }
+
+        .delay-1 {
+            animation-delay: .10s;
+        }
+
+        .delay-2 {
+            animation-delay: .20s;
+        }
+
+        .delay-3 {
+            animation-delay: .30s;
+        }
+
+        .delay-4 {
+            animation-delay: .40s;
+        }
+
+        .delay-5 {
+            animation-delay: .50s;
+        }
+
+        .delay-6 {
+            animation-delay: .60s;
+        }
+
+        /* ============ LOADING BARS ============ */
+        .hero-bar-track {
+            position: relative;
+            height: 6px;
+            border-radius: 9999px;
+            background: rgba(249, 250, 251, 0.10);
+            overflow: hidden;
+        }
+
+        .hero-bar-fill {
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 0%;
+            border-radius: 9999px;
+            background: linear-gradient(90deg, #FACC15 0%, #009444 100%);
+            transition: width .18s linear;
+        }
+
+        /* Shimmer overlay */
+        .hero-bar-fill::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(255, 255, 255, .45) 50%,
+                    transparent 100%);
+            animation: barShimmer 1.6s linear infinite;
+            pointer-events: none;
+        }
+
+        /* Pulsing glow while loading */
+        .hero-bar-fill.is-loading {
+            animation: barPulse 1s ease-in-out infinite;
+        }
+
+        /* Status label */
+        .bar-status {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .bar-status.is-done::before {
+            content: '✓ ';
+            color: #009444;
+        }
+
+        .bar-dot {
+            animation: blink 1s ease-in-out infinite;
+        }
+    </style>
+
+
+    <section
+        class="relative isolate flex min-h-[70vh] w-full items-center overflow-hidden bg-brandBlack text-brandWhite">
+
+        <!-- ================= BACKGROUND IMAGE + OVERLAYS ================= -->
+        <div class="absolute inset-0 -z-10">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f009f0129c71c?auto=format&fit=crop&w=2000&q=80"
+                onerror="this.src='https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80'"
+                alt="Africana Tech & Branding studio" class="h-full w-full object-cover object-center opacity-40"
+                loading="eager" />
+        </div>
+
+        <!-- Dark gradient overlay -->
+        <div class="absolute inset-0 -z-10 bg-gradient-to-br from-brandBlack via-brandBlack/90 to-brandBlack/70"></div>
+
+        <!-- Blue + Green glows -->
+        <div
+            class="pointer-events-none absolute -right-40 -top-40 -z-10 h-[32rem] w-[32rem] rounded-full bg-brandBlue/30 blur-3xl">
+        </div>
+        <div
+            class="pointer-events-none absolute -bottom-40 -left-32 -z-10 h-[32rem] w-[32rem] rounded-full bg-brandGreen/25 blur-3xl">
+        </div>
+
+        <!-- ================= CONTENT ================= -->
+        <div class="relative mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8">
+            <div class="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+
+                <!-- LEFT: Copy -->
+                <div class="lg:col-span-7">
+
+                    <span
+                        class="hero-anim hero-anim-left in-view delay-1 inline-flex items-center gap-2 rounded-full border border-brandWhite/15 bg-brandWhite/5 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-yellow-400 backdrop-blur">
+                        <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-yellow-400 text-yellow-400"></span>
+                        Tech · Branding · Print
+                    </span>
+
+                    <h1
+                        class="hero-anim hero-anim-left in-view delay-2 mt-5 text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl">
+                        We Build Brands that<br class="hidden sm:block" />
+                        <span class="text-yellow-400">
+                            Drive real Growth.
+                        </span>
+                    </h1>
+
+                    <p
+                        class="hero-anim hero-anim-left in-view delay-3 mt-4 max-w-xl text-sm leading-relaxed text-brandWhite sm:text-base">
+                        Africana Tech &amp; Branding Ltd is a full-service creative and technology
+                        company based in Arusha. We design powerful brands, engineer
+                        high-performance websites and deliver print &amp; signage that lasts.
+                    </p>
+
+                    <div class="hero-anim hero-anim-left in-view delay-4 mt-7 flex flex-wrap gap-3">
+                        <a href="quotation.html"
+                            class="inline-flex items-center gap-2 rounded-xl bg-brandBlue px-6 py-3 text-sm font-bold text-white shadow-lg shadow-brandBlue/30 transition hover:bg-brandBlue/90">
+                            Start a Project
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                            </svg>
+                        </a>
+
+                        <a href="https://wa.me/255700000000" target="_blank" rel="noopener"
+                            class="inline-flex items-center gap-2 rounded-xl border border-brandWhite/20 bg-brandWhite/5 px-6 py-3 text-sm font-bold text-brandWhite backdrop-blur transition hover:bg-brandWhite/10">
+                            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.5c-1.7 0-3.4-.5-4.9-1.4l-.3-.2-3.6 1 1-3.5-.2-.3C2 15.5 1.5 13.8 1.5 12 1.5 6.2 6.2 1.5 12 1.5S22.5 6.2 22.5 12 17.8 21.5 12 21.5z" />
+                            </svg>
+                            Chat on WhatsApp
+                        </a>
+                    </div>
+
+                    <dl
+                        class="hero-anim hero-anim-left in-view delay-5 mt-8 grid grid-cols-2 gap-x-8 gap-y-4 border-t border-brandWhite/10 pt-6 sm:grid-cols-4">
+                        <div>
+                            <dt class="text-xl font-extrabold text-yellow-400 sm:text-2xl">10+</dt>
+                            <dd class="mt-0.5 text-[10px] font-bold uppercase tracking-wider text-brandWhite/50">Years
+                                Experience</dd>
+                        </div>
+                        <div>
+                            <dt class="text-xl font-extrabold text-yellow-400 sm:text-2xl">250+</dt>
+                            <dd class="mt-0.5 text-[10px] font-bold uppercase tracking-wider text-brandWhite/50">
+                                Projects Delivered</dd>
+                        </div>
+                        <div>
+                            <dt class="text-xl font-extrabold text-yellow-400 sm:text-2xl">35+</dt>
+                            <dd class="mt-0.5 text-[10px] font-bold uppercase tracking-wider text-brandWhite/50">
+                                Services Offered</dd>
+                        </div>
+                        <div>
+                            <dt class="text-xl font-extrabold text-yellow-400 sm:text-2xl">98%</dt>
+                            <dd class="mt-0.5 text-[10px] font-bold uppercase tracking-wider text-brandWhite/50">Client
+                                Retention</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <!-- RIGHT: Visual card -->
+                <div class="lg:col-span-5">
+                    <div
+                        class="hero-anim hero-anim-right in-view delay-3 relative mx-auto max-w-md pb-0 sm:pb-20 lg:max-w-none">
+
+                        <div class="absolute -inset-4 rounded-[2rem] bg-white/5 blur-2xl">
+                        </div>
+
+                        <div
+                            class="relative overflow-hidden rounded-3xl border border-brandWhite/10 bg-brandWhite/[0.06] backdrop-blur-xl">
+
+                            <!-- Window bar -->
+                            <div class="flex items-center justify-between border-b border-brandWhite/10 px-5 py-3">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
+                                    <span class="h-2.5 w-2.5 rounded-full bg-amber-400/70"></span>
+                                    <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/70"></span>
+                                </div>
+                                <span
+                                    class="text-[10px] font-bold uppercase tracking-widest text-brandWhite">africana.co.tz</span>
+                            </div>
+
+                            <div class="p-5">
+
+                                <!-- Brand card -->
+                                <div
+                                    class="flex items-center gap-3 rounded-2xl bg-brandWhite/5 p-4 ring-1 ring-brandWhite/10">
+                                    <span
+                                        class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brandBlue text-lg font-extrabold text-white">A</span>
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-extrabold text-brandWhite">Africana Tech &amp;
+                                            Branding</p>
+                                        <p class="text-[11px] font-semibold uppercase tracking-wider text-yellow-400">
+                                            Full-Service Studio</p>
+                                    </div>
+                                </div>
+
+                                <!-- Service tiles -->
+                                <div class="mt-4 grid grid-cols-3 gap-3">
+                                    <div class="rounded-xl bg-brandBlue p-3 text-center ring-1 ring-yellow-400">
+                                        <span
+                                            class="mx-auto grid h-10 w-10 place-items-center rounded-lg bg-brandBlack text-yellow-400">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <rect x="3" y="4" width="18" height="14" rx="2" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M3 9h18M8 4v5" />
+                                            </svg>
+                                        </span>
+                                        <p class="mt-2 text-[10px] font-bold uppercase tracking-wider text-brandWhite">
+                                            Web</p>
+                                    </div>
+
+                                    <div class="rounded-xl bg-brandBlue p-3 text-center ring-1 ring-yellow-400">
+                                        <span
+                                            class="mx-auto grid h-10 w-10 place-items-center rounded-lg bg-brandBlack text-yellow-400">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M12 3a9 9 0 1 0 0 18c1.7 0 3-.9 3-2.5 0-.9-.4-1.4-.4-2.2 0-1.1.9-2 2.1-2H18a3 3 0 0 0 3-3 9 9 0 0 0-9-9Z" />
+                                                <circle cx="7.5" cy="10.5" r="1.2" fill="currentColor" />
+                                                <circle cx="12" cy="7.5" r="1.2" fill="currentColor" />
+                                                <circle cx="16.5" cy="10.5" r="1.2" fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                        <p class="mt-2 text-[10px] font-bold uppercase tracking-wider text-white">
+                                            Brand</p>
+                                    </div>
+
+                                    <div class="rounded-xl bg-brandBlue p-3 text-center ring-1 ring-yellow-400">
+                                        <span
+                                            class="mx-auto grid h-10 w-10 place-items-center rounded-lg bg-brandBlack text-yellow-400">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 9V3h12v6" />
+                                                <rect x="3" y="9" width="18" height="8" rx="2" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 14h12v7H6z" />
+                                            </svg>
+                                        </span>
+                                        <p class="mt-2 text-[10px] font-bold uppercase tracking-wider text-white">
+                                            Print</p>
+                                    </div>
+                                </div>
+
+                                <!-- ============ ANIMATED LOADING BARS ============ -->
+                                <div class="mt-5 space-y-3" id="loadingBars">
+
+                                    <div class="hero-bar-row" data-target="95">
+                                        <div
+                                            class="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-brandWhite">
+                                            <span>Design</span>
+                                            <span class="bar-status"><span class="bar-dot text-brandWhite  ">●</span>
+                                                <span class="bar-value">0%</span></span>
+                                        </div>
+                                        <div class="hero-bar-track mt-1.5">
+                                            <div class="hero-bar-fill"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="hero-bar-row" data-target="92">
+                                        <div
+                                            class="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-brandWhite">
+                                            <span>Development</span>
+                                            <span class="bar-status"><span class="bar-dot text-brandWhite">●</span>
+                                                <span class="bar-value">0%</span></span>
+                                        </div>
+                                        <div class="hero-bar-track mt-1.5">
+                                            <div class="hero-bar-fill"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="hero-bar-row" data-target="90">
+                                        <div
+                                            class="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-brandWhite">
+                                            <span>Print &amp; Signage</span>
+                                            <span class="bar-status"><span class="bar-dot text-brandWhite">●</span>
+                                                <span class="bar-value">0%</span></span>
+                                        </div>
+                                        <div class="hero-bar-track mt-1.5">
+                                            <div class="hero-bar-fill"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Footer -->
+                                <div class="mt-5 flex items-center justify-between border-t border-brandWhite/10 pt-4">
+                                    <div>
+                                        <p class="text-[10px] font-bold uppercase tracking-wider text-brandWhite">
+                                            Response time</p>
+                                        <p class="text-base font-extrabold text-yellow-400">Under 2 hrs</p>
+                                    </div>
+                                    <span
+                                        class="inline-flex items-center gap-1.5 rounded-full bg-brandBlack px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-yellow-400">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-white"></span>
+                                        Online
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="hero-float absolute bottom-4 left-4 hidden rounded-2xl border border-brandWhite/10 bg-brandBlack/80 p-4 backdrop-blur-xl sm:block">
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-brandWhite/40">Trusted by</p>
+                            <p class="mt-1 text-sm font-extrabold text-brandWhite">250+ clients</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= HERO SCRIPT ================= -->
+    <script>
+        (function () {
+
+            /* ============================================================
+               1. REAL LOADING SEQUENCE  (page load → bars fill from 0)
+               ============================================================ */
+
+            const rows = document.querySelectorAll('.hero-bar-row');
+            let hasPlayedOnLoad = false;
+
+            function resetBars() {
+                rows.forEach(row => {
+                    const fill = row.querySelector('.hero-bar-fill');
+                    const value = row.querySelector('.bar-value');
+                    const status = row.querySelector('.bar-status');
+                    const dot = row.querySelector('.bar-dot');
+
+                    fill.style.width = '0%';
+                    fill.classList.remove('is-loading');
+                    value.textContent = '0%';
+                    status.classList.remove('is-done');
+                    dot.style.display = '';
+                });
+            }
+
+            /* Animate one bar realistically: 0 → target with variable speed */
+            function animateBar(row, delay) {
+                const fill = row.querySelector('.hero-bar-fill');
+                const value = row.querySelector('.bar-value');
+                const status = row.querySelector('.bar-status');
+                const dot = row.querySelector('.bar-dot');
+                const target = parseInt(row.dataset.target, 10);
+
+                setTimeout(() => {
+                    fill.classList.add('is-loading');
+
+                    // Simulate a real loading progression with variable speed
+                    let current = 0;
+                    const step = () => {
+                        // Random realistic increments (slower near the end)
+                        const remaining = target - current;
+                        const increment = remaining > 30 ? (3 + Math.random() * 5)
+                            : remaining > 10 ? (1 + Math.random() * 3)
+                                : (0.5 + Math.random() * 1.2);
+
+                        current = Math.min(current + increment, target);
+
+                        fill.style.width = current + '%';
+                        value.textContent = Math.round(current) + '%';
+
+                        if (current < target) {
+                            // variable delay between ticks (feels more organic)
+                            setTimeout(step, 40 + Math.random() * 90);
+                        } else {
+                            // finished
+                            fill.classList.remove('is-loading');
+                            status.classList.add('is-done');
+                            dot.style.display = 'none';
+                        }
+                    };
+                    step();
+                }, delay);
+            }
+
+            /* Full sequence */
+            function runLoadingSequence() {
+                resetBars();
+
+                // small head-start delay so the card is visible
+                animateBar(rows[0], 400);
+                animateBar(rows[1], 1400);
+                animateBar(rows[2], 2400);
+            }
+
+            // Kick off the sequence once the card is in view
+            const card = document.querySelector('.hero-anim-right');
+
+            if ('IntersectionObserver' in window && card) {
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting && !hasPlayedOnLoad) {
+                            hasPlayedOnLoad = true;
+                            runLoadingSequence();
+                        }
+                    });
+                }, { threshold: 0.35 });
+                io.observe(card);
+            } else {
+                // Fallback
+                runLoadingSequence();
+            }
+
+            /* Replay on scroll-back (existing behaviour) */
+            const animEls = document.querySelectorAll('.hero-anim');
+            if ('IntersectionObserver' in window) {
+                const heroIO = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in-view');
+                        } else {
+                            entry.target.classList.remove('in-view');
+                            // reset loading when scrolled out
+                            if (entry.target === card) resetBars();
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                animEls.forEach(el => heroIO.observe(el));
+            }
+        })();
+    </script>
+
+
+
+
+    <!-- ================= ABOUT US SECTION ================= -->
+    <section id="about" class="relative isolate overflow-hidden bg-brandWhite py-14 sm:py-20 lg:py-32">
+
+        <!-- Subtle grid background -->
+        <div class="pointer-events-none absolute inset-0 opacity-[0.035]" style="background-image:
+          linear-gradient(rgba(10,10,10,.9) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(10,10,10,.9) 1px, transparent 1px);
+          background-size: 48px 48px;"></div>
+
+        <!-- Soft brand glows -->
+        <div
+            class="pointer-events-none absolute -left-40 top-10 h-72 w-72 rounded-full bg-brandBlue/10 blur-3xl sm:h-96 sm:w-96">
+        </div>
+        <div
+            class="pointer-events-none absolute -right-32 bottom-0 h-72 w-72 rounded-full bg-brandGreen/10 blur-3xl sm:h-96 sm:w-96">
+        </div>
+
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+            <!-- ============ TOP ROW: Eyebrow + Heading ============ -->
+            <div class="mx-auto max-w-3xl text-center">
+
+                <span
+                    class="inline-flex items-center gap-2 rounded-full border border-brandBlack/10 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-brandBlue shadow-sm sm:px-4 sm:py-1.5 sm:text-[11px]">
+                    <span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>
+                    About Africana
+                </span>
+
+                <h2
+                    class="mt-4 text-xl font-extrabold leading-[1.2] tracking-tight text-brandBlack sm:mt-6 sm:text-4xl lg:text-5xl">
+                    Built in Tanzania.
+                    <span
+                        class="inline bg-gradient-to-r from-brandBlue to-brandGreen bg-clip-text text-transparent sm:block">
+                        Trusted across Africa.
+                    </span>
+                </h2>
+
+                <p class="mt-4 text-sm leading-relaxed text-brandBlack/65 sm:mt-6 sm:text-base lg:text-lg">
+                    Africana Tech &amp; Branding Ltd is a full-service creative and technology
+                    studio headquartered in Arusha. For over a decade, we've partnered with
+                    ambitious businesses, NGOs and enterprises to build brands that stand out
+                    and digital products that perform.
+                </p>
+            </div>
+
+            <!-- ============ MAIN GRID ============ -->
+            <div class="mt-10 grid items-start gap-6 sm:gap-10 lg:mt-20 lg:grid-cols-12 lg:gap-16">
+
+                <!-- ============ LEFT: Visual ============ -->
+                <div class="lg:col-span-5">
+                    <div class="relative">
+
+                        <!-- Decorative frame -->
+                        <div
+                            class="absolute -inset-3 rounded-[1.5rem] bg-gradient-to-br from-brandBlue/15 via-transparent to-brandGreen/15 blur-2xl sm:-inset-4 sm:rounded-[2rem]">
+                        </div>
+
+                        <!-- Main image card -->
+                        <div
+                            class="relative overflow-hidden rounded-2xl border border-brandBlack/10 bg-white shadow-xl shadow-brandBlack/5 sm:rounded-3xl">
+                            <div class="aspect-[16/11] w-full overflow-hidden sm:aspect-[4/5]">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
+                                    alt="Africana Tech & Branding team at work"
+                                    class="h-full w-full object-cover transition duration-700 hover:scale-105"
+                                    loading="lazy" />
+                            </div>
+
+                            <!-- Gradient overlay for text -->
+                            <div
+                                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-brandBlack/85 via-brandBlack/20 to-transparent">
+                            </div>
+
+                            <!-- Overlay content -->
+                            <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-7">
+                                <p
+                                    class="text-[9px] font-bold uppercase tracking-[0.2em] text-brandGreen sm:text-[10px]">
+                                    Our Studio</p>
+                                <p
+                                    class="mt-1 text-sm font-extrabold leading-snug text-brandWhite sm:mt-2 sm:text-lg lg:text-xl">
+                                    A team of designers, engineers and strategists — under one roof.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Floating experience badge (desktop only) -->
+                        <div
+                            class="absolute -bottom-6 -right-4 hidden rounded-2xl border border-brandBlack/10 bg-white p-5 shadow-xl shadow-brandBlack/10 sm:block">
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">Experience</p>
+                            <p class="mt-1 text-3xl font-extrabold text-brandBlue">10<span
+                                    class="text-brandGreen">+</span></p>
+                            <p class="text-[11px] font-bold uppercase tracking-wider text-brandBlack/50">Years in
+                                business</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============ RIGHT: Story + Values ============ -->
+                <div class="lg:col-span-7">
+
+                    <!-- Story block -->
+                    <div class="rounded-2xl border border-brandBlack/10 bg-white p-5 shadow-sm sm:rounded-3xl sm:p-9">
+
+                        <!-- Story text — HIDDEN on mobile -->
+                        <div class="hidden lg:block">
+                            <h3 class="text-2xl font-extrabold tracking-tight text-brandBlack lg:text-3xl">
+                                We don't just build. We craft with intention.
+                            </h3>
+
+                            <div class="mt-5 space-y-4 text-[15px] leading-relaxed text-brandBlack/70">
+                                <p>
+                                    Founded in 2015 in Arusha, Africana began as a small design studio
+                                    with a simple belief: African businesses deserve world-class creative
+                                    and technical work — without the overseas price tag or the month-long
+                                    wait times.
+                                </p>
+                                <p>
+                                    Today we're a full-service studio delivering brand identities,
+                                    high-performance websites, custom software, print &amp; signage and
+                                    digital marketing for clients across Tanzania and beyond.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Feature bullets — ALWAYS 2 columns -->
+                        <div class="grid grid-cols-2 gap-3 sm:gap-4 lg:mt-7">
+
+                            <div class="flex items-start gap-2.5 sm:gap-3">
+                                <span
+                                    class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brandBlue/10 text-brandBlue sm:h-9 sm:w-9">
+                                    <svg class="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor"
+                                        stroke-width="2.4" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M5 12h14" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <p class="text-[13px] font-extrabold text-brandBlack sm:text-sm">Strategy-led</p>
+                                    <p class="mt-0.5 text-[11px] leading-relaxed text-brandBlack/60 sm:text-xs">
+                                        Every project starts with research, not pixels.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-2.5 sm:gap-3">
+                                <span
+                                    class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brandGreen/10 text-brandGreen sm:h-9 sm:w-9">
+                                    <svg class="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor"
+                                        stroke-width="2.4" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <p class="text-[13px] font-extrabold text-brandBlack sm:text-sm">Craft-obsessed</p>
+                                    <p class="mt-0.5 text-[11px] leading-relaxed text-brandBlack/60 sm:text-xs">
+                                        Every pixel, line of code and print run is reviewed.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-2.5 sm:gap-3">
+                                <span
+                                    class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brandBlue/10 text-brandBlue sm:h-9 sm:w-9">
+                                    <svg class="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor"
+                                        stroke-width="2.4" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 2" />
+                                        <circle cx="12" cy="12" r="9" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <p class="text-[13px] font-extrabold text-brandBlack sm:text-sm">On time. On brief.
+                                    </p>
+                                    <p class="mt-0.5 text-[11px] leading-relaxed text-brandBlack/60 sm:text-xs">
+                                        94% of our projects ship on or before deadline.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-2.5 sm:gap-3">
+                                <span
+                                    class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brandGreen/10 text-brandGreen sm:h-9 sm:w-9">
+                                    <svg class="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor"
+                                        stroke-width="2.4" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M17 20v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <p class="text-[13px] font-extrabold text-brandBlack sm:text-sm">True partnership
+                                    </p>
+                                    <p class="mt-0.5 text-[11px] leading-relaxed text-brandBlack/60 sm:text-xs">
+                                        We act as an extension of your team, long after launch.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ✅ CTA row — SAME HORIZONTAL LINE on all screens -->
+                        <div
+                            class="mt-5 grid grid-cols-2 gap-2.5 border-t border-brandBlack/10 pt-5 sm:mt-8 sm:gap-3 sm:pt-6">
+                            <a href="contact.html"
+                                class="inline-flex w-full items-center justify-center gap-1.5 rounded-xl bg-brandBlue px-3 py-2.5 text-[12px] font-bold text-white shadow-lg shadow-brandBlue/25 transition hover:bg-brandBlue/90 sm:gap-2 sm:px-5 sm:py-3 sm:text-sm">
+                                Work With Us
+                                <svg class="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor"
+                                    stroke-width="2.4" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                                </svg>
+                            </a>
+                            <a href="#portfolio"
+                                class="inline-flex w-full items-center justify-center gap-1.5 rounded-xl border border-brandBlack/10 bg-white px-3 py-2.5 text-[12px] font-bold text-brandBlack transition hover:border-brandBlue hover:text-brandBlue sm:gap-2 sm:px-5 sm:py-3 sm:text-sm">
+                                See Our Work
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- ❌ STATS STRIP REMOVED -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= WEB SOLUTIONS SECTION ================= -->
+    <section class="relative isolate overflow-hidden bg-brandWhite py-20 sm:py-24 lg:py-28">
+
+        <!-- Soft glow -->
+        <div class="pointer-events-none absolute -right-40 top-1/3 h-96 w-96 rounded-full bg-brandBlue/10 blur-3xl">
+        </div>
+        <div class="pointer-events-none absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-brandGreen/10 blur-3xl">
+        </div>
+
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+
+                <!-- ============ LEFT: Image ============ -->
+                <div class="lg:col-span-6">
+                    <div class="relative">
+
+                        <!-- Decorative glow -->
+                        <div
+                            class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brandBlue/15 to-brandGreen/10 blur-2xl">
+                        </div>
+
+                        <!-- Main visual -->
+                        <div
+                            class="relative overflow-hidden rounded-3xl border border-brandBlack/10 bg-brandBlack shadow-xl shadow-brandBlack/10">
+
+                            <!-- Browser bar -->
+                            <div class="flex items-center justify-between border-b border-white/10 px-4 py-2.5">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
+                                    <span class="h-2.5 w-2.5 rounded-full bg-amber-400/70"></span>
+                                    <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/70"></span>
+                                </div>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-white/40">
+                                    africana.co.tz
+                                </span>
+                            </div>
+
+                            <!-- Browser body -->
+                            <div class="aspect-[16/11] w-full overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1400&q=80"
+                                    alt="Website development preview" class="h-full w-full object-cover"
+                                    loading="lazy" />
+                            </div>
+                        </div>
+
+                        <!-- Floating metric badge -->
+                        <div
+                            class="absolute -bottom-6 -right-4 hidden rounded-2xl border border-brandBlack/10 bg-white p-4 shadow-xl shadow-brandBlack/10 sm:block">
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">PageSpeed</p>
+                            <p class="mt-1 text-2xl font-extrabold text-brandBlue">98<span
+                                    class="text-sm text-brandBlack/40">/100</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============ RIGHT: Copy ============ -->
+                <div class="lg:col-span-6">
+
+                    <!-- Eyebrow -->
+                    <span
+                        class="inline-flex items-center gap-2 rounded-full border border-brandBlack/10 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brandBlue shadow-sm">
+                        <span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>
+                        Web Solutions
+                    </span>
+
+                    <!-- Heading -->
+                    <h2
+                        class="mt-5 text-3xl font-extrabold leading-[1.1] tracking-tight text-brandBlack sm:text-4xl lg:text-5xl">
+                        Websites that work
+                        <span class="block bg-gradient-to-r from-brandBlue to-brandGreen bg-clip-text text-transparent">
+                            as hard as you do.
+                        </span>
+                    </h2>
+
+                    <!-- Short paragraph -->
+                    <p class="mt-5 text-base leading-relaxed text-brandBlack/70">
+                        We design and build fast, secure and mobile-first websites —
+                        from landing pages to full e-commerce platforms and custom systems.
+                    </p>
+
+                    <!-- Feature list -->
+                    <ul class="mt-6 space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brandBlue/10 text-brandBlue">
+                                <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                                </svg>
+                            </span>
+                            <span class="text-sm text-brandBlack/70"><strong class="text-brandBlack">Business
+                                    websites</strong> — mobile-first, SEO-ready.</span>
+                        </li>
+
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brandGreen/10 text-brandGreen">
+                                <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                                </svg>
+                            </span>
+                            <span class="text-sm text-brandBlack/70"><strong class="text-brandBlack">E-commerce</strong>
+                                — mobile money &amp; card checkout.</span>
+                        </li>
+
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brandBlue/10 text-brandBlue">
+                                <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                                </svg>
+                            </span>
+                            <span class="text-sm text-brandBlack/70"><strong class="text-brandBlack">Custom
+                                    systems</strong> — portals, bookings, dashboards.</span>
+                        </li>
+                    </ul>
+
+                    <!-- CTAs -->
+                    <div class="mt-8 flex flex-wrap gap-3">
+                        <a href="web.html"
+                            class="inline-flex items-center gap-2 rounded-xl bg-brandBlue px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-brandBlue/25 transition hover:bg-brandBlue/90">
+                            View Prices
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                            </svg>
+                        </a>
+
+                        <a href="contact.html"
+                            class="inline-flex items-center gap-2 rounded-xl border border-brandBlack/10 bg-white px-6 py-3.5 text-sm font-bold text-brandBlack transition hover:border-brandBlue hover:text-brandBlue">
+                            Talk to Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= BRANDING & CREATIVE SOLUTION ================= -->
+    <section class="relative isolate overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
+
+        <!-- Soft glows -->
+        <div class="pointer-events-none absolute -left-40 top-1/4 h-96 w-96 rounded-full bg-brandGreen/10 blur-3xl">
+        </div>
+        <div class="pointer-events-none absolute -right-32 bottom-0 h-80 w-80 rounded-full bg-brandBlue/10 blur-3xl">
+        </div>
+
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+
+                <!-- ============ LEFT: Copy (reversed layout) ============ -->
+                <div class="order-2 lg:order-1 lg:col-span-6">
+
+                    <!-- Eyebrow -->
+                    <span
+                        class="inline-flex items-center gap-2 rounded-full border border-brandBlack/10 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brandGreen shadow-sm">
+                        <span class="h-1.5 w-1.5 rounded-full bg-brandBlue"></span>
+                        Branding &amp; Creative
+                    </span>
+
+                    <!-- Heading -->
+                    <h2
+                        class="mt-5 text-3xl font-extrabold leading-[1.1] tracking-tight text-brandBlack sm:text-4xl lg:text-5xl">
+                        Brands people
+                        <span class="block bg-gradient-to-r from-brandGreen to-brandBlue bg-clip-text text-transparent">
+                            remember &amp; trust.
+                        </span>
+                    </h2>
+
+                    <!-- Paragraph -->
+                    <p class="mt-5 text-base leading-relaxed text-brandBlack/70">
+                        Your logo is just the beginning. We build complete visual identity
+                        systems — colour, type, tone and collateral — that make your business
+                        look premium and unforgettable.
+                    </p>
+
+                    <!-- Feature list -->
+                    <ul class="mt-6 space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brandGreen/10 text-brandGreen">
+                                <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                                </svg>
+                            </span>
+                            <span class="text-sm text-brandBlack/70"><strong class="text-brandBlack">Logo &amp;
+                                    identity</strong> — complete brand systems.</span>
+                        </li>
+
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brandBlue/10 text-brandBlue">
+                                <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                                </svg>
+                            </span>
+                            <span class="text-sm text-brandBlack/70"><strong class="text-brandBlack">UI/UX
+                                    design</strong> — for web and mobile products.</span>
+                        </li>
+
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brandGreen/10 text-brandGreen">
+                                <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                                </svg>
+                            </span>
+                            <span class="text-sm text-brandBlack/70"><strong class="text-brandBlack">Marketing
+                                    collateral</strong> — flyers, profiles, social kits.</span>
+                        </li>
+                    </ul>
+
+                    <!-- CTAs -->
+                    <div class="mt-8 flex flex-wrap gap-3">
+                        <a href="branding.html"
+                            class="inline-flex items-center gap-2 rounded-xl bg-brandGreen px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-brandGreen/25 transition hover:bg-brandGreen/90">
+                            View Prices
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                            </svg>
+                        </a>
+
+                        <a href="contact.html"
+                            class="inline-flex items-center gap-2 rounded-xl border border-brandBlack/10 bg-white px-6 py-3.5 text-sm font-bold text-brandBlack transition hover:border-brandGreen hover:text-brandGreen">
+                            Talk to Us
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ============ RIGHT: Image ============ -->
+                <div class="order-1 lg:order-2 lg:col-span-6">
+                    <div class="relative">
+
+                        <!-- Glow -->
+                        <div
+                            class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brandGreen/15 to-brandBlue/10 blur-2xl">
+                        </div>
+
+                        <!-- Card with brand guideline preview -->
+                        <div
+                            class="relative overflow-hidden rounded-3xl border border-brandBlack/10 bg-brandBlack shadow-xl shadow-brandBlack/10">
+
+                            <!-- Top bar -->
+                            <div class="flex items-center justify-between border-b border-white/10 px-4 py-2.5">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="h-2.5 w-2.5 rounded-full bg-red-400/70"></span>
+                                    <span class="h-2.5 w-2.5 rounded-full bg-amber-400/70"></span>
+                                    <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/70"></span>
+                                </div>
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-white/40">
+                                    brand-guidelines.pdf
+                                </span>
+                            </div>
+
+                            <!-- Body: identity grid -->
+                            <div class="p-5">
+
+                                <!-- Primary mark -->
+                                <div class="flex items-center gap-3 rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+                                    <span
+                                        class="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brandGreen to-brandBlue text-lg font-extrabold text-white">A</span>
+                                    <div class="min-w-0">
+                                        <p class="truncate text-sm font-extrabold text-white">Primary Logo Mark</p>
+                                        <p class="text-[11px] font-semibold uppercase tracking-wider text-brandGreen">
+                                            Identity v1.0</p>
+                                    </div>
+                                </div>
+
+                                <!-- Type + palette row -->
+                                <div class="mt-3 grid grid-cols-2 gap-3">
+
+                                    <!-- Type specimen -->
+                                    <div class="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+                                        <p class="text-[10px] font-bold uppercase tracking-widest text-white/40">
+                                            Typography</p>
+                                        <p class="mt-2 text-3xl font-extrabold leading-none text-white">Aa</p>
+                                        <p class="mt-1 text-[11px] font-semibold text-white/50">Poppins / 600</p>
+                                    </div>
+
+                                    <!-- Colour palette -->
+                                    <div class="rounded-2xl bg-white/5 p-4 ring-1 ring-white/10">
+                                        <p class="text-[10px] font-bold uppercase tracking-widest text-white/40">Palette
+                                        </p>
+                                        <div class="mt-3 grid grid-cols-4 gap-1.5">
+                                            <span class="aspect-square rounded-md bg-brandBlue"></span>
+                                            <span class="aspect-square rounded-md bg-brandGreen"></span>
+                                            <span
+                                                class="aspect-square rounded-md bg-brandBlack ring-1 ring-white/10"></span>
+                                            <span class="aspect-square rounded-md bg-brandWhite"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Identity applications -->
+                                <div class="mt-3 grid grid-cols-3 gap-3">
+                                    <div class="rounded-xl bg-white/5 p-3 text-center ring-1 ring-white/10">
+                                        <p class="text-lg">📇</p>
+                                        <p class="mt-1 text-[10px] font-bold uppercase tracking-wider text-white/60">
+                                            Cards</p>
+                                    </div>
+                                    <div class="rounded-xl bg-white/5 p-3 text-center ring-1 ring-white/10">
+                                        <p class="text-lg">📦</p>
+                                        <p class="mt-1 text-[10px] font-bold uppercase tracking-wider text-white/60">
+                                            Packaging</p>
+                                    </div>
+                                    <div class="rounded-xl bg-white/5 p-3 text-center ring-1 ring-white/10">
+                                        <p class="text-lg">📄</p>
+                                        <p class="mt-1 text-[10px] font-bold uppercase tracking-wider text-white/60">
+                                            Collateral</p>
+                                    </div>
+                                </div>
+
+                                <!-- Footer accent -->
+                                <div class="mt-4 flex items-center justify-between border-t border-white/10 pt-4">
+                                    <p class="text-[10px] font-bold uppercase tracking-wider text-white/40">Delivered in
+                                    </p>
+                                    <p class="text-sm font-extrabold text-brandGreen">7 working days</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating badge -->
+                        <div
+                            class="absolute -bottom-6 -left-4 hidden rounded-2xl border border-brandBlack/10 bg-white p-4 shadow-xl shadow-brandBlack/10 sm:block">
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">Identities
+                                built</p>
+                            <p class="mt-1 text-2xl font-extrabold text-brandGreen">120<span
+                                    class="text-sm text-brandBlack/40">+</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= PRINTING SERVICES ================= -->
+    <section class="relative isolate overflow-hidden bg-brandWhite py-20 sm:py-24 lg:py-28">
+
+        <!-- Soft glows -->
+        <div class="pointer-events-none absolute -right-40 top-1/3 h-96 w-96 rounded-full bg-brandBlue/10 blur-3xl">
+        </div>
+        <div class="pointer-events-none absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-brandGreen/10 blur-3xl">
+        </div>
+
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+
+                <!-- ============ LEFT: Image ============ -->
+                <div class="lg:col-span-6">
+                    <div class="relative">
+
+                        <!-- Glow -->
+                        <div
+                            class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brandBlue/15 to-brandGreen/10 blur-2xl">
+                        </div>
+
+                        <!-- Main visual: large-format print -->
+                        <div
+                            class="relative overflow-hidden rounded-3xl border border-brandBlack/10 bg-white shadow-xl shadow-brandBlack/10">
+                            <div class="aspect-[16/11] w-full overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1562564055-71e051d33c19?auto=format&fit=crop&w=1400&q=80"
+                                    alt="Large format printing and signage"
+                                    class="h-full w-full object-cover transition duration-700 hover:scale-105"
+                                    loading="lazy" />
+                            </div>
+
+                            <!-- Overlay tag -->
+                            <div
+                                class="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-brandBlack/85 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-widest text-white backdrop-blur">
+                                <span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>
+                                In-house production
+                            </div>
+                        </div>
+
+                        <!-- Floating capability chips -->
+                        <div
+                            class="absolute -bottom-6 left-1/2 hidden w-[88%] -translate-x-1/2 grid-cols-3 gap-2 sm:grid">
+                            <div
+                                class="rounded-2xl border border-brandBlack/10 bg-white p-3 text-center shadow-xl shadow-brandBlack/10">
+                                <p class="text-[10px] font-bold uppercase tracking-wider text-brandBlack/40">Banners</p>
+                                <p class="mt-0.5 text-sm font-extrabold text-brandBlue">Up to 6m</p>
+                            </div>
+                            <div
+                                class="rounded-2xl border border-brandBlack/10 bg-white p-3 text-center shadow-xl shadow-brandBlack/10">
+                                <p class="text-[10px] font-bold uppercase tracking-wider text-brandBlack/40">Signage</p>
+                                <p class="mt-0.5 text-sm font-extrabold text-brandGreen">3D &amp; LED</p>
+                            </div>
+                            <div
+                                class="rounded-2xl border border-brandBlack/10 bg-white p-3 text-center shadow-xl shadow-brandBlack/10">
+                                <p class="text-[10px] font-bold uppercase tracking-wider text-brandBlack/40">Wraps</p>
+                                <p class="mt-0.5 text-sm font-extrabold text-brandBlue">Full fleet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============ RIGHT: Copy ============ -->
+                <div class="lg:col-span-6">
+
+                    <!-- Eyebrow -->
+                    <span
+                        class="inline-flex items-center gap-2 rounded-full border border-brandBlack/10 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brandBlue shadow-sm">
+                        <span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>
+                        Printing Services
+                    </span>
+
+                    <!-- Heading -->
+                    <h2
+                        class="mt-5 text-3xl font-extrabold leading-[1.1] tracking-tight text-brandBlack sm:text-4xl lg:text-5xl">
+                        Big, bold,
+                        <span class="block bg-gradient-to-r from-brandBlue to-brandGreen bg-clip-text text-transparent">
+                            built to last.
+                        </span>
+                    </h2>
+
+                    <!-- Paragraph -->
+                    <p class="mt-5 text-base leading-relaxed text-brandBlack/70">
+                        Banners, roll-ups, signage, vehicle wraps and branded merchandise —
+                        produced on premium materials and installed by our own team across
+                        Arusha and beyond.
+                    </p>
+
+                    <!-- Feature list -->
+                    <ul class="mt-6 space-y-3">
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brandBlue/10 text-brandBlue">
+                                <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                                </svg>
+                            </span>
+                            <span class="text-sm text-brandBlack/70"><strong class="text-brandBlack">Large format
+                                    printing</strong> — banners &amp; billboards.</span>
+                        </li>
+
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brandGreen/10 text-brandGreen">
+                                <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                                </svg>
+                            </span>
+                            <span class="text-sm text-brandBlack/70"><strong class="text-brandBlack">Signage &amp; 3D
+                                    letters</strong> — acrylic, aluminium, LED.</span>
+                        </li>
+
+                        <li class="flex items-start gap-3">
+                            <span
+                                class="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brandBlue/10 text-brandBlue">
+                                <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                                </svg>
+                            </span>
+                            <span class="text-sm text-brandBlack/70"><strong class="text-brandBlack">Vehicle
+                                    branding</strong> — partial &amp; full wraps.</span>
+                        </li>
+                    </ul>
+
+                    <!-- CTAs -->
+                    <div class="mt-8 flex flex-wrap gap-3">
+                        <a href="printing.html"
+                            class="inline-flex items-center gap-2 rounded-xl bg-brandBlue px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-brandBlue/25 transition hover:bg-brandBlue/90">
+                            View Prices
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                            </svg>
+                        </a>
+
+                        <a href="contact.html"
+                            class="inline-flex items-center gap-2 rounded-xl border border-brandBlack/10 bg-white px-6 py-3.5 text-sm font-bold text-brandBlack transition hover:border-brandBlue hover:text-brandBlue">
+                            Get a Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= QUOTATION SECTION ================= -->
+    <section id="quotation" class="relative isolate overflow-hidden bg-brandWhite py-20 sm:py-24 lg:py-28">
+
+        <!-- Soft glows -->
+        <div class="pointer-events-none absolute -left-40 top-10 h-96 w-96 rounded-full bg-brandBlue/10 blur-3xl"></div>
+        <div class="pointer-events-none absolute -right-32 bottom-0 h-96 w-96 rounded-full bg-brandGreen/10 blur-3xl">
+        </div>
+
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+            <!-- ============ HEADER ============ -->
+            <div class="mx-auto max-w-2xl text-center">
+                <span
+                    class="inline-flex items-center gap-2 rounded-full border border-brandBlack/10 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brandBlue shadow-sm">
+                    <span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>
+                    Request a Quote
+                </span>
+
+                <h2
+                    class="mt-6 text-3xl font-extrabold leading-[1.1] tracking-tight text-brandBlack sm:text-4xl lg:text-5xl">
+                    Tell us what you need.
+                    <span class="block bg-gradient-to-r from-brandBlue to-brandGreen bg-clip-text text-transparent">
+                        Get a quote in 24 hours.
+                    </span>
+                </h2>
+
+                <p class="mt-5 text-base leading-relaxed text-brandBlack/65">
+                    Fill in the short form below and our team will respond with a
+                    detailed, itemised quotation within one business day.
+                </p>
+            </div>
+
+            <!-- ============ MAIN GRID ============ -->
+            <div class="mt-14 grid gap-8 lg:grid-cols-12 lg:gap-10">
+
+                <!-- ============ LEFT: Form ============ -->
+                <div class="lg:col-span-7">
+                    <div
+                        class="rounded-3xl border border-brandBlack/10 bg-white p-6 shadow-xl shadow-brandBlack/5 sm:p-8">
+
+                        <form id="quoteForm" class="grid gap-5 sm:grid-cols-2">
+
+                            <!-- Full name -->
+                            <div class="sm:col-span-1">
+                                <label class="text-[11px] font-bold uppercase tracking-wider text-brandBlack/60">Full
+                                    Name *</label>
+                                <input required type="text" name="name" placeholder="e.g. Amina Juma"
+                                    class="mt-2 w-full rounded-xl border border-brandBlack/10 bg-brandWhite px-4 py-3 text-sm font-medium text-brandBlack outline-none transition placeholder:text-brandBlack/35 focus:border-brandBlue focus:bg-white focus:ring-4 focus:ring-brandBlue/10" />
+                            </div>
+
+                            <!-- Company -->
+                            <div class="sm:col-span-1">
+                                <label
+                                    class="text-[11px] font-bold uppercase tracking-wider text-brandBlack/60">Company</label>
+                                <input type="text" name="company" placeholder="e.g. Kilimanjaro Ltd"
+                                    class="mt-2 w-full rounded-xl border border-brandBlack/10 bg-brandWhite px-4 py-3 text-sm font-medium text-brandBlack outline-none transition placeholder:text-brandBlack/35 focus:border-brandBlue focus:bg-white focus:ring-4 focus:ring-brandBlue/10" />
+                            </div>
+
+                            <!-- Email -->
+                            <div class="sm:col-span-1">
+                                <label class="text-[11px] font-bold uppercase tracking-wider text-brandBlack/60">Email
+                                    *</label>
+                                <input required type="email" name="email" placeholder="you@company.co.tz"
+                                    class="mt-2 w-full rounded-xl border border-brandBlack/10 bg-brandWhite px-4 py-3 text-sm font-medium text-brandBlack outline-none transition placeholder:text-brandBlack/35 focus:border-brandBlue focus:bg-white focus:ring-4 focus:ring-brandBlue/10" />
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="sm:col-span-1">
+                                <label class="text-[11px] font-bold uppercase tracking-wider text-brandBlack/60">Phone /
+                                    WhatsApp *</label>
+                                <input required type="tel" name="phone" placeholder="+255 7XX XXX XXX"
+                                    class="mt-2 w-full rounded-xl border border-brandBlack/10 bg-brandWhite px-4 py-3 text-sm font-medium text-brandBlack outline-none transition placeholder:text-brandBlack/35 focus:border-brandBlue focus:bg-white focus:ring-4 focus:ring-brandBlue/10" />
+                            </div>
+
+                            <!-- Service -->
+                            <div class="sm:col-span-1">
+                                <label class="text-[11px] font-bold uppercase tracking-wider text-brandBlack/60">Service
+                                    Needed *</label>
+                                <select required name="service"
+                                    class="mt-2 w-full rounded-xl border border-brandBlack/10 bg-brandWhite px-4 py-3 text-sm font-medium text-brandBlack outline-none transition focus:border-brandBlue focus:bg-white focus:ring-4 focus:ring-brandBlue/10">
+                                    <option value="">Choose a service…</option>
+                                    <option>Web Development</option>
+                                    <option>Branding &amp; Design</option>
+                                    <option>Printing &amp; Signage</option>
+                                    <option>Digital Marketing</option>
+                                    <option>IT &amp; Networking</option>
+                                    <option>Multiple / Not sure yet</option>
+                                </select>
+                            </div>
+
+                            <!-- Budget -->
+                            <div class="sm:col-span-1">
+                                <label class="text-[11px] font-bold uppercase tracking-wider text-brandBlack/60">Budget
+                                    Range</label>
+                                <select name="budget"
+                                    class="mt-2 w-full rounded-xl border border-brandBlack/10 bg-brandWhite px-4 py-3 text-sm font-medium text-brandBlack outline-none transition focus:border-brandBlue focus:bg-white focus:ring-4 focus:ring-brandBlue/10">
+                                    <option value="">Optional</option>
+                                    <option>Under 1M TZS</option>
+                                    <option>1M – 5M TZS</option>
+                                    <option>5M – 15M TZS</option>
+                                    <option>15M+ TZS</option>
+                                </select>
+                            </div>
+
+                            <!-- Timeline -->
+                            <div class="sm:col-span-1">
+                                <label
+                                    class="text-[11px] font-bold uppercase tracking-wider text-brandBlack/60">Timeline</label>
+                                <select name="timeline"
+                                    class="mt-2 w-full rounded-xl border border-brandBlack/10 bg-brandWhite px-4 py-3 text-sm font-medium text-brandBlack outline-none transition focus:border-brandBlue focus:bg-white focus:ring-4 focus:ring-brandBlue/10">
+                                    <option value="">Optional</option>
+                                    <option>ASAP / Rush</option>
+                                    <option>Within 2 weeks</option>
+                                    <option>Within 1 month</option>
+                                    <option>Flexible</option>
+                                </select>
+                            </div>
+
+                            <!-- Message -->
+                            <div class="sm:col-span-2">
+                                <label class="text-[11px] font-bold uppercase tracking-wider text-brandBlack/60">Project
+                                    Details *</label>
+                                <textarea required name="message" rows="5"
+                                    placeholder="Tell us briefly about your project, goals and any specific requirements…"
+                                    class="mt-2 w-full rounded-xl border border-brandBlack/10 bg-brandWhite px-4 py-3 text-sm font-medium text-brandBlack outline-none transition placeholder:text-brandBlack/35 focus:border-brandBlue focus:bg-white focus:ring-4 focus:ring-brandBlue/10"></textarea>
+                            </div>
+
+                            <!-- Submit row -->
+                            <div
+                                class="sm:col-span-2 flex flex-wrap items-center gap-3 border-t border-brandBlack/10 pt-5">
+                                <button type="submit"
+                                    class="inline-flex items-center gap-2 rounded-xl bg-brandBlue px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-brandBlue/25 transition hover:bg-brandBlue/90">
+                                    Send Request
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M5 12h14m-6-6 6 6-6 6" />
+                                    </svg>
+                                </button>
+
+                                <a href="https://wa.me/255700000000" target="_blank" rel="noopener"
+                                    class="inline-flex items-center gap-2 rounded-xl border border-brandGreen/30 bg-brandGreen/5 px-6 py-3.5 text-sm font-bold text-brandGreen transition hover:bg-brandGreen/10">
+                                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.5c-1.7 0-3.4-.5-4.9-1.4l-.3-.2-3.6 1 1-3.5-.2-.3C2 15.5 1.5 13.8 1.5 12 1.5 6.2 6.2 1.5 12 1.5S22.5 6.2 22.5 12 17.8 21.5 12 21.5z" />
+                                    </svg>
+                                    WhatsApp Instead
+                                </a>
+
+                                <p class="text-[11px] font-semibold text-brandBlack/40 sm:ml-auto">
+                                    🔒 Your data is safe with us
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ============ RIGHT: Info panel ============ -->
+                <div class="lg:col-span-5">
+                    <div class="sticky top-24 space-y-5">
+
+                        <!-- Why us card -->
+                        <div class="relative overflow-hidden rounded-3xl bg-brandBlack p-7 text-white">
+
+                            <!-- Ambient glows -->
+                            <div
+                                class="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-brandBlue/30 blur-3xl">
+                            </div>
+                            <div
+                                class="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-brandGreen/20 blur-3xl">
+                            </div>
+
+                            <div class="relative">
+                                <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-brandGreen">Why Africana
+                                </p>
+                                <h3 class="mt-3 text-xl font-extrabold leading-snug sm:text-2xl">
+                                    A quote you can actually plan around.
+                                </h3>
+
+                                <ul class="mt-6 space-y-4">
+                                    <li class="flex items-start gap-3">
+                                        <span
+                                            class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brandGreen/15 text-brandGreen">
+                                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="m5 13 4 4L19 7" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-sm font-extrabold">Itemised pricing</p>
+                                            <p class="mt-0.5 text-xs text-white/60">Every line item clearly broken down.
+                                            </p>
+                                        </div>
+                                    </li>
+
+                                    <li class="flex items-start gap-3">
+                                        <span
+                                            class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brandBlue/15 text-brandBlue">
+                                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="m5 13 4 4L19 7" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-sm font-extrabold">Reply within 24 hrs</p>
+                                            <p class="mt-0.5 text-xs text-white/60">Usually much faster — under 2 hours.
+                                            </p>
+                                        </div>
+                                    </li>
+
+                                    <li class="flex items-start gap-3">
+                                        <span
+                                            class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brandGreen/15 text-brandGreen">
+                                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="m5 13 4 4L19 7" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-sm font-extrabold">No obligation</p>
+                                            <p class="mt-0.5 text-xs text-white/60">Free quote — no commitment required.
+                                            </p>
+                                        </div>
+                                    </li>
+
+                                    <li class="flex items-start gap-3">
+                                        <span
+                                            class="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-brandBlue/15 text-brandBlue">
+                                            <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="3"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="m5 13 4 4L19 7" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-sm font-extrabold">VAT invoice provided</p>
+                                            <p class="mt-0.5 text-xs text-white/60">Compliant documents for your
+                                                records.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Contact quick cards -->
+                        <div class="grid grid-cols-2 gap-4">
+
+                            <a href="tel:+255700000000"
+                                class="group rounded-2xl border border-brandBlack/10 bg-white p-5 transition hover:-translate-y-0.5 hover:border-brandBlue hover:shadow-lg hover:shadow-brandBlue/5">
+                                <span
+                                    class="grid h-10 w-10 place-items-center rounded-xl bg-brandBlue/10 text-brandBlue transition group-hover:bg-brandBlue group-hover:text-white">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z" />
+                                    </svg>
+                                </span>
+                                <p class="mt-3 text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">Call
+                                    Us</p>
+                                <p class="mt-1 text-sm font-extrabold text-brandBlack">+255 700 000 000</p>
+                            </a>
+
+                            <a href="mailto:sales@africanatech.co.tz"
+                                class="group rounded-2xl border border-brandBlack/10 bg-white p-5 transition hover:-translate-y-0.5 hover:border-brandGreen hover:shadow-lg hover:shadow-brandGreen/5">
+                                <span
+                                    class="grid h-10 w-10 place-items-center rounded-xl bg-brandGreen/10 text-brandGreen transition group-hover:bg-brandGreen group-hover:text-white">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4"
+                                        viewBox="0 0 24 24">
+                                        <rect x="3" y="5" width="18" height="14" rx="2.5" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="m3 7 9 6 9-6" />
+                                    </svg>
+                                </span>
+                                <p class="mt-3 text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">Email
+                                </p>
+                                <p class="mt-1 truncate text-sm font-extrabold text-brandBlack">sales@africanatech.co.tz
+                                </p>
+                            </a>
+                        </div>
+
+                        <!-- Trust row -->
+                        <div class="rounded-2xl border border-brandBlack/10 bg-white p-5">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">Rated
+                                        by clients</p>
+                                    <div class="mt-1 flex items-center gap-2">
+                                        <div class="flex gap-0.5">
+                                            <span class="text-brandGreen">★</span>
+                                            <span class="text-brandGreen">★</span>
+                                            <span class="text-brandGreen">★</span>
+                                            <span class="text-brandGreen">★</span>
+                                            <span class="text-brandGreen">★</span>
+                                        </div>
+                                        <span class="text-xs font-extrabold text-brandBlack">4.9/5</span>
+                                    </div>
+                                </div>
+                                <p
+                                    class="text-right text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">
+                                    Based on<br />250+ projects
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= CTA SECTION ================= -->
+    <section class="relative isolate overflow-hidden bg-brandBlack py-20 text-white sm:py-24 lg:py-28 mb-16">
+
+        <!-- Background glows -->
+        <div
+            class="pointer-events-none absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full bg-brandBlue/30 blur-3xl">
+        </div>
+        <div
+            class="pointer-events-none absolute -bottom-40 -left-40 h-[32rem] w-[32rem] rounded-full bg-brandGreen/25 blur-3xl">
+        </div>
+
+        <!-- Grid pattern -->
+        <div class="pointer-events-none absolute inset-0 opacity-[0.05]" style="background-image:
+          linear-gradient(rgba(255,255,255,.7) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.7) 1px, transparent 1px);
+          background-size: 56px 56px;"></div>
+
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-4xl text-center">
+
+                <!-- Eyebrow -->
+                <span
+                    class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brandGreen backdrop-blur">
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-brandGreen"></span>
+                    Let's Build Together
+                </span>
+
+                <!-- Headline -->
+                <h2
+                    class="mt-6 text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl xl:text-6xl">
+                    Ready to give your brand
+                    <span class="block bg-gradient-to-r from-brandBlue to-brandGreen bg-clip-text text-transparent">
+                        the premium edge?
+                    </span>
+                </h2>
+
+                <!-- Subhead -->
+                <p class="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">
+                    Whether you need a full brand overhaul, a high-performance website or a
+                    warehouse full of printed material — we've got you covered. Start the
+                    conversation today.
+                </p>
+
+                <!-- CTA buttons — always one horizontal row -->
+                <div class="mt-10 flex flex-nowrap items-center justify-center gap-2 sm:gap-3">
+                    <a href="#quotation"
+                        class="group inline-flex flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-xl bg-brandBlue px-3 py-3 text-xs font-bold text-white shadow-lg shadow-brandBlue/30 transition hover:bg-brandBlue/90 sm:flex-none sm:gap-2 sm:px-7 sm:py-4 sm:text-sm">
+                        <span class="hidden xs:inline sm:inline">Get a Free Quote</span>
+                        <span class="inline sm:hidden">Free Quote</span>
+                        <svg class="h-3.5 w-3.5 shrink-0 transition group-hover:translate-x-0.5 sm:h-4 sm:w-4"
+                            fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                        </svg>
+                    </a>
+
+                    <a href="https://wa.me/255700000000" target="_blank" rel="noopener"
+                        class="inline-flex flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-xl border border-white/20 bg-white/5 px-3 py-3 text-xs font-bold text-white backdrop-blur transition hover:bg-white/10 sm:flex-none sm:gap-2 sm:px-7 sm:py-4 sm:text-sm">
+                        <svg class="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.5c-1.7 0-3.4-.5-4.9-1.4l-.3-.2-3.6 1 1-3.5-.2-.3C2 15.5 1.5 13.8 1.5 12 1.5 6.2 6.2 1.5 12 1.5S22.5 6.2 22.5 12 17.8 21.5 12 21.5z" />
+                        </svg>
+                        <span class="hidden xs:inline sm:inline">Chat on WhatsApp</span>
+                        <span class="inline sm:hidden">WhatsApp</span>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <script src="script.js"></script>
+    <script src="footer.js"></script>
+</body>
+
+</html>

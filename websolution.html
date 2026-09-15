@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Africana Tech & Branding Ltd</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- 1️⃣ Tailwind CDN FIRST -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 2️⃣ script.js SECOND — sets tailwind.config correctly -->
+    <script src="script.js"></script>
+</head>
+
+<body class="bg-brandWhite font-poppins text-brandBlack antialiased">
+
+    <!-- Fixed header is injected here -->
+    <div id="site-header"></div>
+
+    <!-- Spacer auto-sized by JS so content starts below fixed header -->
+    <div id="header-spacer"></div>
+
+
+    <!-- ==================================================================
+     WEB PRICES SECTION — UNIQUE / INTERACTIVE / MODERN
+     Distinct editorial layout with an interactive plan switcher
+     ================================================================== -->
+
+    <style>
+        /* soft dotted background */
+        .pricing-dots {
+            background-image: radial-gradient(rgba(10, 10, 10, .08) 1px, transparent 1px);
+            background-size: 22px 22px;
+        }
+
+        /* underline sweep on tabs */
+        .plan-tab {
+            position: relative;
+        }
+
+        .plan-tab::after {
+            content: '';
+            position: absolute;
+            left: 14px;
+            right: 14px;
+            bottom: -1px;
+            height: 2px;
+            background: #136db6;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .35s cubic-bezier(.22, .61, .36, 1);
+        }
+
+        .plan-tab.is-active::after {
+            transform: scaleX(1);
+        }
+
+        /* plan panel fade */
+        .plan-panel {
+            animation: planFade .45s cubic-bezier(.22, .61, .36, 1) both;
+        }
+
+        @keyframes planFade {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* subtle float */
+        @keyframes floatSlow {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-8px)
+            }
+        }
+
+        .float-slow {
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+    </style>
+
+    <section id="web-prices" class="relative isolate overflow-hidden py-20 sm:py-24 lg:py-28"
+        style="background: linear-gradient(180deg, #f8f7f4 0%, #F9FAFB 100%);">
+
+        <!-- Dotted texture -->
+        <div class="pricing-dots pointer-events-none absolute inset-0 opacity-60"></div>
+
+        <!-- Organic brand blobs -->
+        <div
+            class="pointer-events-none absolute -left-40 top-20 h-[28rem] w-[28rem] rounded-full bg-brandBlue/15 blur-3xl">
+        </div>
+        <div
+            class="pointer-events-none absolute -right-40 bottom-10 h-[28rem] w-[28rem] rounded-full bg-brandGreen/15 blur-3xl">
+        </div>
+
+        <!-- ================= HEADER ================= -->
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+            <div class="grid items-end gap-8 lg:grid-cols-12">
+
+                <!-- Headline block -->
+                <div class="lg:col-span-7">
+                    <span
+                        class="inline-flex items-center gap-2 rounded-full border border-brandBlack/10 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brandBlue shadow-sm">
+                        <span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>
+                        Web Pricing · 2025
+                    </span>
+
+                    <h2
+                        class="mt-6 text-4xl font-extrabold leading-[1.02] tracking-tight text-brandBlack sm:text-5xl lg:text-6xl">
+                        One page.<br />
+                        <span
+                            class="bg-gradient-to-r from-brandBlue via-brandBlue to-brandGreen bg-clip-text text-transparent">
+                            Every price.
+                        </span>
+                    </h2>
+
+                    <p class="mt-5 max-w-lg text-base leading-relaxed text-brandBlack/60">
+                        No "contact us for pricing" games. Choose a plan, see the full
+                        breakdown, and know exactly what you're paying for.
+                        All figures in TZS, excluding 18% VAT.
+                    </p>
+                </div>
+
+                <!-- Right side: trust strip -->
+                <div class="lg:col-span-5">
+                    <div
+                        class="grid grid-cols-3 gap-3 rounded-2xl border border-brandBlack/10 bg-white/70 p-4 backdrop-blur">
+                        <div>
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">Delivery</p>
+                            <p class="mt-1 text-lg font-extrabold text-brandBlack">5–14<span
+                                    class="text-xs text-brandBlack/40"> days</span></p>
+                        </div>
+                        <div class="border-l border-brandBlack/10 pl-4">
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">Support</p>
+                            <p class="mt-1 text-lg font-extrabold text-brandBlack">30<span
+                                    class="text-xs text-brandBlack/40"> days</span></p>
+                        </div>
+                        <div class="border-l border-brandBlack/10 pl-4">
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">VAT</p>
+                            <p class="mt-1 text-lg font-extrabold text-brandBlack">+18%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= INTERACTIVE PRICING PANEL ================= -->
+            <div class="mt-12 grid gap-6 lg:grid-cols-12 lg:gap-8">
+
+                <!-- LEFT: Big selected plan -->
+                <div class="lg:col-span-7">
+                    <div class="relative">
+
+                        <!-- Decorative outline frame -->
+                        <div class="absolute -inset-2 rounded-[2rem] border border-brandBlack/10"></div>
+
+                        <!-- Card -->
+                        <div
+                            class="relative overflow-hidden rounded-[1.75rem] bg-white shadow-2xl shadow-brandBlack/10">
+
+                            <!-- Top strip -->
+                            <div
+                                class="flex items-center justify-between border-b border-brandBlack/10 bg-brandBlack px-6 py-4">
+                                <div class="flex items-center gap-3">
+                                    <span
+                                        class="grid h-8 w-8 place-items-center rounded-lg bg-white/10 text-sm font-extrabold text-white"
+                                        id="planIcon">💻</span>
+                                    <div>
+                                        <p class="text-[10px] font-bold uppercase tracking-widest text-white/40">
+                                            Selected Plan</p>
+                                        <p class="text-sm font-extrabold text-white" id="planNameTop">Business Website
+                                        </p>
+                                    </div>
+                                </div>
+                                <span id="planBadgeTop"
+                                    class="inline-flex items-center gap-1 rounded-full bg-brandBlue px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-white">
+                                    ★ Most Popular
+                                </span>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="p-6 sm:p-8">
+
+                                <div class="flex flex-wrap items-end justify-between gap-4">
+                                    <div>
+                                        <p class="text-[11px] font-bold uppercase tracking-widest text-brandBlack/40">
+                                            Starting from</p>
+                                        <p class="mt-1 flex items-baseline gap-2">
+                                            <span class="text-5xl font-extrabold tracking-tight text-brandBlack"
+                                                id="planPrice">1,500,000</span>
+                                            <span
+                                                class="text-sm font-bold uppercase tracking-wider text-brandBlack/40">TZS</span>
+                                        </p>
+                                    </div>
+
+                                    <span
+                                        class="rounded-full bg-brandGreen/10 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-widest text-brandGreen">
+                                        Fixed price
+                                    </span>
+                                </div>
+
+                                <p class="mt-5 text-sm leading-relaxed text-brandBlack/65" id="planDesc">
+                                    Our most-chosen package for growing companies. Responsive
+                                    corporate website with CMS, blog, gallery, SEO basics and
+                                    analytics setup.
+                                </p>
+
+                                <!-- Feature grid -->
+                                <div class="mt-7 grid gap-3 sm:grid-cols-2" id="planFeatures">
+                                    <!-- Filled by JS -->
+                                </div>
+
+                                <!-- Divider -->
+                                <div
+                                    class="my-7 h-px w-full bg-gradient-to-r from-transparent via-brandBlack/10 to-transparent">
+                                </div>
+
+                                <!-- What's included strip -->
+                                <div
+                                    class="flex flex-wrap items-center gap-x-6 gap-y-3 text-[11px] font-bold uppercase tracking-wider text-brandBlack/50">
+                                    <span class="flex items-center gap-1.5">
+                                        <svg class="h-3.5 w-3.5 text-brandGreen" fill="none" stroke="currentColor"
+                                            stroke-width="3" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                                        </svg>
+                                        Source files
+                                    </span>
+                                    <span class="flex items-center gap-1.5">
+                                        <svg class="h-3.5 w-3.5 text-brandGreen" fill="none" stroke="currentColor"
+                                            stroke-width="3" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                                        </svg>
+                                        2 revision rounds
+                                    </span>
+                                    <span class="flex items-center gap-1.5">
+                                        <svg class="h-3.5 w-3.5 text-brandGreen" fill="none" stroke="currentColor"
+                                            stroke-width="3" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                                        </svg>
+                                        30-day support
+                                    </span>
+                                </div>
+
+                                <!-- Actions -->
+                                <div class="mt-7 flex flex-wrap gap-3">
+                                    <a href="#quotation"
+                                        class="inline-flex items-center gap-2 rounded-xl bg-brandBlue px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-brandBlue/25 transition hover:bg-brandBlue/90">
+                                        Request This Plan
+                                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14m-6-6 6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                    <a href="https://wa.me/255700000000" target="_blank" rel="noopener"
+                                        class="inline-flex items-center gap-2 rounded-xl border border-brandBlack/10 bg-white px-6 py-3.5 text-sm font-bold text-brandBlack transition hover:border-brandGreen hover:text-brandGreen">
+                                        Ask a Question
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Plan selector stack -->
+                <div class="lg:col-span-5">
+                    <div class="sticky top-24 space-y-3">
+
+                        <p class="text-[11px] font-bold uppercase tracking-widest text-brandBlack/40">Choose a plan to
+                            preview</p>
+
+                        <!-- The four plans -->
+                        <div class="space-y-3" id="planStack">
+                            <!-- Filled by JS -->
+                        </div>
+
+                        <!-- Bottom card: custom -->
+                        <div
+                            class="mt-4 rounded-2xl border border-dashed border-brandBlack/15 bg-white/60 p-5 backdrop-blur">
+                            <div class="flex items-start gap-3">
+                                <span
+                                    class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brandBlack text-white">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <p class="text-sm font-extrabold text-brandBlack">Need something custom?</p>
+                                    <p class="mt-1 text-xs leading-relaxed text-brandBlack/60">
+                                        Enterprise portals, booking systems, mobile apps — we'll quote
+                                        after a short discovery call.
+                                    </p>
+                                    <a href="#quotation"
+                                        class="mt-3 inline-flex text-xs font-extrabold text-brandBlue hover:underline">
+                                        Talk to us →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footnote -->
+                        <div
+                            class="flex items-center gap-2 pt-2 text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">
+                            <span class="h-1 w-1 rounded-full bg-brandGreen"></span>
+                            Prices exclude 18% VAT · written quote provided
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= COMPARISON STRIP ================= -->
+            <div class="mt-14 overflow-hidden rounded-3xl border border-brandBlack/10 bg-white shadow-sm">
+                <div class="flex flex-wrap items-center justify-between gap-4 border-b border-brandBlack/10 px-6 py-4">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">Quick comparison
+                        </p>
+                        <h3 class="mt-0.5 text-base font-extrabold text-brandBlack">All web plans at a glance</h3>
+                    </div>
+                    <div
+                        class="hidden gap-4 text-[10px] font-bold uppercase tracking-widest text-brandBlack/40 sm:flex">
+                        <span class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-brandGreen"></span>
+                            Included</span>
+                        <span class="flex items-center gap-1.5"><span
+                                class="h-2 w-2 rounded-full bg-brandBlack/15"></span> Add-on</span>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-[720px] text-left text-sm">
+                        <thead>
+                            <tr
+                                class="border-b border-brandBlack/10 bg-brandWhite/60 text-[10px] font-extrabold uppercase tracking-widest text-brandBlack/50">
+                                <th class="px-6 py-3">Feature</th>
+                                <th class="px-6 py-3 text-center">Landing</th>
+                                <th class="px-6 py-3 text-center bg-brandBlue/5">Business</th>
+                                <th class="px-6 py-3 text-center">E-Commerce</th>
+                                <th class="px-6 py-3 text-center">Custom</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-brandBlack/5">
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-brandBlack">Price (TZS)</td>
+                                <td class="px-6 py-4 text-center text-brandBlack/70">700,000</td>
+                                <td class="px-6 py-4 text-center bg-brandBlue/5 font-extrabold text-brandBlue">1,500,000
+                                </td>
+                                <td class="px-6 py-4 text-center text-brandBlack/70">3,200,000</td>
+                                <td class="px-6 py-4 text-center text-brandBlack/70">From 4.5M</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-brandBlack">Pages / Sections</td>
+                                <td class="px-6 py-4 text-center text-brandBlack/70">1</td>
+                                <td class="px-6 py-4 text-center bg-brandBlue/5 text-brandBlack/70">Up to 5</td>
+                                <td class="px-6 py-4 text-center text-brandBlack/70">Unlimited</td>
+                                <td class="px-6 py-4 text-center text-brandBlack/70">Custom</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-brandBlack">CMS / Admin panel</td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandBlack/15"></span></td>
+                                <td class="px-6 py-4 text-center bg-brandBlue/5"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandGreen"></span></td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandGreen"></span></td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandGreen"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-brandBlack">E-commerce &amp; payments</td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandBlack/15"></span></td>
+                                <td class="px-6 py-4 text-center bg-brandBlue/5"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandBlack/15"></span></td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandGreen"></span></td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandGreen"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-brandBlack">Blog &amp; gallery</td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandBlack/15"></span></td>
+                                <td class="px-6 py-4 text-center bg-brandBlue/5"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandGreen"></span></td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandGreen"></span></td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandGreen"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-brandBlack">SEO setup</td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandGreen"></span></td>
+                                <td class="px-6 py-4 text-center bg-brandBlue/5"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandGreen"></span></td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandGreen"></span></td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandGreen"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-brandBlack">Mobile app integration</td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandBlack/15"></span></td>
+                                <td class="px-6 py-4 text-center bg-brandBlue/5"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandBlack/15"></span></td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandBlack/15"></span></td>
+                                <td class="px-6 py-4 text-center"><span
+                                        class="inline-block h-2.5 w-2.5 rounded-full bg-brandGreen"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-bold text-brandBlack">Support included</td>
+                                <td class="px-6 py-4 text-center text-brandBlack/70">14 days</td>
+                                <td class="px-6 py-4 text-center bg-brandBlue/5 text-brandBlack/70">30 days</td>
+                                <td class="px-6 py-4 text-center text-brandBlack/70">60 days</td>
+                                <td class="px-6 py-4 text-center text-brandBlack/70">90 days</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ==================================================================
+     PLAN SWITCHER SCRIPT
+     ================================================================== -->
+    <script>
+        (function () {
+            const PLANS = {
+                landing: {
+                    name: 'Landing Page',
+                    icon: '⚡',
+                    badge: null,
+                    price: '700,000',
+                    desc: 'High-converting single page with contact form, WhatsApp button and mobile-first design. Perfect for a campaign, product launch or quick online presence.',
+                    features: [
+                        'Single responsive page',
+                        'Contact form + WhatsApp button',
+                        'Basic on-page SEO',
+                        'Mobile-first design',
+                        'Analytics setup',
+                        '5-day delivery'
+                    ]
+                },
+                business: {
+                    name: 'Business Website',
+                    icon: '💼',
+                    badge: '★ Most Popular',
+                    price: '1,500,000',
+                    desc: 'Our most-chosen package for growing companies. Responsive corporate website with CMS, blog, gallery, SEO basics and analytics setup.',
+                    features: [
+                        'Up to 5 custom pages',
+                        'CMS — edit content yourself',
+                        'Blog, gallery & SEO basics',
+                        'Analytics & analytics dashboard',
+                        '30-day post-launch support',
+                        '10-day delivery'
+                    ]
+                },
+                ecommerce: {
+                    name: 'E-Commerce Store',
+                    icon: '🛒',
+                    badge: null,
+                    price: '3,200,000',
+                    desc: 'Full online store with product catalogue, cart, mobile money & card checkout, and a complete admin dashboard for managing orders.',
+                    features: [
+                        'Full product catalogue',
+                        'Cart & multi-step checkout',
+                        'Mobile money & card payments',
+                        'Admin dashboard & order mgmt',
+                        '60-day support',
+                        '14-day delivery'
+                    ]
+                },
+                custom: {
+                    name: 'Custom Web System',
+                    icon: '🧩',
+                    badge: 'Quote',
+                    price: '4,500,000',
+                    desc: 'Tailored portals, ERP systems, booking platforms and internal tools. Scope and quote agreed after a short discovery call.',
+                    features: [
+                        'Bespoke functionality',
+                        'Database & API design',
+                        'Role-based access control',
+                        'Third-party integrations',
+                        'Dedicated project manager',
+                        'Ongoing support contract'
+                    ]
+                }
+            };
+
+            /* -------- Build the plan stack -------- */
+            const stack = document.getElementById('planStack');
+            const order = ['landing', 'business', 'ecommerce', 'custom'];
+
+            stack.innerHTML = order.map((key, i) => {
+                const p = PLANS[key];
+                const isActive = key === 'business';
+                return `
+        <button data-plan="${key}"
+          class="plan-btn group flex w-full items-center gap-4 rounded-2xl border bg-white p-4 text-left transition
+                 ${isActive
+                        ? 'border-brandBlue ring-2 ring-brandBlue/15 shadow-lg shadow-brandBlue/10'
+                        : 'border-brandBlack/10 hover:border-brandBlue/30 hover:shadow-md'}">
+          <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl
+                ${isActive ? 'bg-brandBlue text-white' : 'bg-brandWhite text-brandBlack ring-1 ring-brandBlack/10'}">
+            <span class="text-lg">${p.icon}</span>
+          </span>
+
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-2">
+              <p class="truncate text-sm font-extrabold text-brandBlack">${p.name}</p>
+              ${p.badge === '★ Most Popular'
+                        ? '<span class="rounded-full bg-brandGreen/15 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-widest text-brandGreen">Popular</span>'
+                        : ''}
+            </div>
+            <p class="mt-0.5 text-[11px] font-bold uppercase tracking-wider text-brandBlack/40">
+              from <span class="text-brandBlack">${p.price} TZS</span>
+            </p>
+          </div>
+
+          <span class="shrink-0 text-brandBlack/30 transition group-hover:text-brandBlue">→</span>
+        </button>`;
+            }).join('');
+
+            /* -------- Switch handler -------- */
+            function selectPlan(key) {
+                const p = PLANS[key];
+
+                document.getElementById('planIcon').textContent = p.icon;
+                document.getElementById('planNameTop').textContent = p.name;
+                document.getElementById('planPrice').textContent = p.price;
+                document.getElementById('planDesc').textContent = p.desc;
+
+                const badge = document.getElementById('planBadgeTop');
+                if (p.badge) {
+                    badge.textContent = p.badge;
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+
+                /* Features */
+                document.getElementById('planFeatures').innerHTML = p.features.map(f => `
+        <div class="flex items-start gap-2.5 rounded-xl bg-brandWhite px-4 py-3 ring-1 ring-brandBlack/5">
+          <svg class="mt-0.5 h-4 w-4 shrink-0 text-brandGreen" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/>
+          </svg>
+          <span class="text-sm font-medium text-brandBlack/75">${f}</span>
+        </div>
+      `).join('');
+
+                /* Replay panel animation */
+                const panel = document.querySelector('.plan-panel');
+                const card = document.getElementById('planFeatures').closest('.rounded-\\[1\\.75rem\\]');
+                if (card) {
+                    card.classList.remove('plan-panel');
+                    void card.offsetWidth;
+                    card.classList.add('plan-panel');
+                }
+
+                /* Button highlight */
+                document.querySelectorAll('.plan-btn').forEach(btn => {
+                    const active = btn.dataset.plan === key;
+                    btn.classList.toggle('border-brandBlue', active);
+                    btn.classList.toggle('ring-2', active);
+                    btn.classList.toggle('ring-brandBlue/15', active);
+                    btn.classList.toggle('shadow-lg', active);
+                    btn.classList.toggle('shadow-brandBlue/10', active);
+                    btn.classList.toggle('border-brandBlack/10', !active);
+
+                    const iconWrap = btn.querySelector('span');
+                    if (iconWrap) {
+                        iconWrap.classList.toggle('bg-brandBlue', active);
+                        iconWrap.classList.toggle('text-white', active);
+                        iconWrap.classList.toggle('bg-brandWhite', !active);
+                        iconWrap.classList.toggle('text-brandBlack', !active);
+                        iconWrap.classList.toggle('ring-1', !active);
+                        iconWrap.classList.toggle('ring-brandBlack/10', !active);
+                    }
+                });
+            }
+
+            /* -------- Bind clicks -------- */
+            document.querySelectorAll('.plan-btn').forEach(btn => {
+                btn.addEventListener('click', () => selectPlan(btn.dataset.plan));
+            });
+
+            /* -------- Initial render -------- */
+            selectPlan('business');
+        })();
+    </script>
+
+
+    <!-- ==================================================================
+     1. HERO SECTION — 70vh
+     ================================================================== -->
+    <section
+        class="relative isolate flex min-h-[70vh] w-full items-center overflow-hidden bg-brandBlack text-brandWhite">
+
+        <!-- Background image -->
+        <div class="absolute inset-0 -z-10">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80"
+                alt="Africana Tech & Branding studio" class="h-full w-full object-cover object-center opacity-40"
+                loading="eager" />
+        </div>
+
+        <!-- Dark gradient overlay -->
+        <div class="absolute inset-0 -z-10 bg-gradient-to-br from-brandBlack via-brandBlack/90 to-brandBlack/70"></div>
+
+        <!-- Ambient glows -->
+        <div
+            class="pointer-events-none absolute -right-40 -top-40 -z-10 h-[32rem] w-[32rem] rounded-full bg-brandBlue/30 blur-3xl">
+        </div>
+        <div
+            class="pointer-events-none absolute -bottom-40 -left-32 -z-10 h-[32rem] w-[32rem] rounded-full bg-brandGreen/25 blur-3xl">
+        </div>
+
+        <!-- Content -->
+        <div class="relative mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
+            <div class="mx-auto max-w-3xl text-center">
+
+                <!-- Eyebrow -->
+                <span
+                    class="inline-flex items-center gap-2 rounded-full border border-brandWhite/15 bg-brandWhite/5 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brandGreen backdrop-blur">
+                    <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-brandGreen"></span>
+                    Tech · Branding · Print
+                </span>
+
+                <!-- Headline -->
+                <h1
+                    class="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl">
+                    We build brands that<br class="hidden sm:block" />
+                    <span
+                        class="bg-gradient-to-r from-brandBlue via-brandBlue to-brandGreen bg-clip-text text-transparent">
+                        drive real growth.
+                    </span>
+                </h1>
+
+                <!-- Subhead -->
+                <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-brandWhite/75 sm:text-lg">
+                    Africana Tech &amp; Branding Ltd is a full-service creative and technology
+                    company based in Arusha. We design powerful brands, engineer
+                    high-performance websites and deliver print &amp; signage that lasts.
+                </p>
+
+                <!-- CTAs -->
+                <div class="mt-8 flex flex-wrap justify-center gap-3">
+                    <a href="#quotation"
+                        class="inline-flex items-center gap-2 rounded-xl bg-brandBlue px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-brandBlue/30 transition hover:bg-brandBlue/90">
+                        Start a Project
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                        </svg>
+                    </a>
+
+                    <a href="https://wa.me/255700000000" target="_blank" rel="noopener"
+                        class="inline-flex items-center gap-2 rounded-xl border border-brandWhite/20 bg-brandWhite/5 px-6 py-3.5 text-sm font-bold text-brandWhite backdrop-blur transition hover:bg-brandWhite/10">
+                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.5c-1.7 0-3.4-.5-4.9-1.4l-.3-.2-3.6 1 1-3.5-.2-.3C2 15.5 1.5 13.8 1.5 12 1.5 6.2 6.2 1.5 12 1.5S22.5 6.2 22.5 12 17.8 21.5 12 21.5z" />
+                        </svg>
+                        Chat on WhatsApp
+                    </a>
+                </div>
+
+                <!-- Mini trust row -->
+                <div
+                    class="mt-10 flex flex-wrap justify-center gap-x-8 gap-y-3 text-[11px] font-bold uppercase tracking-widest text-brandWhite/50">
+                    <span class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>
+                        250+ Projects</span>
+                    <span class="hidden h-3 w-px bg-brandWhite/15 sm:block"></span>
+                    <span class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>
+                        10+ Years</span>
+                    <span class="hidden h-3 w-px bg-brandWhite/15 sm:block"></span>
+                    <span class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>
+                        98% Retention</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================================================================
+     2. PRICING TABLE SECTION
+     ================================================================== -->
+    <section id="prices" class="relative isolate overflow-hidden py-20 sm:py-24 lg:py-28"
+        style="background: linear-gradient(180deg, #f8f7f4 0%, #F9FAFB 100%);">
+
+        <!-- Dotted texture -->
+        <div class="pointer-events-none absolute inset-0 opacity-50"
+            style="background-image:radial-gradient(rgba(10,10,10,.08) 1px, transparent 1px);background-size:22px 22px;">
+        </div>
+
+        <!-- Brand glows -->
+        <div
+            class="pointer-events-none absolute -left-40 top-20 h-[28rem] w-[28rem] rounded-full bg-brandBlue/15 blur-3xl">
+        </div>
+        <div
+            class="pointer-events-none absolute -right-40 bottom-10 h-[28rem] w-[28rem] rounded-full bg-brandGreen/15 blur-3xl">
+        </div>
+
+        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+            <!-- ================= HEADER ================= -->
+            <div class="mx-auto max-w-2xl text-center">
+                <span
+                    class="inline-flex items-center gap-2 rounded-full border border-brandBlack/10 bg-white px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-brandBlue shadow-sm">
+                    <span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>
+                    Price List 2025
+                </span>
+
+                <h2 class="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-brandBlack sm:text-5xl">
+                    Every price.
+                    <span class="block bg-gradient-to-r from-brandBlue to-brandGreen bg-clip-text text-transparent">
+                        Nothing hidden.
+                    </span>
+                </h2>
+
+                <p class="mt-5 text-base leading-relaxed text-brandBlack/60">
+                    Full transparent pricing across all our services. All amounts in
+                    Tanzanian Shillings, excluding 18% VAT. VAT invoice provided on request.
+                </p>
+            </div>
+
+            <!-- ================= CATEGORY FILTER ================= -->
+            <div class="mt-10 flex flex-wrap justify-center gap-2">
+                <button data-filter="all"
+                    class="filter-btn is-active rounded-full border border-brandBlue bg-brandBlue px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-white shadow-lg shadow-brandBlue/25 transition">
+                    All Services
+                </button>
+                <button data-filter="web"
+                    class="filter-btn rounded-full border border-brandBlack/10 bg-white px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-brandBlack/70 transition hover:border-brandBlue hover:text-brandBlue">
+                    💻 Web
+                </button>
+                <button data-filter="branding"
+                    class="filter-btn rounded-full border border-brandBlack/10 bg-white px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-brandBlack/70 transition hover:border-brandBlue hover:text-brandBlue">
+                    🎨 Branding
+                </button>
+                <button data-filter="printing"
+                    class="filter-btn rounded-full border border-brandBlack/10 bg-white px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-brandBlack/70 transition hover:border-brandBlue hover:text-brandBlue">
+                    🖨️ Printing
+                </button>
+                <button data-filter="marketing"
+                    class="filter-btn rounded-full border border-brandBlack/10 bg-white px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-brandBlack/70 transition hover:border-brandBlue hover:text-brandBlue">
+                    📈 Marketing
+                </button>
+            </div>
+
+            <!-- ================= TABLE ================= -->
+            <div
+                class="mt-10 overflow-hidden rounded-3xl border border-brandBlack/10 bg-white shadow-2xl shadow-brandBlack/5">
+
+                <!-- Card header -->
+                <div
+                    class="flex flex-wrap items-center justify-between gap-4 border-b border-brandBlack/10 bg-white px-6 py-5 sm:px-8">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">Full Price List
+                        </p>
+                        <h3 class="mt-0.5 text-lg font-extrabold text-brandBlack">Services &amp; Pricing</h3>
+                    </div>
+
+                    <!-- Legend -->
+                    <div
+                        class="flex flex-wrap items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-brandBlack/50">
+                        <span class="flex items-center gap-1.5">
+                            <span class="h-2 w-2 rounded-full bg-brandGreen"></span> Popular
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <span class="h-2 w-2 rounded-full bg-brandBlue"></span> Standard
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Table wrapper -->
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-[820px] text-left text-sm">
+                        <thead>
+                            <tr class="border-b border-brandBlack/10 bg-brandWhite/60">
+                                <th
+                                    class="px-6 py-4 text-[10px] font-extrabold uppercase tracking-widest text-brandBlack/50 sm:px-8">
+                                    Service</th>
+                                <th
+                                    class="px-6 py-4 text-[10px] font-extrabold uppercase tracking-widest text-brandBlack/50">
+                                    Category</th>
+                                <th
+                                    class="px-6 py-4 text-[10px] font-extrabold uppercase tracking-widest text-brandBlack/50">
+                                    Unit</th>
+                                <th
+                                    class="px-6 py-4 text-right text-[10px] font-extrabold uppercase tracking-widest text-brandBlack/50">
+                                    Price (TZS)</th>
+                                <th
+                                    class="px-6 py-4 text-right text-[10px] font-extrabold uppercase tracking-widest text-brandBlack/50 sm:px-8">
+                                    Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="divide-y divide-brandBlack/5">
+
+                            <!-- ===== WEB ===== -->
+                            <tr class="price-row group transition hover:bg-brandBlue/[0.03]" data-cat="web">
+                                <td class="px-6 py-5 sm:px-8">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brandBlue/10 text-brandBlue">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <rect x="3" y="4" width="18" height="14" rx="2" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M3 9h18M8 4v5" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-sm font-extrabold text-brandBlack">Landing Page</p>
+                                            <p class="mt-0.5 text-xs text-brandBlack/55">High-converting single page</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brandBlue/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-brandBlue">
+                                        Web
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-brandBlack/60">1 page</td>
+                                <td class="px-6 py-5 text-right text-base font-extrabold text-brandBlack">700,000</td>
+                                <td class="px-6 py-5 text-right sm:px-8">
+                                    <a href="#quotation"
+                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brandBlack px-3.5 py-2 text-[11px] font-extrabold text-white transition hover:bg-brandBlue">
+                                        Quote
+                                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.6"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14m-6-6 6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr class="price-row group transition hover:bg-brandBlue/[0.03]" data-cat="web">
+                                <td class="px-6 py-5 sm:px-8">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brandBlue/10 text-brandBlue">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <rect x="3" y="4" width="18" height="14" rx="2" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M3 9h18M8 4v5" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="flex items-center gap-2 text-sm font-extrabold text-brandBlack">
+                                                Business Website
+                                                <span
+                                                    class="rounded-full bg-brandGreen/15 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-widest text-brandGreen">Popular</span>
+                                            </p>
+                                            <p class="mt-0.5 text-xs text-brandBlack/55">5 pages + CMS &amp; SEO basics
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brandBlue/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-brandBlue">
+                                        Web
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-brandBlack/60">up to 5 pages</td>
+                                <td class="px-6 py-5 text-right text-base font-extrabold text-brandBlack">1,500,000</td>
+                                <td class="px-6 py-5 text-right sm:px-8">
+                                    <a href="#quotation"
+                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brandBlack px-3.5 py-2 text-[11px] font-extrabold text-white transition hover:bg-brandBlue">
+                                        Quote
+                                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.6"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14m-6-6 6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr class="price-row group transition hover:bg-brandBlue/[0.03]" data-cat="web">
+                                <td class="px-6 py-5 sm:px-8">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brandBlue/10 text-brandBlue">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 6h15l-1.5 9h-12z" />
+                                                <circle cx="9" cy="20" r="1.5" />
+                                                <circle cx="18" cy="20" r="1.5" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-sm font-extrabold text-brandBlack">E-Commerce Store</p>
+                                            <p class="mt-0.5 text-xs text-brandBlack/55">Cart, payments, admin panel</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brandBlue/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-brandBlue">
+                                        Web
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-brandBlack/60">full store</td>
+                                <td class="px-6 py-5 text-right text-base font-extrabold text-brandBlack">3,200,000</td>
+                                <td class="px-6 py-5 text-right sm:px-8">
+                                    <a href="#quotation"
+                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brandBlack px-3.5 py-2 text-[11px] font-extrabold text-white transition hover:bg-brandBlue">
+                                        Quote
+                                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.6"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14m-6-6 6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr class="price-row group transition hover:bg-brandBlue/[0.03]" data-cat="web">
+                                <td class="px-6 py-5 sm:px-8">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brandBlue/10 text-brandBlue">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M12 3 3 7v10l9 4 9-4V7z" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-sm font-extrabold text-brandBlack">Custom Web System</p>
+                                            <p class="mt-0.5 text-xs text-brandBlack/55">ERP, portals, dashboards</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brandBlue/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-brandBlue">
+                                        Web
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-brandBlack/60">per project</td>
+                                <td class="px-6 py-5 text-right text-base font-extrabold text-brandBlack">
+                                    <span
+                                        class="text-[10px] font-bold uppercase tracking-widest text-brandBlack/40">from
+                                    </span>4,500,000
+                                </td>
+                                <td class="px-6 py-5 text-right sm:px-8">
+                                    <a href="#quotation"
+                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brandBlack px-3.5 py-2 text-[11px] font-extrabold text-white transition hover:bg-brandBlue">
+                                        Quote
+                                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.6"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14m-6-6 6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <!-- ===== BRANDING ===== -->
+                            <tr class="price-row group transition hover:bg-brandBlue/[0.03]" data-cat="branding">
+                                <td class="px-6 py-5 sm:px-8">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brandGreen/10 text-brandGreen">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M12 3a9 9 0 1 0 0 18c1.7 0 3-.9 3-2.5 0-.9-.4-1.4-.4-2.2 0-1.1.9-2 2.1-2H18a3 3 0 0 0 3-3 9 9 0 0 0-9-9Z" />
+                                                <circle cx="7.5" cy="10.5" r="1.2" fill="currentColor" />
+                                                <circle cx="12" cy="7.5" r="1.2" fill="currentColor" />
+                                                <circle cx="16.5" cy="10.5" r="1.2" fill="currentColor" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-sm font-extrabold text-brandBlack">Logo Design</p>
+                                            <p class="mt-0.5 text-xs text-brandBlack/55">3 concepts + source files</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brandGreen/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-brandGreen">
+                                        Branding
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-brandBlack/60">per logo</td>
+                                <td class="px-6 py-5 text-right text-base font-extrabold text-brandBlack">250,000</td>
+                                <td class="px-6 py-5 text-right sm:px-8">
+                                    <a href="#quotation"
+                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brandBlack px-3.5 py-2 text-[11px] font-extrabold text-white transition hover:bg-brandGreen">
+                                        Quote
+                                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.6"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14m-6-6 6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr class="price-row group transition hover:bg-brandBlue/[0.03]" data-cat="branding">
+                                <td class="px-6 py-5 sm:px-8">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brandGreen/10 text-brandGreen">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M12 3a9 9 0 1 0 0 18c1.7 0 3-.9 3-2.5 0-.9-.4-1.4-.4-2.2 0-1.1.9-2 2.1-2H18a3 3 0 0 0 3-3 9 9 0 0 0-9-9Z" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="flex items-center gap-2 text-sm font-extrabold text-brandBlack">
+                                                Complete Brand Identity
+                                                <span
+                                                    class="rounded-full bg-brandGreen/15 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-widest text-brandGreen">Popular</span>
+                                            </p>
+                                            <p class="mt-0.5 text-xs text-brandBlack/55">Logo, palette, guidelines</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brandGreen/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-brandGreen">
+                                        Branding
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-brandBlack/60">per brand</td>
+                                <td class="px-6 py-5 text-right text-base font-extrabold text-brandBlack">850,000</td>
+                                <td class="px-6 py-5 text-right sm:px-8">
+                                    <a href="#quotation"
+                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brandBlack px-3.5 py-2 text-[11px] font-extrabold text-white transition hover:bg-brandGreen">
+                                        Quote
+                                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.6"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14m-6-6 6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr class="price-row group transition hover:bg-brandBlue/[0.03]" data-cat="branding">
+                                <td class="px-6 py-5 sm:px-8">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brandGreen/10 text-brandGreen">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <rect x="3" y="5" width="18" height="14" rx="2.5" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m3 7 9 6 9-6" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-sm font-extrabold text-brandBlack">Company Profile</p>
+                                            <p class="mt-0.5 text-xs text-brandBlack/55">Up to 20 pages, print-ready</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brandGreen/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-brandGreen">
+                                        Branding
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-brandBlack/60">up to 20 pages</td>
+                                <td class="px-6 py-5 text-right text-base font-extrabold text-brandBlack">450,000</td>
+                                <td class="px-6 py-5 text-right sm:px-8">
+                                    <a href="#quotation"
+                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brandBlack px-3.5 py-2 text-[11px] font-extrabold text-white transition hover:bg-brandGreen">
+                                        Quote
+                                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.6"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14m-6-6 6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <!-- ===== PRINTING ===== -->
+                            <tr class="price-row group transition hover:bg-brandBlue/[0.03]" data-cat="printing">
+                                <td class="px-6 py-5 sm:px-8">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brandBlue/10 text-brandBlue">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 9V3h12v6" />
+                                                <rect x="3" y="9" width="18" height="8" rx="2" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 14h12v7H6z" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-sm font-extrabold text-brandBlack">Large Format Banner</p>
+                                            <p class="mt-0.5 text-xs text-brandBlack/55">PVC + eyelets</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brandBlue/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-brandBlue">
+                                        Printing
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-brandBlack/60">per sqm</td>
+                                <td class="px-6 py-5 text-right text-base font-extrabold text-brandBlack">25,000</td>
+                                <td class="px-6 py-5 text-right sm:px-8">
+                                    <a href="#quotation"
+                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brandBlack px-3.5 py-2 text-[11px] font-extrabold text-white transition hover:bg-brandBlue">
+                                        Quote
+                                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.6"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14m-6-6 6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr class="price-row group transition hover:bg-brandBlue/[0.03]" data-cat="printing">
+                                <td class="px-6 py-5 sm:px-8">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brandBlue/10 text-brandBlue">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 9V3h12v6" />
+                                                <rect x="3" y="9" width="18" height="8" rx="2" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 14h12v7H6z" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-sm font-extrabold text-brandBlack">Roll-Up Banner</p>
+                                            <p class="mt-0.5 text-xs text-brandBlack/55">80×200 cm aluminium</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brandBlue/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-brandBlue">
+                                        Printing
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-brandBlack/60">per unit</td>
+                                <td class="px-6 py-5 text-right text-base font-extrabold text-brandBlack">180,000</td>
+                                <td class="px-6 py-5 text-right sm:px-8">
+                                    <a href="#quotation"
+                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brandBlack px-3.5 py-2 text-[11px] font-extrabold text-white transition hover:bg-brandBlue">
+                                        Quote
+                                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.6"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14m-6-6 6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr class="price-row group transition hover:bg-brandBlue/[0.03]" data-cat="printing">
+                                <td class="px-6 py-5 sm:px-8">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brandBlue/10 text-brandBlue">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 9V3h12v6" />
+                                                <rect x="3" y="9" width="18" height="8" rx="2" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 14h12v7H6z" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-sm font-extrabold text-brandBlack">Vehicle Branding</p>
+                                            <p class="mt-0.5 text-xs text-brandBlack/55">Full vinyl wrap</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brandBlue/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-brandBlue">
+                                        Printing
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-brandBlack/60">per vehicle</td>
+                                <td class="px-6 py-5 text-right text-base font-extrabold text-brandBlack">1,800,000</td>
+                                <td class="px-6 py-5 text-right sm:px-8">
+                                    <a href="#quotation"
+                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brandBlack px-3.5 py-2 text-[11px] font-extrabold text-white transition hover:bg-brandBlue">
+                                        Quote
+                                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.6"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14m-6-6 6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <!-- ===== MARKETING ===== -->
+                            <tr class="price-row group transition hover:bg-brandBlue/[0.03]" data-cat="marketing">
+                                <td class="px-6 py-5 sm:px-8">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brandGreen/10 text-brandGreen">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M3 17l6-6 4 4 8-8" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 7h6v6" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="flex items-center gap-2 text-sm font-extrabold text-brandBlack">
+                                                Social Media Management
+                                                <span
+                                                    class="rounded-full bg-brandGreen/15 px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-widest text-brandGreen">Popular</span>
+                                            </p>
+                                            <p class="mt-0.5 text-xs text-brandBlack/55">12 posts/month + reports</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brandGreen/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-brandGreen">
+                                        Marketing
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-brandBlack/60">per month</td>
+                                <td class="px-6 py-5 text-right text-base font-extrabold text-brandBlack">500,000</td>
+                                <td class="px-6 py-5 text-right sm:px-8">
+                                    <a href="#quotation"
+                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brandBlack px-3.5 py-2 text-[11px] font-extrabold text-white transition hover:bg-brandGreen">
+                                        Quote
+                                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.6"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14m-6-6 6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <tr class="price-row group transition hover:bg-brandBlue/[0.03]" data-cat="marketing">
+                                <td class="px-6 py-5 sm:px-8">
+                                    <div class="flex items-center gap-3">
+                                        <span
+                                            class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brandGreen/10 text-brandGreen">
+                                            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2"
+                                                viewBox="0 0 24 24">
+                                                <circle cx="11" cy="11" r="7" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="m20 20-3.5-3.5" />
+                                            </svg>
+                                        </span>
+                                        <div>
+                                            <p class="text-sm font-extrabold text-brandBlack">SEO Optimisation</p>
+                                            <p class="mt-0.5 text-xs text-brandBlack/55">On-page + reporting</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="inline-flex items-center rounded-full bg-brandGreen/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-widest text-brandGreen">
+                                        Marketing
+                                    </span>
+                                </td>
+                                <td class="px-6 py-5 text-xs text-brandBlack/60">per month</td>
+                                <td class="px-6 py-5 text-right text-base font-extrabold text-brandBlack">400,000</td>
+                                <td class="px-6 py-5 text-right sm:px-8">
+                                    <a href="#quotation"
+                                        class="inline-flex items-center gap-1.5 rounded-lg bg-brandBlack px-3.5 py-2 text-[11px] font-extrabold text-white transition hover:bg-brandGreen">
+                                        Quote
+                                        <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2.6"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5 12h14m-6-6 6 6-6 6" />
+                                        </svg>
+                                    </a>
+                                </td>
+                            </tr>
+
+                            <!-- Empty state row (hidden by default) -->
+                            <tr id="emptyRow" class="hidden">
+                                <td colspan="5" class="px-6 py-16 text-center sm:px-8">
+                                    <div
+                                        class="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brandWhite text-2xl">
+                                        🔍</div>
+                                    <p class="mt-4 text-base font-extrabold text-brandBlack">No services found</p>
+                                    <p class="mt-1 text-sm text-brandBlack/55">Try a different category.</p>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Card footer -->
+                <div
+                    class="flex flex-wrap items-center justify-between gap-4 border-t border-brandBlack/10 bg-brandWhite/60 px-6 py-5 sm:px-8">
+                    <div
+                        class="flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] font-bold uppercase tracking-wider text-brandBlack/50">
+                        <span class="flex items-center gap-1.5">
+                            <svg class="h-3.5 w-3.5 text-brandGreen" fill="none" stroke="currentColor" stroke-width="3"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                            </svg>
+                            Source files included
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg class="h-3.5 w-3.5 text-brandGreen" fill="none" stroke="currentColor" stroke-width="3"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                            </svg>
+                            2 revision rounds
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg class="h-3.5 w-3.5 text-brandGreen" fill="none" stroke="currentColor" stroke-width="3"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7" />
+                            </svg>
+                            30-day support
+                        </span>
+                    </div>
+
+                    <a href="#quotation"
+                        class="inline-flex items-center gap-2 rounded-xl bg-brandBlue px-5 py-2.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-lg shadow-brandBlue/25 transition hover:bg-brandBlue/90">
+                        Get a full quote
+                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.6"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footnote -->
+            <p class="mt-6 text-center text-[11px] font-bold uppercase tracking-widest text-brandBlack/40">
+                All prices in TZS · Exclude 18% VAT · Written quote provided
+            </p>
+        </div>
+    </section>
+
+
+    <!-- ==================================================================
+     FILTER SCRIPT
+     ================================================================== -->
+    <script>
+        (function () {
+            const buttons = document.querySelectorAll('.filter-btn');
+            const rows = document.querySelectorAll('.price-row');
+            const empty = document.getElementById('emptyRow');
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.dataset.filter;
+
+                    // active style
+                    buttons.forEach(b => {
+                        const active = b === btn;
+                        b.classList.toggle('is-active', active);
+                        b.classList.toggle('bg-brandBlue', active);
+                        b.classList.toggle('text-white', active);
+                        b.classList.toggle('border-brandBlue', active);
+                        b.classList.toggle('shadow-lg', active);
+                        b.classList.toggle('shadow-brandBlue/25', active);
+                        b.classList.toggle('bg-white', !active);
+                        b.classList.toggle('text-brandBlack/70', !active);
+                        b.classList.toggle('border-brandBlack/10', !active);
+                    });
+
+                    // filter rows
+                    let visible = 0;
+                    rows.forEach(row => {
+                        const show = filter === 'all' || row.dataset.cat === filter;
+                        row.classList.toggle('hidden', !show);
+                        if (show) visible++;
+                    });
+
+                    empty.classList.toggle('hidden', visible > 0);
+                });
+            });
+        })();
+    </script>
+
+
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

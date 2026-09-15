@@ -1,0 +1,2265 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Africana Tech & Branding Ltd</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- 1️⃣ Tailwind CDN FIRST -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- 2️⃣ script.js SECOND — sets tailwind.config correctly -->
+    <script src="script.js"></script>
+</head>
+
+<body class="bg-brandWhite font-poppins text-brandBlack antialiased">
+
+    <!-- Fixed header is injected here -->
+    <div id="site-header"></div>
+
+    <!-- Spacer auto-sized by JS so content starts below fixed header -->
+    <div id="header-spacer"></div>
+
+    <body class="bg-[#EDF2F8] font-sans text-brandBlack antialiased">
+
+        <div id="site-header"></div>
+        <div id="header-spacer"></div>
+
+
+        <style>
+            @media print {
+                @page {
+                    size: A4;
+                    margin: 12mm;
+                }
+
+                body {
+                    background: white !important;
+                }
+
+                .no-print {
+                    display: none !important;
+                }
+
+                #print-document {
+                    display: block !important;
+                }
+
+                * {
+                    -webkit-print-color-adjust: exact !important;
+                    print-color-adjust: exact !important;
+                }
+            }
+
+            #print-document {
+                display: none;
+            }
+
+            /* PRINT DOCUMENT */
+            .pd-page {
+                font-family: 'Helvetica', 'Arial', sans-serif;
+                color: #0A0A0A;
+                font-size: 11px;
+                line-height: 1.4;
+            }
+
+            .pd-header {
+                background: #0A0A0A;
+                color: #ffffff;
+                padding: 20px 22px 18px;
+                border-radius: 4px 4px 0 0;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .pd-header::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: #136db6;
+            }
+
+            .pd-logo-row {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .pd-logo-box {
+                width: 42px;
+                height: 42px;
+                border-radius: 10px;
+                background: #136db6;
+                color: #ffffff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+                font-size: 20px;
+            }
+
+            .pd-company-name {
+                font-size: 15px;
+                font-weight: 800;
+                letter-spacing: .3px;
+                line-height: 1.1;
+            }
+
+            .pd-company-tag {
+                font-size: 9px;
+                color: #b0b0b0;
+                margin-top: 3px;
+                letter-spacing: 1.2px;
+                text-transform: uppercase;
+            }
+
+            .pd-contact-strip {
+                margin-top: 14px;
+                padding-top: 12px;
+                border-top: 1px solid rgba(255, 255, 255, .12);
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 4px 24px;
+                font-size: 9.5px;
+                color: #cfcfcf;
+            }
+
+            .pd-contact-strip strong {
+                color: #ffffff;
+                font-weight: 700;
+            }
+
+            .pd-ref-box {
+                position: absolute;
+                top: 20px;
+                right: 22px;
+                text-align: right;
+            }
+
+            .pd-ref-label {
+                font-size: 8.5px;
+                color: #136db6;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                font-weight: 700;
+            }
+
+            .pd-ref-value {
+                font-size: 13px;
+                font-weight: 800;
+                color: #ffffff;
+                margin-top: 4px;
+            }
+
+            .pd-ref-date {
+                font-size: 9px;
+                color: #b0b0b0;
+                margin-top: 6px;
+            }
+
+            .pd-section {
+                border: 1px solid #e5e7eb;
+                border-top: 0;
+                padding: 14px 18px;
+            }
+
+            .pd-section-title {
+                font-size: 9px;
+                letter-spacing: 1.6px;
+                text-transform: uppercase;
+                font-weight: 800;
+                color: #136db6;
+                margin-bottom: 10px;
+            }
+
+            .pd-info-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px 24px;
+            }
+
+            .pd-info-row {
+                display: flex;
+                gap: 6px;
+                font-size: 10.5px;
+            }
+
+            .pd-info-label {
+                font-weight: 700;
+                color: #4b5563;
+                min-width: 78px;
+            }
+
+            .pd-info-value {
+                color: #0A0A0A;
+            }
+
+            .pd-table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 10px;
+            }
+
+            .pd-table thead th {
+                background: #136db6;
+                color: #ffffff;
+                text-align: left;
+                padding: 8px 10px;
+                font-size: 8.5px;
+                letter-spacing: 1.2px;
+                text-transform: uppercase;
+                font-weight: 800;
+            }
+
+            .pd-table thead th.num {
+                text-align: right;
+            }
+
+            .pd-table .cat-row td {
+                background: #F5F8FB;
+                color: #136db6;
+                font-weight: 800;
+                letter-spacing: 1.2px;
+                font-size: 9px;
+                text-transform: uppercase;
+                padding: 6px 10px;
+            }
+
+            .pd-table tbody tr.item-row td {
+                padding: 7px 10px;
+                border-bottom: 1px solid #f1f5f9;
+                vertical-align: top;
+            }
+
+            .pd-table .col-num {
+                width: 28px;
+                color: #6b7280;
+                font-weight: 700;
+            }
+
+            .pd-table .col-total {
+                text-align: right;
+                font-weight: 800;
+                color: #136db6;
+                white-space: nowrap;
+            }
+
+            .pd-table .col-qty {
+                text-align: right;
+            }
+
+            .pd-table .col-unitprice {
+                text-align: right;
+                white-space: nowrap;
+            }
+
+            .pd-table .unit {
+                color: #6b7280;
+                font-style: italic;
+                font-size: 9px;
+            }
+
+            .pd-total-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 12px;
+                background: #F5F8FB;
+                border-top: 2px solid #136db6;
+                font-size: 11px;
+            }
+
+            .pd-total-label {
+                color: #4b5563;
+                font-weight: 700;
+            }
+
+            .pd-total-value {
+                font-weight: 800;
+                color: #136db6;
+                font-size: 14px;
+            }
+
+            .pd-pay-grid {
+                background: #F0FBF5;
+                border: 1px solid #bbf7d0;
+                border-radius: 6px;
+                padding: 12px 16px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px 24px;
+                font-size: 10.5px;
+            }
+
+            .pd-pay-row {
+                display: flex;
+                gap: 8px;
+            }
+
+            .pd-pay-label {
+                font-weight: 700;
+                color: #065f46;
+            }
+
+            .pd-pay-value {
+                color: #0A0A0A;
+            }
+
+            .pd-notes-box {
+                background: #FDFAF3;
+                border: 1px solid #fcd34d;
+                border-radius: 6px;
+                padding: 12px 16px;
+                font-size: 10.5px;
+                line-height: 1.5;
+                color: #3f3f3f;
+            }
+
+            .pd-final-message {
+                background: #0A0A0A;
+                color: #ffffff;
+                padding: 14px 18px;
+                border-radius: 6px;
+                margin-top: 14px;
+                font-size: 10.5px;
+                line-height: 1.55;
+            }
+
+            .pd-final-message strong {
+                color: #136db6;
+            }
+
+            .pd-footer {
+                margin-top: 14px;
+                padding-top: 12px;
+                border-top: 1px solid #e5e7eb;
+                text-align: center;
+            }
+
+            .pd-footer-company {
+                font-size: 11px;
+                font-weight: 800;
+                color: #136db6;
+            }
+
+            .pd-footer-contacts {
+                font-size: 9.5px;
+                color: #6b7280;
+                margin-top: 4px;
+            }
+
+            .pd-footer-disclaimer {
+                font-size: 8.5px;
+                color: #9ca3af;
+                margin-top: 8px;
+                line-height: 1.5;
+                max-width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .pd-footer-thanks {
+                font-size: 10px;
+                font-weight: 700;
+                color: #0A0A0A;
+                margin-top: 10px;
+            }
+
+            /* APP */
+            input[type="date"].date-field {
+                position: relative;
+                padding-right: 2.75rem;
+                cursor: pointer;
+            }
+
+            input[type="date"].date-field::-webkit-calendar-picker-indicator {
+                position: absolute;
+                right: .75rem;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 1.35rem;
+                height: 1.35rem;
+                cursor: pointer;
+                opacity: 0;
+                z-index: 2;
+            }
+
+            input[type="date"].date-field::-webkit-inner-spin-button,
+            input[type="date"].date-field::-webkit-clear-button {
+                display: none;
+            }
+
+            .flat-icon {
+                width: 1.25rem;
+                height: 1.25rem;
+                stroke-width: 2;
+                stroke: currentColor;
+                fill: none;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+
+            .service-menu {
+                position: absolute;
+                top: calc(100% + 12px);
+                right: 0;
+                min-width: 340px;
+                background: #ffffff;
+                border: 1px solid #e5e7eb;
+                border-radius: 1.25rem;
+                box-shadow: 0 30px 70px -20px rgba(0, 0, 0, .28), 0 0 0 1px rgba(0, 0, 0, .02);
+                padding: .75rem;
+                z-index: 50;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px) scale(.97);
+                transform-origin: top right;
+                transition: all .22s cubic-bezier(.22, .61, .36, 1);
+            }
+
+            .service-menu.open {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0) scale(1);
+            }
+
+            .service-menu-header {
+                padding: .65rem 1rem .5rem;
+                font-size: .62rem;
+                font-weight: 800;
+                letter-spacing: .18em;
+                text-transform: uppercase;
+                color: #9ca3af;
+            }
+
+            .service-menu a {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                padding: 1rem;
+                border-radius: 1rem;
+                text-decoration: none;
+                color: #0A0A0A;
+                transition: all .18s ease;
+            }
+
+            .service-menu a:hover {
+                background: #F0F5FB;
+                transform: translateX(4px);
+            }
+
+            .service-menu a .menu-icon {
+                width: 3rem;
+                height: 3rem;
+                border-radius: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                transition: transform .2s ease;
+            }
+
+            .service-menu a:hover .menu-icon {
+                transform: scale(1.06);
+            }
+
+            .service-menu a .menu-icon .flat-icon {
+                width: 1.4rem;
+                height: 1.4rem;
+            }
+
+            .service-menu a .menu-arrow {
+                margin-left: auto;
+                color: #d1d5db;
+                transition: color .15s ease, transform .15s ease;
+            }
+
+            .service-menu a:hover .menu-arrow {
+                color: #136db6;
+                transform: translateX(4px);
+            }
+
+            .modern-input {
+                width: 100%;
+                height: 3rem;
+                padding: 0 .95rem 0 2.75rem;
+                background: #ffffff;
+                border: 1.5px solid #e2e8f0;
+                border-radius: .75rem;
+                font-size: .9rem;
+                font-weight: 500;
+                color: #0A0A0A;
+                outline: none;
+                transition: all .2s ease;
+                font-family: inherit;
+                line-height: 1;
+            }
+
+            .modern-input::placeholder {
+                color: #94a3b8;
+                font-size: .875rem;
+                font-weight: 400;
+            }
+
+            .modern-input:hover {
+                border-color: #cbd5e1;
+                background: #fafbfc;
+            }
+
+            .modern-input:focus {
+                border-color: #136db6;
+                background: #ffffff;
+                box-shadow: 0 0 0 4px rgba(19, 109, 182, .12);
+            }
+
+            .modern-input.error {
+                border-color: #ef4444;
+                box-shadow: 0 0 0 4px rgba(239, 68, 68, .12);
+            }
+
+            .modern-textarea {
+                width: 100%;
+                padding: .85rem .95rem;
+                background: #ffffff;
+                border: 1.5px solid #e2e8f0;
+                border-radius: .75rem;
+                font-size: .9rem;
+                font-weight: 500;
+                color: #0A0A0A;
+                outline: none;
+                transition: all .2s ease;
+                font-family: inherit;
+                resize: none;
+                min-height: 5rem;
+                line-height: 1.5;
+            }
+
+            .modern-textarea::placeholder {
+                color: #94a3b8;
+                font-size: .875rem;
+                font-weight: 400;
+            }
+
+            .modern-textarea:hover {
+                border-color: #cbd5e1;
+                background: #fafbfc;
+            }
+
+            .modern-textarea:focus {
+                border-color: #136db6;
+                background: #ffffff;
+                box-shadow: 0 0 0 4px rgba(19, 109, 182, .12);
+            }
+
+            .modern-select {
+                appearance: none;
+                -webkit-appearance: none;
+                width: 100%;
+                height: 3rem;
+                padding: 0 3rem 0 3rem;
+                background-color: #ffffff;
+                background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23136db6' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+                background-position: right 1rem center;
+                background-repeat: no-repeat;
+                background-size: 1.1rem;
+                border: 1.5px solid #e2e8f0;
+                border-radius: .75rem;
+                font-size: .9rem;
+                font-weight: 500;
+                color: #0A0A0A;
+                outline: none;
+                transition: all .2s ease;
+                font-family: inherit;
+                cursor: pointer;
+                line-height: 1;
+            }
+
+            .modern-select:hover {
+                border-color: #cbd5e1;
+                background-color: #fafbfc;
+            }
+
+            .modern-select:focus {
+                border-color: #136db6;
+                background-color: #ffffff;
+                box-shadow: 0 0 0 4px rgba(19, 109, 182, .12);
+            }
+
+            .modern-select.error {
+                border-color: #ef4444;
+                box-shadow: 0 0 0 4px rgba(239, 68, 68, .12);
+            }
+
+            #dl-toast {
+                position: fixed;
+                left: 50%;
+                bottom: 2rem;
+                z-index: 90;
+                transform: translate(-50%, 30px);
+                opacity: 0;
+                pointer-events: none;
+                display: inline-flex;
+                align-items: center;
+                gap: .6rem;
+                padding: .9rem 1.3rem;
+                border-radius: 999px;
+                background: #0A0A0A;
+                color: #ffffff;
+                font-family: inherit;
+                font-size: .82rem;
+                font-weight: 600;
+                box-shadow: 0 20px 50px -14px rgba(0, 0, 0, .55);
+                transition: transform .3s cubic-bezier(.22, .61, .36, 1), opacity .3s ease;
+                max-width: calc(100% - 2rem);
+            }
+
+            #dl-toast.show {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+
+            #dl-toast .toast-dot {
+                width: .5rem;
+                height: .5rem;
+                border-radius: 999px;
+                background: #009444;
+                flex-shrink: 0;
+            }
+        </style>
+
+
+        <!-- =========================================================
+         APP
+    ========================================================= -->
+        <div class="app-root">
+
+            <!-- HERO -->
+            <section class="relative overflow-hidden bg-brandBlack text-white">
+                <div class="absolute inset-0"
+                    style="background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 64px 64px;">
+                </div>
+
+                <div
+                    class="absolute -top-40 -right-40 w-[40rem] h-[40rem] rounded-full bg-brandBlue/30 blur-3xl pointer-events-none">
+                </div>
+                <div
+                    class="absolute -bottom-40 -left-40 w-[40rem] h-[40rem] rounded-full bg-brandGreen/20 blur-3xl pointer-events-none">
+                </div>
+
+                <div class="relative max-w-6xl mx-auto px-6 py-20 md:py-24 lg:py-28">
+                    <div class="flex items-center justify-center gap-3 mb-6">
+                        <span class="w-12 h-px bg-brandBlue"></span>
+                        <span class="text-brandBlue uppercase tracking-[.35em] text-[11px] font-bold">Quotation
+                            Request</span>
+                        <span class="w-12 h-px bg-brandBlue"></span>
+                    </div>
+
+                    <h1
+                        class="text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-[-.03em] leading-[1.05] max-w-4xl mx-auto">
+                        Review. Confirm.
+                        <br>
+                        <span
+                            class="bg-gradient-to-r from-brandBlue via-brandBlue to-brandGreen bg-clip-text text-transparent">Submit
+                            your request.</span>
+                    </h1>
+
+                    <p class="mt-6 text-center max-w-2xl mx-auto text-base md:text-lg leading-relaxed text-white/60">
+                        Review your selected services, fill in your details, download as PDF, or share via WhatsApp and
+                        Email.
+                    </p>
+
+                    <div class="mt-10 flex justify-center">
+                        <div
+                            class="inline-flex items-center gap-4 px-6 py-3 rounded-full bg-white/[0.06] border border-white/10 backdrop-blur-sm">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brandGreen" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z" />
+                                </svg>
+                                <span class="text-[10px] uppercase tracking-[.22em] font-bold text-white/40">Quote
+                                    Ref</span>
+                            </div>
+                            <span class="w-px h-4 bg-white/10"></span>
+                            <span id="quoteNumber"
+                                class="text-sm font-bold text-brandBlue tracking-wider">AFR-QT-000000-0001</span>
+                            <span class="w-px h-4 bg-white/10"></span>
+                            <span id="heroDate"
+                                class="text-[10px] uppercase tracking-[.18em] font-semibold text-white/40">—</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MAIN -->
+            <main class="max-w-5xl mx-auto px-6 py-6 md:py-8">
+
+                <div id="successBanner"
+                    class="hidden mb-5 bg-green-50 border border-green-200 rounded-2xl px-5 py-4 flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                        <span class="text-green-600 text-base">✓</span>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-bold text-green-800 text-sm">Quotation shared successfully</p>
+                        <p class="text-xs text-green-700 mt-1">Your request has been sent. We'll respond within 24
+                            hours.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ITEMS -->
+                <section class="mb-5">
+                    <div class="flex items-end justify-between gap-4 mb-3 flex-wrap">
+                        <div>
+                            <p class="text-[10px] uppercase tracking-[.25em] font-bold text-brandBlue">Section 1</p>
+                            <h2 class="mt-1 text-lg md:text-xl font-bold tracking-tight">Your selected services</h2>
+                        </div>
+                        <p class="text-xs text-gray-500">Click <strong class="text-red-600">Remove</strong> to take any
+                            item
+                            out.</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl border border-white shadow-card overflow-visible">
+                        <div
+                            class="flex items-center justify-between gap-3 px-5 py-3 border-b border-gray-100 bg-gradient-to-r from-[#F0F5FB] to-[#F8FAFD] rounded-t-2xl">
+                            <div class="min-w-0">
+                                <h3 class="text-sm font-bold text-gray-900">Quotation Items</h3>
+                                <p class="text-[11px] text-gray-500 mt-0.5"><span id="itemCount">0</span> items · <span
+                                        id="categoryCount">0</span> categories</p>
+                            </div>
+
+                            <div class="relative shrink-0">
+                                <button id="headerAddServicesBtn" type="button"
+                                    class="inline-flex items-center gap-2 px-4 py-2.5 bg-brandBlue hover:bg-brandBlueDark text-white rounded-full text-[11px] font-bold uppercase tracking-wider shadow-soft transition">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 5v14M5 12h14" />
+                                    </svg>
+                                    <span>Add More</span>
+                                </button>
+
+                                <div id="headerServiceMenu" class="service-menu">
+                                    <div class="service-menu-header">Choose where to browse</div>
+
+                                    <a href="/printing/">
+                                        <span class="menu-icon"
+                                            style="background: rgba(19,109,182,.12); color:#136db6;">
+                                            <svg class="flat-icon" viewBox="0 0 24 24">
+                                                <path d="M6 9V3h12v6" />
+                                                <path
+                                                    d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                                                <rect x="6" y="14" width="12" height="8" rx="1" />
+                                            </svg>
+                                        </span>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="font-bold text-sm text-gray-900">Printing Services</div>
+                                            <div class="text-[11px] text-gray-500 font-normal mt-0.5">Signage · Banners
+                                                ·
+                                                Cards</div>
+                                        </div>
+                                        <svg class="menu-arrow flat-icon" viewBox="0 0 24 24">
+                                            <path d="M5 12h14M13 5l7 7-7 7" />
+                                        </svg>
+                                    </a>
+
+                                    <a href="/branding/">
+                                        <span class="menu-icon"
+                                            style="background: rgba(219,39,119,.12); color:#db2777;">
+                                            <svg class="flat-icon" viewBox="0 0 24 24">
+                                                <circle cx="13.5" cy="6.5" r="2.5" />
+                                                <circle cx="19.5" cy="12" r="2.5" />
+                                                <circle cx="6.5" cy="12" r="2.5" />
+                                                <circle cx="12" cy="19" r="2.5" />
+                                                <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                                            </svg>
+                                        </span>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="font-bold text-sm text-gray-900">Branding Services</div>
+                                            <div class="text-[11px] text-gray-500 font-normal mt-0.5">Logos · Social ·
+                                                Video
+                                            </div>
+                                        </div>
+                                        <svg class="menu-arrow flat-icon" viewBox="0 0 24 24">
+                                            <path d="M5 12h14M13 5l7 7-7 7" />
+                                        </svg>
+                                    </a>
+
+                                    <a href="/web/">
+                                        <span class="menu-icon" style="background: rgba(10,10,10,.1); color:#0A0A0A;">
+                                            <svg class="flat-icon" viewBox="0 0 24 24">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <path
+                                                    d="M2 12h20M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z" />
+                                            </svg>
+                                        </span>
+                                        <div class="flex-1 min-w-0">
+                                            <div class="font-bold text-sm text-gray-900">Web Services</div>
+                                            <div class="text-[11px] text-gray-500 font-normal mt-0.5">Websites · Apps ·
+                                                Systems</div>
+                                        </div>
+                                        <svg class="menu-arrow flat-icon" viewBox="0 0 24 24">
+                                            <path d="M5 12h14M13 5l7 7-7 7" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="itemsContainer"></div>
+
+                        <div id="emptyState" class="py-10 text-center px-6">
+                            <div
+                                class="mx-auto w-12 h-12 rounded-2xl bg-brandBlue/10 flex items-center justify-center mb-3">
+                                <svg class="w-6 h-6 text-brandBlue" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+                                </svg>
+                            </div>
+                            <h4 class="text-sm font-bold text-gray-800">No items selected yet</h4>
+                            <p class="text-xs text-gray-500 mt-1 max-w-sm mx-auto">Use the <strong>Add More</strong>
+                                button
+                                above to browse our services.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FORM -->
+                <section class="mb-5">
+                    <div class="mb-3">
+                        <p class="text-[10px] uppercase tracking-[.25em] font-bold text-brandBlue">Section 2</p>
+                        <h2 class="mt-1 text-lg md:text-xl font-bold tracking-tight">Your details &amp; payment</h2>
+                    </div>
+
+                    <form id="quoteForm" novalidate
+                        class="bg-white rounded-2xl border border-white shadow-card overflow-hidden">
+
+                        <!-- CONTACT -->
+                        <div class="px-5 md:px-6 py-5 border-b border-gray-100">
+                            <div class="flex items-center gap-2.5 mb-4">
+                                <span
+                                    class="grid w-8 h-8 rounded-lg bg-brandBlue/10 text-brandBlue place-items-center shrink-0">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                        <circle cx="12" cy="7" r="4" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <h3 class="text-sm font-bold text-gray-900">Contact Information</h3>
+                                    <p class="text-[11px] text-gray-500">Who should we prepare this for?</p>
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="fullName"
+                                        class="block text-[11px] font-semibold text-gray-600 uppercase tracking-wider mb-1.5">Full
+                                        Name <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <span
+                                            class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                                <circle cx="12" cy="7" r="4" />
+                                            </svg>
+                                        </span>
+                                        <input id="fullName" type="text" required placeholder="John Mwakalinga"
+                                            class="modern-input">
+                                    </div>
+                                    <p class="error-msg hidden text-[11px] text-red-500 mt-1.5">Please enter your full
+                                        name.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <label for="company"
+                                        class="block text-[11px] font-semibold text-gray-600 uppercase tracking-wider mb-1.5">Company
+                                        / Organization</label>
+                                    <div class="relative">
+                                        <span
+                                            class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="3" y="7" width="18" height="13" rx="2" />
+                                                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                            </svg>
+                                        </span>
+                                        <input id="company" type="text" placeholder="Kilimanjaro Agri Ltd."
+                                            class="modern-input">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="email"
+                                        class="block text-[11px] font-semibold text-gray-600 uppercase tracking-wider mb-1.5">Email
+                                        Address <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <span
+                                            class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="3" y="5" width="18" height="14" rx="2" />
+                                                <path d="m3 7 9 6 9-6" />
+                                            </svg>
+                                        </span>
+                                        <input id="email" type="email" required placeholder="name@company.com"
+                                            class="modern-input">
+                                    </div>
+                                    <p class="error-msg hidden text-[11px] text-red-500 mt-1.5">Please enter a valid
+                                        email
+                                        address.</p>
+                                </div>
+
+                                <div>
+                                    <label for="phone"
+                                        class="block text-[11px] font-semibold text-gray-600 uppercase tracking-wider mb-1.5">Phone
+                                        / WhatsApp <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <span
+                                            class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path
+                                                    d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.2-1.3a2 2 0 0 1 2.1-.5c1 .3 2 .6 2.9.7a2 2 0 0 1 1.8 2z" />
+                                            </svg>
+                                        </span>
+                                        <input id="phone" type="tel" required placeholder="+255 700 000 000"
+                                            class="modern-input">
+                                    </div>
+                                    <p class="error-msg hidden text-[11px] text-red-500 mt-1.5">Please enter your phone
+                                        number.</p>
+                                </div>
+
+                                <div>
+                                    <label for="location"
+                                        class="block text-[11px] font-semibold text-gray-600 uppercase tracking-wider mb-1.5">Location
+                                        / City <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <span
+                                            class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+                                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                                <circle cx="12" cy="10" r="3" />
+                                            </svg>
+                                        </span>
+                                        <input id="location" type="text" required placeholder="Dar es Salaam, Tanzania"
+                                            class="modern-input">
+                                    </div>
+                                    <p class="error-msg hidden text-[11px] text-red-500 mt-1.5">Please enter your
+                                        location.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <label for="deadline"
+                                        class="block text-[11px] font-semibold text-gray-600 uppercase tracking-wider mb-1.5">Preferred
+                                        Deadline</label>
+                                    <div class="relative" id="dateWrap">
+                                        <span
+                                            class="absolute left-3.5 top-1/2 -translate-y-1/2 text-brandBlue pointer-events-none z-10">
+                                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="3" y="5" width="18" height="16" rx="2" />
+                                                <path d="M3 10h18M8 3v4M16 3v4" />
+                                            </svg>
+                                        </span>
+                                        <input id="deadline" type="date" class="date-field modern-input">
+                                    </div>
+                                    <p class="text-[10px] text-gray-400 mt-1">Click anywhere in the field to open the
+                                        calendar. Past dates are disabled.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PAYMENT -->
+                        <div class="px-5 md:px-6 py-5 bg-[#F8FAFD] border-b border-gray-100">
+                            <div class="flex items-center gap-2.5 mb-4">
+                                <span
+                                    class="grid w-8 h-8 rounded-lg bg-brandBlue/10 text-brandBlue place-items-center shrink-0">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="5" width="20" height="14" rx="2" />
+                                        <path d="M2 10h20" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <h3 class="text-sm font-bold text-gray-900">Payment Preference</h3>
+                                    <p class="text-[11px] text-gray-500">How would you like to pay?</p>
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="paymentMethod"
+                                        class="block text-[11px] font-semibold text-gray-600 uppercase tracking-wider mb-1.5">Payment
+                                        Method <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <span
+                                            class="absolute left-3.5 top-1/2 -translate-y-1/2 text-brandBlue pointer-events-none z-10">
+                                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                                <rect x="2" y="5" width="20" height="14" rx="2" />
+                                                <path d="M2 10h20" />
+                                            </svg>
+                                        </span>
+                                        <select id="paymentMethod" required class="modern-select">
+                                            <option value="" disabled selected>Select payment method…</option>
+                                            <option value="bank">Bank Transfer</option>
+                                            <option value="mobile">Mobile Money</option>
+                                            <option value="cash">Cash on Delivery</option>
+                                        </select>
+                                    </div>
+                                    <p class="error-msg hidden text-[11px] text-red-500 mt-1.5">Please choose a payment
+                                        method.</p>
+                                </div>
+
+                                <div>
+                                    <label for="depositOption"
+                                        class="block text-[11px] font-semibold text-gray-600 uppercase tracking-wider mb-1.5">Deposit
+                                        Preference <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <span
+                                            class="absolute left-3.5 top-1/2 -translate-y-1/2 text-brandGreen pointer-events-none z-10">
+                                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <path d="M12 6v6l4 2" />
+                                            </svg>
+                                        </span>
+                                        <select id="depositOption" required class="modern-select">
+                                            <option value="" disabled selected>Select deposit option…</option>
+                                            <option value="full">100% Full Payment (Best Value)</option>
+                                            <option value="half">50% Deposit — balance on delivery</option>
+                                        </select>
+                                    </div>
+                                    <p class="error-msg hidden text-[11px] text-red-500 mt-1.5">Please choose a deposit
+                                        option.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NOTES -->
+                        <div class="px-5 md:px-6 py-5 border-b border-gray-100">
+                            <div class="flex items-center gap-2.5 mb-4">
+                                <span
+                                    class="grid w-8 h-8 rounded-lg bg-amber-500/10 text-amber-600 place-items-center shrink-0">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                                        <path d="M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+                                    </svg>
+                                </span>
+                                <div>
+                                    <h3 class="text-sm font-bold text-gray-900">Additional Notes</h3>
+                                    <p class="text-[11px] text-gray-500">Anything else we should know?</p>
+                                </div>
+                            </div>
+
+                            <textarea id="notes" rows="3"
+                                placeholder="Any specific requirements, brand guidelines, sizes or quantities..."
+                                class="modern-textarea"></textarea>
+
+                            <label for="consent"
+                                class="mt-4 flex items-start gap-3 p-3.5 bg-brandBlue/[0.04] border border-brandBlue/15 rounded-xl cursor-pointer hover:bg-brandBlue/[0.07] transition">
+                                <input id="consent" type="checkbox"
+                                    class="mt-0.5 w-4 h-4 rounded border-gray-300 text-brandBlue focus:ring-brandBlue cursor-pointer">
+                                <span class="text-xs text-gray-700 leading-relaxed">
+                                    I confirm the information is accurate and would like to receive a formal quotation
+                                    from
+                                    <strong class="text-gray-900">Africana Tech &amp; Branding Ltd.</strong>
+                                </span>
+                            </label>
+                            <p id="consentError" class="hidden text-[11px] text-red-500 mt-2 ml-1">Please accept the
+                                terms
+                                to continue.</p>
+                        </div>
+
+                        <!-- ============================================
+                         ACTION BAR — ONE HORIZONTAL LINE
+                         LEFT: Download · Print · WhatsApp
+                         RIGHT: Submit via Email
+                    ============================================ -->
+                        <div
+                            class="px-5 md:px-6 py-4 bg-[#F5F8FB] flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+
+                            <!-- LEFT GROUP -->
+                            <div class="flex flex-wrap gap-2">
+                                <button id="downloadBtn" type="button"
+                                    class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 bg-brandBlue hover:bg-brandBlueDark text-white rounded-lg text-[11px] font-bold uppercase tracking-wider shadow-soft transition">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                        <path d="M7 10l5 5 5-5M12 15V3" />
+                                    </svg>
+                                    <span class="hidden sm:inline">Download PDF</span>
+                                    <span class="sm:hidden">PDF</span>
+                                </button>
+
+                                <button id="printBtn" type="button"
+                                    class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 bg-white border border-gray-200 rounded-lg text-[11px] font-bold uppercase tracking-wider text-gray-600 hover:bg-gray-50 hover:border-gray-300 transition">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+                                        <rect x="6" y="14" width="12" height="8" rx="1" />
+                                    </svg>
+                                    Print
+                                </button>
+
+                                <button id="whatsappBtn" type="button"
+                                    class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 bg-[#009444] hover:bg-[#007a37] text-white rounded-lg text-[11px] font-bold uppercase tracking-wider shadow-soft transition">
+                                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.5c-1.7 0-3.4-.5-4.9-1.4l-.3-.2-3.6 1 1-3.5-.2-.3C2 15.5 1.5 13.8 1.5 12 1.5 6.2 6.2 1.5 12 1.5S22.5 6.2 22.5 12 17.8 21.5 12 21.5z" />
+                                    </svg>
+                                    <span class="hidden sm:inline">WhatsApp</span>
+                                    <span class="sm:hidden">Chat</span>
+                                </button>
+                            </div>
+
+                            <!-- RIGHT: Submit via Email -->
+                            <button id="emailBtn" type="button"
+                                class="inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-brandBlack hover:bg-[#1f1f1f] text-white rounded-lg text-[11px] font-bold uppercase tracking-wider shadow-soft transition">
+                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                                    <path d="m3 7 9 6 9-6" />
+                                </svg>
+                                Submit via Email
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- TRANSPARENCY -->
+                <section class="mb-5">
+                    <div class="bg-[#F5F8FB] rounded-2xl border border-white shadow-card p-5 md:p-6">
+                        <div class="flex items-center gap-2.5 mb-4">
+                            <span
+                                class="grid w-8 h-8 rounded-lg bg-brandBlue/10 text-brandBlue place-items-center shrink-0">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 3 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-3Z" />
+                                    <path d="m9 12 2 2 4-4" />
+                                </svg>
+                            </span>
+                            <div>
+                                <h3 class="text-sm font-bold text-gray-900">Transparency &amp; Terms</h3>
+                                <p class="text-[11px] text-gray-500">What you should know</p>
+                            </div>
+                        </div>
+
+                        <ul class="grid md:grid-cols-2 gap-x-6 gap-y-2 text-xs text-gray-600 leading-relaxed">
+                            <li class="flex items-start gap-2"><span
+                                    class="text-brandBlue mt-0.5 shrink-0">✓</span><span>Every price includes a standard
+                                    30%
+                                    service margin covering quality control.</span></li>
+                            <li class="flex items-start gap-2"><span
+                                    class="text-brandBlue mt-0.5 shrink-0">✓</span><span><strong>Design and artwork
+                                        creation
+                                        costs are not included</strong> in the printing prices.</span></li>
+                            <li class="flex items-start gap-2"><span
+                                    class="text-brandBlue mt-0.5 shrink-0">✓</span><span>Final quotations may vary based
+                                    on
+                                    size, quantity, materials and installation.</span></li>
+                            <li class="flex items-start gap-2"><span
+                                    class="text-brandBlue mt-0.5 shrink-0">✓</span><span>Bulk orders (50+ units) qualify
+                                    for
+                                    tiered discounts.</span></li>
+                            <li class="flex items-start gap-2"><span
+                                    class="text-brandBlue mt-0.5 shrink-0">✓</span><span>Written quotes are provided
+                                    within
+                                    24 hours of request.</span></li>
+                            <li class="flex items-start gap-2"><span
+                                    class="text-brandBlue mt-0.5 shrink-0">✓</span><span>All prices are quoted in
+                                    Tanzanian
+                                    Shillings (TZS) unless stated otherwise.</span></li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+
+            <footer class="bg-white border-t border-black/5 mt-8">
+                <div class="max-w-5xl mx-auto px-6 py-5 text-center">
+                    <p class="text-xs text-gray-400">© <span id="year"></span> Africana Tech &amp; Branding Ltd. · All
+                        rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+
+
+        <!-- PRINT-ONLY DOCUMENT -->
+        <div id="print-document" class="pd-page">
+            <div class="pd-header">
+                <div class="pd-ref-box">
+                    <div class="pd-ref-label">Quotation Request</div>
+                    <div class="pd-ref-value" id="pdRef">AFR-QT-000000-0001</div>
+                    <div class="pd-ref-date" id="pdDate">—</div>
+                    <div class="pd-ref-date">Valid for 14 days</div>
+                </div>
+
+                <div class="pd-logo-row">
+                    <div class="pd-logo-box">A</div>
+                    <div>
+                        <div class="pd-company-name">AFRICANA TECH &amp; BRANDING LTD.</div>
+                        <div class="pd-company-tag">Printing · Signage · Branding · Web</div>
+                    </div>
+                </div>
+
+                <div class="pd-contact-strip">
+                    <div><strong>Address:</strong> Dar es Salaam, Tanzania</div>
+                    <div><strong>Phone:</strong> +255 700 000 000</div>
+                    <div><strong>Email:</strong> quotes@africana.co.tz</div>
+                    <div><strong>Website:</strong> www.africana.co.tz</div>
+                </div>
+            </div>
+
+            <div class="pd-section">
+                <div class="pd-section-title">Client Information</div>
+                <div class="pd-info-grid">
+                    <div class="pd-info-row"><span class="pd-info-label">Name:</span><span class="pd-info-value"
+                            id="pdName">—</span></div>
+                    <div class="pd-info-row"><span class="pd-info-label">Company:</span><span class="pd-info-value"
+                            id="pdCompany">—</span></div>
+                    <div class="pd-info-row"><span class="pd-info-label">Email:</span><span class="pd-info-value"
+                            id="pdEmail">—</span></div>
+                    <div class="pd-info-row"><span class="pd-info-label">Phone:</span><span class="pd-info-value"
+                            id="pdPhone">—</span></div>
+                    <div class="pd-info-row"><span class="pd-info-label">Location:</span><span class="pd-info-value"
+                            id="pdLocation">—</span></div>
+                    <div class="pd-info-row"><span class="pd-info-label">Deadline:</span><span class="pd-info-value"
+                            id="pdDeadline">—</span></div>
+                </div>
+            </div>
+
+            <table class="pd-table">
+                <thead>
+                    <tr>
+                        <th style="width:32px">#</th>
+                        <th>Service</th>
+                        <th style="width:110px">Unit</th>
+                        <th class="num" style="width:50px">Qty</th>
+                        <th class="num" style="width:100px">Unit Price</th>
+                        <th class="num" style="width:110px">Total</th>
+                    </tr>
+                </thead>
+                <tbody id="pdTableBody"></tbody>
+            </table>
+
+            <div class="pd-total-row">
+                <div>
+                    <span class="pd-total-label">Total Items:</span>
+                    <strong id="pdTotalItems">0</strong>
+                </div>
+                <div>
+                    <span class="pd-total-label">Estimated Subtotal: </span>
+                    <span class="pd-total-value" id="pdSubtotal">TZS 0</span>
+                </div>
+            </div>
+
+            <div class="pd-section">
+                <div class="pd-section-title">Payment Preference</div>
+                <div class="pd-pay-grid">
+                    <div class="pd-pay-row"><span class="pd-pay-label">Payment Method:</span><span class="pd-pay-value"
+                            id="pdPayment">—</span></div>
+                    <div class="pd-pay-row"><span class="pd-pay-label">Deposit:</span><span class="pd-pay-value"
+                            id="pdDeposit">—</span></div>
+                </div>
+            </div>
+
+            <div class="pd-section" id="pdNotesSection" style="display:none">
+                <div class="pd-section-title">Additional Notes</div>
+                <div class="pd-notes-box" id="pdNotes"></div>
+            </div>
+
+            <div class="pd-final-message">
+                <strong>Thank you for your request.</strong> Our team will review your quotation and send you
+                a formal written quotation within 24 hours. If you have any questions in the meantime, please
+                don't hesitate to reach out — we're always happy to help.
+            </div>
+
+            <div class="pd-footer">
+                <div class="pd-footer-company">Africana Tech &amp; Branding Ltd.</div>
+                <div class="pd-footer-contacts">
+                    Dar es Salaam, Tanzania · +255 700 000 000 · quotes@africana.co.tz · www.africana.co.tz
+                </div>
+                <div class="pd-footer-thanks">We look forward to working with you.</div>
+                <div class="pd-footer-disclaimer">
+                    Note: Design and artwork creation costs are not included in the printing prices.
+                    This is an estimate — a formal written quotation will be issued within 24 hours.
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Toast -->
+        <div id="dl-toast" role="status" aria-live="polite">
+            <span class="toast-dot"></span>
+            <span id="dl-toast-text"></span>
+        </div>
+
+
+        <template id="itemTemplate">
+            <div
+                class="grid grid-cols-[auto_1fr_auto_auto] gap-4 px-5 py-3.5 border-b border-gray-100 items-center transition hover:bg-[#F8FAFD]">
+                <div class="flex flex-col items-center gap-1 shrink-0">
+                    <span
+                        class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
+                        data-cat-badge></span>
+                    <span class="text-[10px] font-bold text-gray-400 tracking-wider" data-code></span>
+                </div>
+
+                <div class="min-w-0">
+                    <p class="text-sm font-semibold leading-snug" data-title></p>
+                    <p class="text-xs text-gray-500 italic mt-0.5" data-unit></p>
+                </div>
+
+                <div class="text-right shrink-0">
+                    <p class="text-sm font-bold text-brandBlue" data-line-total>TZS 0</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5" data-qty-line></p>
+                </div>
+
+                <button type="button"
+                    class="inline-flex items-center justify-center gap-1 px-3 py-2 rounded-full border border-red-200 bg-white text-red-600 text-[10px] font-bold uppercase tracking-wider hover:bg-red-600 hover:border-red-600 hover:text-white transition"
+                    data-remove-item>
+                    <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 6l12 12M18 6L6 18" />
+                    </svg>
+                    <span>Remove</span>
+                </button>
+            </div>
+        </template>
+
+
+        <script>
+            (function () {
+                "use strict";
+
+                const WHATSAPP_NUMBER = "255700000000";
+                const COMPANY_EMAIL = "quotes@africana.co.tz";
+
+                const ITEM_STORAGE_KEYS = [
+                    "africana_quote_items",
+                    "africana_printing_items",
+                    "africana_branding_items",
+                    "africana_web_items",
+                    "africana_selected_items"
+                ];
+
+                const CATEGORY_META = {
+                    print: { label: "Print", color: "#136db6", bg: "rgba(19,109,182,.1)" },
+                    events: { label: "Events", color: "#7c3aed", bg: "rgba(124,58,237,.1)" },
+                    promo: { label: "Promo", color: "#ea580c", bg: "rgba(234,88,12,.1)" },
+                    signage: { label: "Signage", color: "#0891b2", bg: "rgba(8,145,178,.1)" },
+                    field: { label: "Field", color: "#16a34a", bg: "rgba(22,163,74,.1)" },
+                    logistics: { label: "Logistics", color: "#64748b", bg: "rgba(100,116,139,.1)" },
+                    web: { label: "Web", color: "#0A0A0A", bg: "rgba(10,10,10,.08)" },
+                    branding: { label: "Branding", color: "#db2777", bg: "rgba(219,39,119,.1)" }
+                };
+
+                function formatTZS(n) {
+                    return "TZS " + Math.round(n || 0).toLocaleString("en-US");
+                }
+
+                function parseNumeric(str) {
+                    if (typeof str === "number") return str;
+                    const cleaned = String(str || "").replace(/[^\d.]/g, "");
+                    const num = parseFloat(cleaned);
+                    return isNaN(num) ? 0 : num;
+                }
+
+                function generateQuoteNumber() {
+                    const now = new Date();
+                    const stamp = now.getFullYear().toString() +
+                        String(now.getMonth() + 1).padStart(2, "0") +
+                        String(now.getDate()).padStart(2, "0");
+                    const rand = String(Math.floor(Math.random() * 9000) + 1000);
+                    return `AFR-QT-${stamp}-${rand}`;
+                }
+
+                function formatDateLong(date) {
+                    return date.toLocaleDateString("en-GB", {
+                        day: "2-digit", month: "long", year: "numeric"
+                    });
+                }
+
+                function todayISO() {
+                    const d = new Date();
+                    const y = d.getFullYear();
+                    const m = String(d.getMonth() + 1).padStart(2, "0");
+                    const day = String(d.getDate()).padStart(2, "0");
+                    return `${y}-${m}-${day}`;
+                }
+
+                function loadItems() {
+                    const seen = new Set();
+                    const merged = [];
+
+                    ITEM_STORAGE_KEYS.forEach(storageKey => {
+                        try {
+                            const raw = localStorage.getItem(storageKey);
+                            if (!raw) return;
+                            const parsed = JSON.parse(raw);
+                            const arr = Array.isArray(parsed) ? parsed : (parsed.items || []);
+
+                            arr.forEach((it, i) => {
+                                const title = it.title || it.name || "Service";
+                                const code = it.code || String(i + 1).padStart(2, "0");
+                                const category = it.category || it.cat || "print";
+                                const signature = category + "::" + code + "::" + title;
+                                if (seen.has(signature)) return;
+                                seen.add(signature);
+
+                                merged.push({
+                                    code, title, unit: it.unit || "",
+                                    unitPrice: it.unitPrice != null ? Number(it.unitPrice) : parseNumeric(it.price),
+                                    category, quantity: Number(it.quantity) || 1,
+                                    _storageKey: storageKey,
+                                    _indexInStorage: i,
+                                    _itemRef: it
+                                });
+                            });
+                        } catch (e) { /* ignore */ }
+                    });
+
+                    return merged;
+                }
+
+                let items = loadItems();
+                let selectedPayment = null;
+                let selectedDeposit = null;
+
+                const container = document.getElementById("itemsContainer");
+                const emptyState = document.getElementById("emptyState");
+                const template = document.getElementById("itemTemplate");
+
+                function removeItem(item) {
+                    try {
+                        const raw = localStorage.getItem(item._storageKey);
+                        if (!raw) return false;
+                        const parsed = JSON.parse(raw);
+                        const arr = Array.isArray(parsed) ? parsed : (parsed.items || []);
+                        let idx = arr.indexOf(item._itemRef);
+                        if (idx < 0) idx = item._indexInStorage;
+                        if (idx >= 0 && idx < arr.length) {
+                            arr.splice(idx, 1);
+                            if (Array.isArray(parsed)) {
+                                localStorage.setItem(item._storageKey, JSON.stringify(arr));
+                            } else {
+                                parsed.items = arr;
+                                localStorage.setItem(item._storageKey, JSON.stringify(parsed));
+                            }
+                            return true;
+                        }
+                    } catch (e) { /* ignore */ }
+                    return false;
+                }
+
+                function renderItems() {
+                    container.innerHTML = "";
+
+                    if (!items.length) {
+                        emptyState.classList.remove("hidden");
+                        document.getElementById("itemCount").textContent = "0";
+                        document.getElementById("categoryCount").textContent = "0";
+                        return;
+                    }
+
+                    emptyState.classList.add("hidden");
+
+                    const grouped = {};
+                    items.forEach(it => {
+                        const cat = it.category || "print";
+                        if (!grouped[cat]) grouped[cat] = [];
+                        grouped[cat].push(it);
+                    });
+
+                    Object.keys(grouped).forEach(cat => {
+                        const meta = CATEGORY_META[cat] || { label: cat, color: "#136db6", bg: "rgba(19,109,182,.1)" };
+
+                        const header = document.createElement("div");
+                        header.className = "px-5 py-2 bg-[#F5F8FB] border-b border-gray-200/60";
+                        header.innerHTML =
+                            '<div class="flex items-center gap-2">' +
+                            '<span class="w-1.5 h-1.5 rounded-full" style="background:' + meta.color + '"></span>' +
+                            '<span class="text-[11px] uppercase tracking-[.2em] font-bold" style="color:' + meta.color + '">' +
+                            meta.label + "</span>" +
+                            '<span class="text-[10px] text-gray-400 ml-1">(' + grouped[cat].length + ")</span>" +
+                            "</div>";
+                        container.appendChild(header);
+
+                        grouped[cat].forEach(item => {
+                            const lineTotal = item.quantity * item.unitPrice;
+                            const node = template.content.firstElementChild.cloneNode(true);
+
+                            const badge = node.querySelector("[data-cat-badge]");
+                            badge.textContent = meta.label;
+                            badge.style.color = meta.color;
+                            badge.style.background = meta.bg;
+
+                            node.querySelector("[data-code]").textContent = "Item " + item.code;
+                            node.querySelector("[data-title]").textContent = item.title;
+                            node.querySelector("[data-unit]").textContent = item.unit ? "(" + item.unit + ")" : "";
+                            node.querySelector("[data-line-total]").textContent = formatTZS(lineTotal);
+                            node.querySelector("[data-qty-line]").textContent = item.quantity + " × " + formatTZS(item.unitPrice);
+
+                            node.querySelector("[data-remove-item]").addEventListener("click", () => {
+                                removeItem(item);
+                                items = loadItems();
+                                renderItems();
+                            });
+
+                            container.appendChild(node);
+                        });
+                    });
+
+                    document.getElementById("itemCount").textContent = items.length;
+                    document.getElementById("categoryCount").textContent = Object.keys(grouped).length;
+                }
+
+                const paymentSelect = document.getElementById("paymentMethod");
+                const depositSelect = document.getElementById("depositOption");
+
+                paymentSelect.addEventListener("change", function () {
+                    selectedPayment = this.value || null;
+                    showError(this, false);
+                });
+
+                depositSelect.addEventListener("change", function () {
+                    selectedDeposit = this.value || null;
+                    showError(this, false);
+                });
+
+                function showError(input, show) {
+                    input.classList.toggle("error", show);
+                    const parent = input.closest("div");
+                    const msg = parent ? parent.parentElement.querySelector(".error-msg") : null;
+                    if (msg) msg.classList.toggle("hidden", !show);
+                }
+
+                function validateForm() {
+                    let valid = true;
+                    const name = document.getElementById("fullName");
+                    const email = document.getElementById("email");
+                    const phone = document.getElementById("phone");
+                    const location = document.getElementById("location");
+                    const payment = document.getElementById("paymentMethod");
+                    const deposit = document.getElementById("depositOption");
+                    const consent = document.getElementById("consent");
+
+                    [
+                        { el: name, check: v => v.trim().length > 0 },
+                        { el: location, check: v => v.trim().length > 0 },
+                        { el: phone, check: v => v.trim().length > 0 }
+                    ].forEach(({ el, check }) => {
+                        const ok = check(el.value);
+                        showError(el, !ok);
+                        if (!ok) valid = false;
+                    });
+
+                    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+                    showError(email, !emailOk);
+                    if (!emailOk) valid = false;
+
+                    showError(payment, !payment.value);
+                    if (!payment.value) valid = false;
+
+                    showError(deposit, !deposit.value);
+                    if (!deposit.value) valid = false;
+
+                    const consentError = document.getElementById("consentError");
+                    if (!consent.checked) {
+                        consentError.classList.remove("hidden");
+                        valid = false;
+                    } else {
+                        consentError.classList.add("hidden");
+                    }
+
+                    return valid;
+                }
+
+                ["fullName", "email", "phone", "location"].forEach(id => {
+                    const el = document.getElementById(id);
+                    el.addEventListener("input", () => showError(el, false));
+                });
+
+                document.getElementById("consent").addEventListener("change", function () {
+                    if (this.checked) document.getElementById("consentError").classList.add("hidden");
+                });
+
+                /* Date field */
+                const deadlineInput = document.getElementById("deadline");
+                const dateWrap = document.getElementById("dateWrap");
+
+                deadlineInput.setAttribute("min", todayISO());
+
+                dateWrap.addEventListener("click", () => {
+                    if (typeof deadlineInput.showPicker === "function") {
+                        try { deadlineInput.showPicker(); } catch (e) { /* ignore */ }
+                    } else {
+                        deadlineInput.focus();
+                    }
+                });
+
+                const PAYMENT_LABELS = {
+                    bank: "Bank Transfer",
+                    mobile: "Mobile Money",
+                    cash: "Cash on Delivery"
+                };
+
+                function collectData() {
+                    return {
+                        ref: document.getElementById("quoteRef").textContent,
+                        date: new Date(),
+                        name: document.getElementById("fullName").value.trim(),
+                        company: document.getElementById("company").value.trim(),
+                        email: document.getElementById("email").value.trim(),
+                        phone: document.getElementById("phone").value.trim(),
+                        location: document.getElementById("location").value.trim(),
+                        deadline: document.getElementById("deadline").value.trim(),
+                        notes: document.getElementById("notes").value.trim(),
+                        payment: PAYMENT_LABELS[selectedPayment] || "—",
+                        deposit: selectedDeposit === "full" ? "100% Full Payment (Best Value)"
+                            : selectedDeposit === "half" ? "50% Deposit (balance on delivery)"
+                                : "—"
+                    };
+                }
+
+                const toastEl = document.getElementById("dl-toast");
+                const toastText = document.getElementById("dl-toast-text");
+                let toastTimer = null;
+
+                function showToast(msg) {
+                    toastText.textContent = msg;
+                    toastEl.classList.add("show");
+                    clearTimeout(toastTimer);
+                    toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2600);
+                }
+
+                function syncPrintDocument() {
+                    const data = collectData();
+
+                    document.getElementById("pdRef").textContent = data.ref;
+                    document.getElementById("pdDate").textContent = formatDateLong(data.date);
+
+                    document.getElementById("pdName").textContent = data.name || "—";
+                    document.getElementById("pdCompany").textContent = data.company || "—";
+                    document.getElementById("pdEmail").textContent = data.email || "—";
+                    document.getElementById("pdPhone").textContent = data.phone || "—";
+                    document.getElementById("pdLocation").textContent = data.location || "—";
+                    document.getElementById("pdDeadline").textContent = data.deadline || "—";
+
+                    const tbody = document.getElementById("pdTableBody");
+                    tbody.innerHTML = "";
+
+                    let subtotal = 0;
+                    let rowIndex = 1;
+
+                    const grouped = {};
+                    items.forEach(it => {
+                        const cat = it.category || "print";
+                        if (!grouped[cat]) grouped[cat] = [];
+                        grouped[cat].push(it);
+                    });
+
+                    Object.keys(grouped).forEach(cat => {
+                        const meta = CATEGORY_META[cat] || { label: cat };
+
+                        const catRow = document.createElement("tr");
+                        catRow.className = "cat-row";
+                        catRow.innerHTML = '<td colspan="6">' + meta.label.toUpperCase() + "</td>";
+                        tbody.appendChild(catRow);
+
+                        grouped[cat].forEach(it => {
+                            const lineTotal = it.quantity * it.unitPrice;
+                            subtotal += lineTotal;
+
+                            const tr = document.createElement("tr");
+                            tr.className = "item-row";
+                            tr.innerHTML =
+                                '<td class="col-num">' + String(rowIndex).padStart(2, "0") + "</td>" +
+                                "<td>" + escapeHtml(it.title) +
+                                (it.unit ? '<div class="unit">(' + escapeHtml(it.unit) + ")</div>" : "") +
+                                "</td>" +
+                                "<td>" + escapeHtml(it.unit || "—") + "</td>" +
+                                '<td class="col-qty">' + it.quantity + "</td>" +
+                                '<td class="col-unitprice">' + formatTZS(it.unitPrice) + "</td>" +
+                                '<td class="col-total">' + formatTZS(lineTotal) + "</td>";
+                            tbody.appendChild(tr);
+                            rowIndex++;
+                        });
+                    });
+
+                    document.getElementById("pdTotalItems").textContent = items.length;
+                    document.getElementById("pdSubtotal").textContent = formatTZS(subtotal);
+
+                    document.getElementById("pdPayment").textContent = data.payment;
+                    document.getElementById("pdDeposit").textContent = data.deposit;
+
+                    const pdNotesSection = document.getElementById("pdNotesSection");
+                    if (data.notes) {
+                        document.getElementById("pdNotes").textContent = data.notes;
+                        pdNotesSection.style.display = "block";
+                    } else {
+                        pdNotesSection.style.display = "none";
+                    }
+                }
+
+                function escapeHtml(str) {
+                    return String(str || "")
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;");
+                }
+
+                function downloadPDF() {
+                    if (!items.length) {
+                        alert("Please add at least one service before downloading.");
+                        return;
+                    }
+                    if (!validateForm()) {
+                        const firstError = document.querySelector(".modern-input.error, .modern-select.error");
+                        if (firstError) firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+                        return;
+                    }
+                    if (!window.jspdf || !window.jspdf.jsPDF) {
+                        alert("PDF library is loading. Please try again in a moment.");
+                        return;
+                    }
+
+                    const { jsPDF } = window.jspdf;
+                    const doc = new jsPDF({ orientation: "portrait", unit: "pt", format: "a4" });
+
+                    const data = collectData();
+                    const pageWidth = doc.internal.pageSize.getWidth();
+                    const pageHeight = doc.internal.pageSize.getHeight();
+                    const M = 32;
+                    const contentWidth = pageWidth - M * 2;
+                    let y = 0;
+
+                    // HEADER
+                    doc.setFillColor(10, 10, 10);
+                    doc.rect(0, 0, pageWidth, 130, "F");
+                    doc.setFillColor(19, 109, 182);
+                    doc.rect(0, 0, pageWidth, 4, "F");
+
+                    doc.setFillColor(19, 109, 182);
+                    doc.roundedRect(M, 22, 42, 42, 8, 8, "F");
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(20);
+                    doc.text("A", M + 21, 50, { align: "center" });
+
+                    doc.setFontSize(15);
+                    doc.text("AFRICANA TECH & BRANDING LTD.", M + 54, 38);
+
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(9);
+                    doc.setTextColor(180, 180, 180);
+                    doc.text("Printing  ·  Signage  ·  Branding  ·  Web", M + 54, 54);
+
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(8.5);
+                    doc.setTextColor(19, 109, 182);
+                    doc.text("QUOTATION REQUEST", pageWidth - M, 32, { align: "right" });
+
+                    doc.setFontSize(13);
+                    doc.setTextColor(255, 255, 255);
+                    doc.text(data.ref, pageWidth - M, 52, { align: "right" });
+
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(9);
+                    doc.setTextColor(180, 180, 180);
+                    doc.text("Date: " + formatDateLong(data.date), pageWidth - M, 70, { align: "right" });
+                    doc.text("Valid for 14 days", pageWidth - M, 84, { align: "right" });
+
+                    doc.setDrawColor(60, 60, 60);
+                    doc.setLineWidth(0.5);
+                    doc.line(M, 96, pageWidth - M, 96);
+
+                    doc.setFontSize(9);
+                    doc.setTextColor(207, 207, 207);
+                    doc.text("Address:  Dar es Salaam, Tanzania", M, 112);
+                    doc.text("Phone:  +255 700 000 000", M + contentWidth / 2, 112);
+                    doc.text("Email:  quotes@africana.co.tz", M, 124);
+                    doc.text("Website:  www.africana.co.tz", M + contentWidth / 2, 124);
+
+                    y = 145;
+
+                    // CLIENT INFO
+                    doc.setDrawColor(229, 231, 235);
+                    doc.setLineWidth(0.75);
+                    doc.roundedRect(M, y, contentWidth, 78, 4, 4, "S");
+
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(8.5);
+                    doc.setTextColor(19, 109, 182);
+                    doc.text("CLIENT INFORMATION", M + 12, y + 16);
+
+                    doc.setFontSize(10);
+                    const col1X = M + 12;
+                    const col2X = M + contentWidth / 2 + 6;
+                    const labelW = 55;
+
+                    doc.setTextColor(75, 85, 99);
+                    doc.text("Name:", col1X, y + 34);
+                    doc.text("Company:", col2X, y + 34);
+                    doc.text("Email:", col1X, y + 50);
+                    doc.text("Phone:", col2X, y + 50);
+                    doc.text("Location:", col1X, y + 66);
+                    doc.text("Deadline:", col2X, y + 66);
+
+                    doc.setFont("helvetica", "normal");
+                    doc.setTextColor(10, 10, 10);
+                    doc.text(data.name || "—", col1X + labelW, y + 34);
+                    doc.text(data.company || "—", col2X + 60, y + 34);
+                    doc.text(data.email || "—", col1X + labelW, y + 50);
+                    doc.text(data.phone || "—", col2X + 60, y + 50);
+                    doc.text(data.location || "—", col1X + labelW, y + 66);
+                    doc.text(data.deadline || "—", col2X + 60, y + 66);
+
+                    y += 92;
+
+                    // TABLE HEADER
+                    doc.setFillColor(19, 109, 182);
+                    doc.rect(M, y, contentWidth, 22, "F");
+
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(8);
+                    doc.setTextColor(255, 255, 255);
+
+                    const cNum = M + 8;
+                    const cService = M + 34;
+                    const cUnit = M + 300;
+                    const cQty = M + 400;
+                    const cPrice = M + 470;
+                    const cTotal = pageWidth - M - 10;
+
+                    doc.text("#", cNum, y + 14);
+                    doc.text("SERVICE", cService, y + 14);
+                    doc.text("UNIT", cUnit, y + 14);
+                    doc.text("QTY", cQty, y + 14, { align: "right" });
+                    doc.text("UNIT PRICE", cPrice, y + 14, { align: "right" });
+                    doc.text("TOTAL", cTotal, y + 14, { align: "right" });
+
+                    y += 22;
+
+                    let subtotal = 0;
+                    let rowIndex = 1;
+
+                    const grouped = {};
+                    items.forEach(it => {
+                        const cat = it.category || "print";
+                        if (!grouped[cat]) grouped[cat] = [];
+                        grouped[cat].push(it);
+                    });
+
+                    Object.keys(grouped).forEach(cat => {
+                        const meta = CATEGORY_META[cat] || { label: cat };
+
+                        doc.setFillColor(245, 248, 251);
+                        doc.rect(M, y, contentWidth, 18, "F");
+                        doc.setFont("helvetica", "bold");
+                        doc.setFontSize(8.5);
+                        doc.setTextColor(19, 109, 182);
+                        doc.text(meta.label.toUpperCase(), M + 10, y + 12);
+                        y += 18;
+
+                        grouped[cat].forEach(it => {
+                            const lineTotal = it.quantity * it.unitPrice;
+                            subtotal += lineTotal;
+
+                            if (y > pageHeight - 220) {
+                                doc.addPage();
+                                y = 50;
+                            }
+
+                            doc.setFont("helvetica", "normal");
+                            doc.setFontSize(9);
+                            doc.setTextColor(40, 40, 40);
+
+                            const titleText = it.title.length > 52 ? it.title.substring(0, 49) + "..." : it.title;
+
+                            doc.setTextColor(107, 114, 128);
+                            doc.setFont("helvetica", "bold");
+                            doc.text(String(rowIndex).padStart(2, "0"), cNum, y + 12);
+                            doc.setFont("helvetica", "normal");
+                            doc.setTextColor(10, 10, 10);
+                            doc.text(titleText, cService, y + 12);
+
+                            doc.setTextColor(80, 80, 80);
+                            doc.setFontSize(8.5);
+                            doc.text(it.unit || "—", cUnit, y + 12);
+
+                            doc.setFontSize(9);
+                            doc.text(String(it.quantity), cQty, y + 12, { align: "right" });
+                            doc.text(formatTZS(it.unitPrice), cPrice, y + 12, { align: "right" });
+
+                            doc.setFont("helvetica", "bold");
+                            doc.setTextColor(19, 109, 182);
+                            doc.text(formatTZS(lineTotal), cTotal, y + 12, { align: "right" });
+
+                            doc.setDrawColor(241, 245, 249);
+                            doc.setLineWidth(0.4);
+                            doc.line(M, y + 22, pageWidth - M, y + 22);
+
+                            y += 22;
+                            rowIndex++;
+                        });
+                    });
+
+                    y += 4;
+                    doc.setDrawColor(19, 109, 182);
+                    doc.setLineWidth(1.2);
+                    doc.line(M, y, pageWidth - M, y);
+
+                    y += 6;
+                    doc.setFillColor(245, 248, 251);
+                    doc.rect(M, y, contentWidth, 26, "F");
+
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(10);
+                    doc.setTextColor(75, 85, 99);
+                    doc.text("Total Items: " + items.length, M + 10, y + 17);
+
+                    doc.text("Estimated Subtotal:", pageWidth - M - 200, y + 17);
+                    doc.setFontSize(13);
+                    doc.setTextColor(19, 109, 182);
+                    doc.text(formatTZS(subtotal), pageWidth - M - 10, y + 18, { align: "right" });
+
+                    y += 40;
+
+                    // PAYMENT
+                    doc.setFillColor(240, 251, 245);
+                    doc.setDrawColor(187, 247, 208);
+                    doc.roundedRect(M, y, contentWidth, 54, 6, 6, "FD");
+
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(8.5);
+                    doc.setTextColor(6, 95, 70);
+                    doc.text("PAYMENT PREFERENCE", M + 12, y + 16);
+
+                    doc.setFontSize(10);
+                    doc.setTextColor(75, 85, 99);
+                    doc.text("Payment Method:", M + 12, y + 34);
+                    doc.text("Deposit:", M + 12, y + 48);
+
+                    doc.setFont("helvetica", "normal");
+                    doc.setTextColor(10, 10, 10);
+                    doc.text(data.payment, M + 115, y + 34);
+                    doc.text(data.deposit, M + 115, y + 48);
+
+                    y += 70;
+
+                    // NOTES
+                    if (data.notes) {
+                        const noteLines = doc.splitTextToSize(data.notes, contentWidth - 24);
+                        const boxHeight = 26 + noteLines.length * 13;
+
+                        doc.setFillColor(253, 250, 243);
+                        doc.setDrawColor(252, 211, 77);
+                        doc.roundedRect(M, y, contentWidth, boxHeight, 6, 6, "FD");
+
+                        doc.setFont("helvetica", "bold");
+                        doc.setFontSize(8.5);
+                        doc.setTextColor(217, 119, 6);
+                        doc.text("ADDITIONAL NOTES", M + 12, y + 16);
+
+                        doc.setFont("helvetica", "normal");
+                        doc.setFontSize(9.5);
+                        doc.setTextColor(63, 63, 70);
+                        noteLines.forEach((line, i) => {
+                            doc.text(line, M + 12, y + 32 + i * 13);
+                        });
+
+                        y += boxHeight + 16;
+                    }
+
+                    // FINAL MESSAGE
+                    if (y > pageHeight - 200) {
+                        doc.addPage();
+                        y = 50;
+                    }
+
+                    doc.setFillColor(10, 10, 10);
+                    doc.roundedRect(M, y, contentWidth, 62, 6, 6, "F");
+
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(10);
+                    doc.setTextColor(19, 109, 182);
+                    doc.text("Thank you for your request.", M + 14, y + 20);
+
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(9.5);
+                    doc.setTextColor(220, 220, 220);
+                    const finalMsg = "Our team will review your quotation and send you a formal written quotation within 24 hours. If you have any questions in the meantime, please don't hesitate to reach out — we're always happy to help.";
+                    const finalLines = doc.splitTextToSize(finalMsg, contentWidth - 28);
+                    finalLines.forEach((line, i) => {
+                        doc.text(line, M + 14, y + 38 + i * 12);
+                    });
+
+                    y += 78;
+
+                    // FOOTER
+                    if (y > pageHeight - 130) {
+                        doc.addPage();
+                        y = 50;
+                    }
+
+                    doc.setDrawColor(200, 200, 200);
+                    doc.setLineWidth(0.5);
+                    doc.line(M, y, pageWidth - M, y);
+                    y += 16;
+
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(11);
+                    doc.setTextColor(19, 109, 182);
+                    doc.text("Africana Tech & Branding Ltd.", pageWidth / 2, y, { align: "center" });
+
+                    y += 14;
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(9);
+                    doc.setTextColor(107, 114, 128);
+                    doc.text("Dar es Salaam, Tanzania  ·  +255 700 000 000  ·  quotes@africana.co.tz  ·  www.africana.co.tz",
+                        pageWidth / 2, y, { align: "center" });
+
+                    y += 16;
+                    doc.setFont("helvetica", "bold");
+                    doc.setFontSize(10);
+                    doc.setTextColor(10, 10, 10);
+                    doc.text("We look forward to working with you.", pageWidth / 2, y, { align: "center" });
+
+                    y += 14;
+                    doc.setFont("helvetica", "normal");
+                    doc.setFontSize(8);
+                    doc.setTextColor(156, 163, 175);
+                    const disc = "Note: Design and artwork creation costs are not included in the printing prices. This is an estimate — a formal written quotation will be issued within 24 hours.";
+                    const discLines = doc.splitTextToSize(disc, contentWidth - 40);
+                    discLines.forEach((line, i) => {
+                        doc.text(line, pageWidth / 2, y + i * 10, { align: "center" });
+                    });
+
+                    const filename = `Quotation-${data.ref}.pdf`;
+                    doc.save(filename);
+                    showToast("✓ PDF downloaded successfully");
+                }
+
+                function printQuotation() {
+                    if (!items.length) {
+                        alert("Please add at least one service before printing.");
+                        return;
+                    }
+                    if (!validateForm()) {
+                        const firstError = document.querySelector(".modern-input.error, .modern-select.error");
+                        if (firstError) firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+                        return;
+                    }
+                    syncPrintDocument();
+                    setTimeout(() => window.print(), 120);
+                }
+
+                function buildMessage() {
+                    const data = collectData();
+
+                    const lines = [
+                        "*NEW QUOTATION REQUEST*",
+                        "*Africana Tech & Branding Ltd.*",
+                        "",
+                        "*Quote Ref:* " + data.ref,
+                        "*Date:* " + formatDateLong(data.date),
+                        "",
+                        "*CLIENT DETAILS*",
+                        "Name: " + (data.name || "—")
+                    ];
+
+                    if (data.company) lines.push("Company: " + data.company);
+                    if (data.email) lines.push("Email: " + data.email);
+                    if (data.phone) lines.push("Phone: " + data.phone);
+                    if (data.location) lines.push("Location: " + data.location);
+                    if (data.deadline) lines.push("Deadline: " + data.deadline);
+
+                    lines.push("", "*SELECTED SERVICES (" + items.length + ")*");
+
+                    let subtotal = 0;
+                    items.forEach((it, i) => {
+                        const lineTotal = it.quantity * it.unitPrice;
+                        subtotal += lineTotal;
+                        lines.push((i + 1) + ". " + it.title + (it.unit ? " (" + it.unit + ")" : ""));
+                        lines.push("    Qty " + it.quantity + " × " + formatTZS(it.unitPrice) + " = " + formatTZS(lineTotal));
+                    });
+
+                    lines.push("");
+                    lines.push("*ESTIMATED SUBTOTAL: " + formatTZS(subtotal) + "*");
+                    lines.push("");
+                    lines.push("*PAYMENT PREFERENCE*");
+                    lines.push("Method: " + data.payment);
+                    lines.push("Deposit: " + data.deposit);
+
+                    if (data.notes) {
+                        lines.push("", "*ADDITIONAL NOTES*", data.notes);
+                    }
+
+                    lines.push("");
+                    lines.push("_Note: Design costs are not included in printing prices._");
+
+                    return lines.join("\n");
+                }
+
+                function shareWhatsApp() {
+                    if (!items.length) { alert("Please add at least one service before sharing."); return; }
+                    if (!validateForm()) {
+                        const firstError = document.querySelector(".modern-input.error, .modern-select.error");
+                        if (firstError) firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+                        return;
+                    }
+
+                    const message = buildMessage();
+                    window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank");
+
+                    showSuccessBanner("Quotation shared successfully", "Your request has been sent via WhatsApp. We'll respond within 24 hours.");
+                }
+
+                function submitEmail() {
+                    if (!items.length) { alert("Please add at least one service before submitting."); return; }
+                    if (!validateForm()) {
+                        const firstError = document.querySelector(".modern-input.error, .modern-select.error");
+                        if (firstError) firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+                        return;
+                    }
+
+                    const data = collectData();
+                    const subject = "Quotation Request — " + data.ref + " — " + (data.name || "New Request");
+
+                    const lines = [
+                        "NEW QUOTATION REQUEST",
+                        "Africana Tech & Branding Ltd.",
+                        "",
+                        "Quote Ref: " + data.ref,
+                        "Date: " + formatDateLong(data.date),
+                        "",
+                        "CLIENT DETAILS",
+                        "Name: " + (data.name || "—")
+                    ];
+                    if (data.company) lines.push("Company: " + data.company);
+                    if (data.email) lines.push("Email: " + data.email);
+                    if (data.phone) lines.push("Phone: " + data.phone);
+                    if (data.location) lines.push("Location: " + data.location);
+                    if (data.deadline) lines.push("Deadline: " + data.deadline);
+
+                    lines.push("", "SELECTED SERVICES (" + items.length + ")");
+
+                    let subtotal = 0;
+                    items.forEach((it, i) => {
+                        const lineTotal = it.quantity * it.unitPrice;
+                        subtotal += lineTotal;
+                        lines.push((i + 1) + ". " + it.title + (it.unit ? " (" + it.unit + ")" : ""));
+                        lines.push("   Qty " + it.quantity + " × " + formatTZS(it.unitPrice) + " = " + formatTZS(lineTotal));
+                    });
+
+                    lines.push("");
+                    lines.push("ESTIMATED SUBTOTAL: " + formatTZS(subtotal));
+                    lines.push("");
+                    lines.push("PAYMENT PREFERENCE");
+                    lines.push("Method: " + data.payment);
+                    lines.push("Deposit: " + data.deposit);
+
+                    if (data.notes) lines.push("", "ADDITIONAL NOTES", data.notes);
+                    lines.push("", "Note: Design costs are not included in printing prices.");
+
+                    const body = lines.join("\n");
+                    const mailto = "mailto:" + COMPANY_EMAIL +
+                        "?subject=" + encodeURIComponent(subject) +
+                        "&body=" + encodeURIComponent(body);
+
+                    window.location.href = mailto;
+
+                    showSuccessBanner("Quotation submitted successfully", "Your request (" + data.ref + ") has been opened in your email client.");
+                }
+
+                function showSuccessBanner(title, message) {
+                    const banner = document.getElementById("successBanner");
+                    banner.classList.remove("hidden");
+                    banner.querySelector("p.text-green-800").textContent = title;
+                    banner.querySelector("p.text-green-700").textContent = message;
+                    banner.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+
+                document.getElementById("downloadBtn").addEventListener("click", downloadPDF);
+                document.getElementById("printBtn").addEventListener("click", printQuotation);
+                document.getElementById("whatsappBtn").addEventListener("click", shareWhatsApp);
+                document.getElementById("emailBtn").addEventListener("click", submitEmail);
+
+                document.getElementById("quoteForm").addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    shareWhatsApp();
+                });
+
+                const headerAddBtn = document.getElementById("headerAddServicesBtn");
+                const headerMenu = document.getElementById("headerServiceMenu");
+
+                headerAddBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    headerMenu.classList.toggle("open");
+                });
+
+                document.addEventListener("click", (e) => {
+                    if (headerMenu && !headerMenu.contains(e.target) && e.target !== headerAddBtn) {
+                        headerMenu.classList.remove("open");
+                    }
+                });
+
+                document.addEventListener("keydown", (e) => {
+                    if (e.key === "Escape" && headerMenu) headerMenu.classList.remove("open");
+                });
+
+                function init() {
+                    document.getElementById("year").textContent = new Date().getFullYear();
+
+                    const ref = generateQuoteNumber();
+                    let refEl = document.getElementById("quoteRef");
+                    if (!refEl) {
+                        refEl = document.createElement("span");
+                        refEl.id = "quoteRef";
+                        refEl.style.display = "none";
+                        document.body.appendChild(refEl);
+                    }
+                    refEl.textContent = ref;
+                    document.getElementById("quoteNumber").textContent = ref;
+
+                    const heroDate = document.getElementById("heroDate");
+                    if (heroDate) {
+                        heroDate.textContent = new Date().toLocaleDateString("en-GB", {
+                            day: "2-digit", month: "short", year: "numeric"
+                        });
+                    }
+
+                    renderItems();
+                    syncPrintDocument();
+                }
+
+                document.addEventListener("DOMContentLoaded", init);
+
+            })();
+        </script>
+
+
+        <script src="script.js"></script>
+        <script src="footer.js"></script>
+
+    </body>
+
+</html>
