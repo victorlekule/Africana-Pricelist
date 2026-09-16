@@ -203,36 +203,32 @@ const AfricanaSite = (() => {
         </div>
 
         <!-- MOBILE (<md) — WhatsApp · Email · How It Works -->
-        <div class="flex w-full items-center justify-between gap-2 py-2 text-[11px] md:hidden">
+          <div class="flex w-full items-center gap-1 py-2 text-[9px] md:hidden">
 
           <a href="${whatsappUrl}" target="_blank" rel="noopener"
-             class="group flex min-w-0 items-center gap-1.5 font-medium text-brandWhite transition-colors hover:text-yellow-400">
+             class="group flex shrink-0 items-center gap-1 whitespace-nowrap font-medium text-brandWhite transition-colors hover:text-yellow-400">
             <svg class="h-3.5 w-3.5 shrink-0 text-brandWhite transition-colors group-hover:text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5 -.7-.5h-.6c-.2 0 -.5.1 -.8.4 -.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.
-    </svg>
-            <span class="truncate font-semibold">${COMPANY.phone}</span>
+              <path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.5c-1.7 0-3.4-.5-4.9-1.4l-.3-.2-3.6 1 1-3.5-.2-.3C2 15.5 1.5 13.8 1.5 12 1.5 6.2 6.2 1.5 12 1.5S22.5 6.2 22.5 12 17.8 21.5 12 21.5z"/>
+            </svg>
+              <span class="font-semibold text-[10px]">${COMPANY.phone}</span>
           </a>
 
-          <span class="h-3 w-px shrink-0 bg-brandWhite/20" aria-hidden="true"></span>
-
           <a href="mailto:${COMPANY.email}"
-                 class="group flex min-w-0 flex-1 items-center justify-center gap-1 font-medium text-brandWhite transition-colors hover:text-yellow-400">
-                <svg class="h-3.5 w-3.5 shrink-0 text-brandWhite transition-colors group-hover:text-yellow-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+               class="group flex min-w-0 flex-1 items-center justify-center gap-1 border-x border-brandWhite/20 px-1 font-medium text-brandWhite transition-colors hover:text-yellow-400">
+              <svg class="h-3 w-3 shrink-0 text-brandWhite transition-colors group-hover:text-yellow-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <rect x="3" y="5" width="18" height="14" rx="2.5"/>
               <path stroke-linecap="round" stroke-linejoin="round" d="m3 7 9 6 9-6"/>
             </svg>
             <span class="truncate">${COMPANY.email}</span>
           </a>
 
-          <span class="h-3 w-px shrink-0 bg-brandWhite/20" aria-hidden="true"></span>
-
           <a href="how-it-works.html"
-             class="group flex min-w-0 shrink-0 items-center gap-1 font-medium text-brandWhite transition-colors hover:text-yellow-400">
-            <svg class="h-3.5 w-3.5 shrink-0 text-brandWhite transition-colors group-hover:text-yellow-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+             class="group flex shrink-0 items-center gap-1 whitespace-nowrap font-medium text-brandWhite transition-colors hover:text-yellow-400">
+            <svg class="h-3 w-3 shrink-0 text-brandWhite transition-colors group-hover:text-yellow-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10"/>
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4M12 8h.01"/>
             </svg>
-            <span class="truncate">How It Works</span>
+            <span class="text-[9px] whitespace-nowrap">How It Works</span>
           </a>
         </div>
 
