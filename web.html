@@ -6,6 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Africana Tech & Branding Ltd</title>
 
+    <title>Web Development & Software Prices in Tanzania | Africana</title>
+    <title>Web Development & Software Pricing Tanzania | Africana</title>
+    <meta name="description"
+        content="See prices for websites, software, mobile apps, maintenance and cybersecurity from Africana Tech & Branding — from TZS 500,000. Free quote in 24 hrs.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pricelist.africana.co.tz/web.html">
+
+    <meta property="og:title" content="Web Development & Software Pricing Tanzania | Africana">
+    <meta property="og:description"
+        content="Websites, custom software, mobile apps, maintenance and cybersecurity — priced upfront.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pricelist.africana.co.tz/web.html">
+    <meta property="og:image" content="https://pricelist.africana.co.tz/images/og-web.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="description"
+        content="View starting prices for website development, e-commerce websites, custom web systems, landing pages, website maintenance and software development services in Tanzania.">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://pricelist.africana.co.tz/web-solutions/">
+
+    <meta property="og:title" content="Web Development & Software Prices in Tanzania | Africana">
+    <meta property="og:description"
+        content="Explore website, e-commerce, custom web system and software development prices and packages from Africana Tech & Branding.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pricelist.africana.co.tz/web-solutions/">
+    <meta property="og:site_name" content="Africana Tech & Branding">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
@@ -48,8 +78,9 @@
                         Technology Services
                     </span>
 
+                    <!-- ============ FLUID HEADING — shrinks on small screens ============ -->
                     <h1
-                        class="mt-6 text-3xl font-semibold leading-[1.1] tracking-[-0.02em] text-white sm:text-5xl sm:leading-[1.05] sm:tracking-[-0.03em] lg:text-7xl">
+                        class="mt-6 text-[clamp(1.6rem,4.5vw,4.5rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-white sm:leading-[1.08] sm:tracking-[-0.03em]">
                         We build, secure,<br class="hidden sm:block" />
                         and maintain the
                         <span class="bg-gradient-to-r from-brandBlue to-brandGreen bg-clip-text text-transparent">
@@ -197,7 +228,7 @@
             class="pointer-events-none absolute -top-32 left-1/2 h-64 w-[40rem] -translate-x-1/2 rounded-full bg-africana-gold/[0.08] blur-3xl">
         </div>
 
-        <div class="relative mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
+        <div class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-10 lg:py-20">
 
             <div class="text-center">
                 <span
@@ -220,106 +251,145 @@
                 </p>
             </div>
 
-            <div class="mt-12 flex flex-wrap items-center justify-center gap-3 lg:gap-4">
+            <!-- ============ FILTER BUTTONS ============ -->
+            <!--
+                MOBILE FIX:
+                - Container is a 2-column grid on mobile (grid-cols-2),
+                  so two buttons sit side by side without breaking.
+                - On sm+ it switches back to flex-wrap and centers.
+                - Each button shrinks its padding, icon, and text on mobile
+                  so it fits neatly inside its grid cell.
+            -->
+            <div
+                class="mt-12 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-3 lg:gap-4">
 
+                <!-- All Services -->
                 <button data-filter="all" type="button"
-                    class="filter-btn active group relative flex items-center gap-3 rounded-2xl border border-africana-black/[0.08] bg-white px-6 py-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-africana-gold hover:bg-africana-gold hover:shadow-[0_20px_40px_-16px_rgba(212,175,55,0.5)]">
+                    class="filter-btn active group relative flex items-center gap-2 rounded-2xl border border-africana-black/[0.08] bg-white px-3 py-3 text-left transition-all duration-300 hover:-translate-y-1 hover:border-africana-gold hover:bg-africana-gold hover:shadow-[0_20px_40px_-16px_rgba(212,175,55,0.5)] sm:gap-3 sm:px-6 sm:py-5">
+
                     <span
-                        class="icon-tile grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-africana-black/[0.05] text-africana-black transition">
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        class="icon-tile grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-africana-black/[0.05] text-africana-black transition sm:h-10 sm:w-10 sm:rounded-xl">
+                        <svg class="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" stroke-width="2.2"
+                            viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h10" />
                         </svg>
                     </span>
-                    <span>
-                        <span class="block text-sm font-bold tracking-tight text-africana-black">All Services</span>
+
+                    <span class="min-w-0">
+                        <span class="block text-xs font-bold tracking-tight text-africana-black sm:text-sm">All
+                            Services</span>
                         <span
-                            class="count-label block text-[10px] font-bold uppercase tracking-wider text-africana-muted">18
+                            class="count-label block text-[9px] font-bold uppercase tracking-wider text-africana-muted sm:text-[10px]">18
                             services</span>
                     </span>
                 </button>
 
+                <!-- Web -->
                 <button data-filter="web" type="button"
-                    class="filter-btn group relative flex items-center gap-3 rounded-2xl border border-africana-black/[0.08] bg-white px-6 py-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-africana-gold hover:bg-africana-gold hover:shadow-[0_20px_40px_-16px_rgba(212,175,55,0.5)]">
+                    class="filter-btn group relative flex items-center gap-2 rounded-2xl border border-africana-black/[0.08] bg-white px-3 py-3 text-left transition-all duration-300 hover:-translate-y-1 hover:border-africana-gold hover:bg-africana-gold hover:shadow-[0_20px_40px_-16px_rgba(212,175,55,0.5)] sm:gap-3 sm:px-6 sm:py-5">
+
                     <span
-                        class="icon-tile grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-africana-black/[0.05] text-africana-black transition">
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        class="icon-tile grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-africana-black/[0.05] text-africana-black transition sm:h-10 sm:w-10 sm:rounded-xl">
+                        <svg class="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" stroke-width="2.2"
+                            viewBox="0 0 24 24">
                             <rect x="3" y="4" width="18" height="14" rx="2" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3 9h18M8 4v5" />
                         </svg>
                     </span>
-                    <span>
-                        <span class="block text-sm font-bold tracking-tight text-africana-black">Web</span>
+
+                    <span class="min-w-0">
+                        <span class="block text-xs font-bold tracking-tight text-africana-black sm:text-sm">Web</span>
                         <span
-                            class="count-label block text-[10px] font-bold uppercase tracking-wider text-africana-muted">4
+                            class="count-label block text-[9px] font-bold uppercase tracking-wider text-africana-muted sm:text-[10px]">4
                             packages</span>
                     </span>
                 </button>
 
+                <!-- Software -->
                 <button data-filter="software" type="button"
-                    class="filter-btn group relative flex items-center gap-3 rounded-2xl border border-africana-black/[0.08] bg-white px-6 py-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-africana-gold hover:bg-africana-gold hover:shadow-[0_20px_40px_-16px_rgba(212,175,55,0.5)]">
+                    class="filter-btn group relative flex items-center gap-2 rounded-2xl border border-africana-black/[0.08] bg-white px-3 py-3 text-left transition-all duration-300 hover:-translate-y-1 hover:border-africana-gold hover:bg-africana-gold hover:shadow-[0_20px_40px_-16px_rgba(212,175,55,0.5)] sm:gap-3 sm:px-6 sm:py-5">
+
                     <span
-                        class="icon-tile grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-africana-black/[0.05] text-africana-black transition">
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        class="icon-tile grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-africana-black/[0.05] text-africana-black transition sm:h-10 sm:w-10 sm:rounded-xl">
+                        <svg class="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" stroke-width="2.2"
+                            viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 3 3 7v10l9 4 9-4V7z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 12 3 7m9 5 9-5m-9 5v9" />
                         </svg>
                     </span>
-                    <span>
-                        <span class="block text-sm font-bold tracking-tight text-africana-black">Software</span>
+
+                    <span class="min-w-0">
                         <span
-                            class="count-label block text-[10px] font-bold uppercase tracking-wider text-africana-muted">3
+                            class="block text-xs font-bold tracking-tight text-africana-black sm:text-sm">Software</span>
+                        <span
+                            class="count-label block text-[9px] font-bold uppercase tracking-wider text-africana-muted sm:text-[10px]">3
                             solutions</span>
                     </span>
                 </button>
 
+                <!-- Mobile -->
                 <button data-filter="mobile" type="button"
-                    class="filter-btn group relative flex items-center gap-3 rounded-2xl border border-africana-black/[0.08] bg-white px-6 py-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-africana-gold hover:bg-africana-gold hover:shadow-[0_20px_40px_-16px_rgba(212,175,55,0.5)]">
+                    class="filter-btn group relative flex items-center gap-2 rounded-2xl border border-africana-black/[0.08] bg-white px-3 py-3 text-left transition-all duration-300 hover:-translate-y-1 hover:border-africana-gold hover:bg-africana-gold hover:shadow-[0_20px_40px_-16px_rgba(212,175,55,0.5)] sm:gap-3 sm:px-6 sm:py-5">
+
                     <span
-                        class="icon-tile grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-africana-black/[0.05] text-africana-black transition">
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        class="icon-tile grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-africana-black/[0.05] text-africana-black transition sm:h-10 sm:w-10 sm:rounded-xl">
+                        <svg class="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" stroke-width="2.2"
+                            viewBox="0 0 24 24">
                             <rect x="6" y="2" width="12" height="20" rx="2.5" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M11 18h2" />
                         </svg>
                     </span>
-                    <span>
-                        <span class="block text-sm font-bold tracking-tight text-africana-black">Mobile</span>
+
+                    <span class="min-w-0">
                         <span
-                            class="count-label block text-[10px] font-bold uppercase tracking-wider text-africana-muted">4
+                            class="block text-xs font-bold tracking-tight text-africana-black sm:text-sm">Mobile</span>
+                        <span
+                            class="count-label block text-[9px] font-bold uppercase tracking-wider text-africana-muted sm:text-[10px]">4
                             solutions</span>
                     </span>
                 </button>
 
+                <!-- Maintenance -->
                 <button data-filter="maintenance" type="button"
-                    class="filter-btn group relative flex items-center gap-3 rounded-2xl border border-africana-black/[0.08] bg-white px-6 py-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-africana-gold hover:bg-africana-gold hover:shadow-[0_20px_40px_-16px_rgba(212,175,55,0.5)]">
+                    class="filter-btn group relative flex items-center gap-2 rounded-2xl border border-africana-black/[0.08] bg-white px-3 py-3 text-left transition-all duration-300 hover:-translate-y-1 hover:border-africana-gold hover:bg-africana-gold hover:shadow-[0_20px_40px_-16px_rgba(212,175,55,0.5)] sm:gap-3 sm:px-6 sm:py-5">
+
                     <span
-                        class="icon-tile grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-africana-black/[0.05] text-africana-black transition">
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        class="icon-tile grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-africana-black/[0.05] text-africana-black transition sm:h-10 sm:w-10 sm:rounded-xl">
+                        <svg class="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" stroke-width="2.2"
+                            viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="m14 4 6 6-10 10H4v-6L14 4Z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="m11 7 6 6" />
                         </svg>
                     </span>
-                    <span>
-                        <span class="block text-sm font-bold tracking-tight text-africana-black">Maintenance</span>
+
+                    <span class="min-w-0">
                         <span
-                            class="count-label block text-[10px] font-bold uppercase tracking-wider text-africana-muted">3
+                            class="block text-xs font-bold tracking-tight text-africana-black sm:text-sm">Maintenance</span>
+                        <span
+                            class="count-label block text-[9px] font-bold uppercase tracking-wider text-africana-muted sm:text-[10px]">3
                             plans</span>
                     </span>
                 </button>
 
+                <!-- Security -->
                 <button data-filter="security" type="button"
-                    class="filter-btn group relative flex items-center gap-3 rounded-2xl border border-africana-black/[0.08] bg-white px-6 py-5 text-left transition-all duration-300 hover:-translate-y-1 hover:border-africana-gold hover:bg-africana-gold hover:shadow-[0_20px_40px_-16px_rgba(212,175,55,0.5)]">
+                    class="filter-btn group relative flex items-center gap-2 rounded-2xl border border-africana-black/[0.08] bg-white px-3 py-3 text-left transition-all duration-300 hover:-translate-y-1 hover:border-africana-gold hover:bg-africana-gold hover:shadow-[0_20px_40px_-16px_rgba(212,175,55,0.5)] sm:gap-3 sm:px-6 sm:py-5">
+
                     <span
-                        class="icon-tile grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-africana-black/[0.05] text-africana-black transition">
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        class="icon-tile grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-africana-black/[0.05] text-africana-black transition sm:h-10 sm:w-10 sm:rounded-xl">
+                        <svg class="h-3.5 w-3.5 sm:h-4 sm:w-4" fill="none" stroke="currentColor" stroke-width="2.2"
+                            viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M12 3 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-3Z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4" />
                         </svg>
                     </span>
-                    <span>
-                        <span class="block text-sm font-bold tracking-tight text-africana-black">Security</span>
+
+                    <span class="min-w-0">
                         <span
-                            class="count-label block text-[10px] font-bold uppercase tracking-wider text-africana-muted">4
+                            class="block text-xs font-bold tracking-tight text-africana-black sm:text-sm">Security</span>
+                        <span
+                            class="count-label block text-[9px] font-bold uppercase tracking-wider text-africana-muted sm:text-[10px]">4
                             services</span>
                     </span>
                 </button>
@@ -1144,10 +1214,29 @@
                 .pay-card .pay-sub {
                     font-size: 10px;
                 }
+
+                /* Modern focus effect: active card scales up, inactive fade */
+                .pay-card {
+                    transition: transform 700ms cubic-bezier(.22, .61, .36, 1),
+                        opacity 700ms cubic-bezier(.22, .61, .36, 1),
+                        filter 700ms cubic-bezier(.22, .61, .36, 1) !important;
+                }
+
+                .pay-card.is-active {
+                    transform: scale(1) !important;
+                    opacity: 1 !important;
+                    filter: saturate(1);
+                }
+
+                .pay-card.in-view:not(.is-active) {
+                    transform: scale(.96) !important;
+                    opacity: .72 !important;
+                    filter: saturate(.9);
+                }
             }
         </style>
 
-        <div class="relative mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
+        <div class="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-10 lg:py-20">
 
             <!-- ================= MODERN HEADER ================= -->
             <div class="max-w-2xl">
@@ -1178,12 +1267,13 @@
 
             <!-- ================= CARDS ================= -->
             <div class="relative">
-                <div data-pay-container class="pay-no-scrollbar mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain scroll-smooth scroll-px-6 px-6 pb-2
+
+                <div data-pay-container class="pay-no-scrollbar relative mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain scroll-smooth scroll-px-6 px-6 pb-2
                         sm:mx-0 sm:mt-10 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0">
 
                     <!-- 01 Lipa Number -->
                     <article
-                        class="pay-card relative flex w-[92%] max-w-[380px] shrink-0 snap-center flex-col overflow-hidden rounded-2xl border border-black/[0.06] bg-white p-5 shadow-[0_1px_3px_0_rgba(10,10,10,0.04),0_8px_24px_-8px_rgba(10,10,10,0.06)] sm:w-auto sm:max-w-none sm:p-7 sm:hover:-translate-y-1 sm:hover:border-brandBlue/50 sm:hover:shadow-[0_4px_12px_-2px_rgba(10,10,10,0.06),0_24px_48px_-16px_rgba(10,10,10,0.12)]">
+                        class="pay-card relative flex w-[88%] max-w-[400px] shrink-0 snap-center flex-col overflow-hidden rounded-2xl border border-black/[0.06] bg-white p-5 shadow-[0_1px_3px_0_rgba(10,10,10,0.04),0_8px_24px_-8px_rgba(10,10,10,0.06)] sm:w-auto sm:max-w-none sm:p-7 sm:hover:-translate-y-1 sm:hover:border-brandBlue/50 sm:hover:shadow-[0_4px_12px_-2px_rgba(10,10,10,0.06),0_24px_48px_-16px_rgba(10,10,10,0.12)]">
 
                         <div class="flex items-start justify-between">
                             <span
@@ -1216,7 +1306,7 @@
                             </p>
                             <div class="mt-1.5 flex items-baseline gap-2">
                                 <span
-                                    class="text-xl font-bold tracking-tight text-brandBlack tabular-nums sm:text-2xl">123456</span>
+                                    class="text-2xl font-bold tracking-tight text-brandBlack tabular-nums sm:text-2xl">123456</span>
                             </div>
                             <p
                                 class="mt-2.5 text-[9px] uppercase tracking-[0.2em] text-black/40 sm:mt-3 sm:text-[10px]">
@@ -1225,32 +1315,27 @@
                                 &amp; Branding Ltd</p>
                         </div>
 
-                        <ul class="mt-4 flex-1 space-y-2 text-[13px] text-black/60 sm:mt-6 sm:space-y-3 sm:text-sm">
+                        <!-- Steps: hidden on mobile, shown on sm+ -->
+                        <ul
+                            class="hidden sm:mt-6 sm:block sm:flex-1 sm:space-y-3 sm:text-sm text-[13px] text-black/60 space-y-2 mt-4">
                             <li class="flex items-start gap-2.5">
                                 <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brandBlue"></span>
-                                Dial <span class="font-semibold text-brandBlack">*150*00#</span> on your Vodacom line
+                                Dial <span class="font-semibold text-brandBlack">*150*00#</span> and choose Pay by
+                                M-Pesa
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brandBlue"></span>
-                                Select <span class="font-semibold text-brandBlack">Pay by M-Pesa</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brandBlue"></span>
-                                Enter Lipa Number <span class="font-semibold text-brandBlack">123456</span>
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brandBlue"></span>
-                                Enter amount and confirm with your PIN
+                                Enter Lipa Number <span class="font-semibold text-brandBlack">123456</span> and amount
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brandGreen"></span>
-                                <span class="text-brandGreen font-medium">Send screenshot to WhatsApp for
-                                    confirmation</span>
+                                <span class="text-brandGreen font-medium">Send screenshot to WhatsApp</span>
                             </li>
                         </ul>
 
-                        <a href="https://wa.me/255700000000" target="_blank" rel="noopener"
-                            class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-black/[0.08] py-2.5 text-[13px] font-medium text-brandBlack transition hover:border-brandBlue hover:text-brandBlue sm:mt-7 sm:py-3 sm:text-sm">
+                        <!-- Confirm button: hidden on mobile, shown on sm+ -->
+                        <a href="https://wa.me/255798010073" target="_blank" rel="noopener"
+                            class="hidden sm:inline-flex mt-5 w-full items-center justify-center gap-2 rounded-lg border border-black/[0.08] py-2.5 text-[13px] font-medium text-brandBlack transition hover:border-brandBlue hover:text-brandBlue sm:mt-7 sm:py-3 sm:text-sm">
                             Confirm Payment
                             <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"
                                 viewBox="0 0 24 24">
@@ -1262,7 +1347,7 @@
 
                     <!-- 02 Bank Transfer -->
                     <article
-                        class="pay-card relative flex w-[92%] max-w-[380px] shrink-0 snap-center flex-col overflow-hidden rounded-2xl border border-black/[0.06] bg-white p-5 shadow-[0_1px_3px_0_rgba(10,10,10,0.04),0_8px_24px_-8px_rgba(10,10,10,0.06)] sm:w-auto sm:max-w-none sm:p-7 sm:hover:-translate-y-1 sm:hover:border-brandBlue/50 sm:hover:shadow-[0_4px_12px_-2px_rgba(10,10,10,0.06),0_24px_48px_-16px_rgba(10,10,10,0.12)]">
+                        class="pay-card relative flex w-[88%] max-w-[400px] shrink-0 snap-center flex-col overflow-hidden rounded-2xl border border-black/[0.06] bg-white p-5 shadow-[0_1px_3px_0_rgba(10,10,10,0.04),0_8px_24px_-8px_rgba(10,10,10,0.06)] sm:w-auto sm:max-w-none sm:p-7 sm:hover:-translate-y-1 sm:hover:border-brandBlue/50 sm:hover:shadow-[0_4px_12px_-2px_rgba(10,10,10,0.06),0_24px_48px_-16px_rgba(10,10,10,0.12)]">
 
                         <div class="flex items-start justify-between">
                             <span
@@ -1299,6 +1384,7 @@
                                         Africana Tech &amp; Branding Ltd</dd>
                                 </div>
                                 <div class="h-px w-full bg-black/[0.06]"></div>
+                                <!-- Bank row: NOW VISIBLE ON MOBILE -->
                                 <div>
                                     <dt class="text-[9px] uppercase tracking-[0.2em] text-black/40 sm:text-[10px]">Bank
                                     </dt>
@@ -1313,24 +1399,15 @@
                                         class="mt-0.5 text-base font-bold tabular-nums text-brandBlack sm:mt-1 sm:text-lg">
                                         0150 123 456 789</dd>
                                 </div>
-                                <div class="h-px w-full bg-black/[0.06]"></div>
-                                <div>
-                                    <dt class="text-[9px] uppercase tracking-[0.2em] text-black/40 sm:text-[10px]">
-                                        Branch</dt>
-                                    <dd class="mt-0.5 text-[13px] font-medium text-brandBlack sm:mt-1 sm:text-sm">Arusha
-                                        Branch</dd>
-                                </div>
                             </dl>
                         </div>
 
-                        <ul class="mt-4 flex-1 space-y-2 text-[13px] text-black/60 sm:mt-6 sm:space-y-3 sm:text-sm">
+                        <!-- Steps: hidden on mobile, shown on sm+ -->
+                        <ul
+                            class="hidden sm:mt-6 sm:block sm:flex-1 sm:space-y-3 sm:text-sm text-[13px] text-black/60 space-y-2 mt-4">
                             <li class="flex items-start gap-2.5">
                                 <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brandBlue"></span>
                                 Use your <span class="font-semibold text-brandBlack">company name</span> as reference
-                            </li>
-                            <li class="flex items-start gap-2.5">
-                                <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brandBlue"></span>
-                                Available for corporate invoicing
                             </li>
                             <li class="flex items-start gap-2.5">
                                 <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brandGreen"></span>
@@ -1338,8 +1415,9 @@
                             </li>
                         </ul>
 
-                        <a href="https://wa.me/255700000000" target="_blank" rel="noopener"
-                            class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg border border-black/[0.08] py-2.5 text-[13px] font-medium text-brandBlack transition hover:border-brandBlue hover:text-brandBlue sm:mt-7 sm:py-3 sm:text-sm">
+                        <!-- Confirm button: hidden on mobile, shown on sm+ -->
+                        <a href="https://wa.me/255798010073" target="_blank" rel="noopener"
+                            class="hidden sm:inline-flex mt-5 w-full items-center justify-center gap-2 rounded-lg border border-black/[0.08] py-2.5 text-[13px] font-medium text-brandBlack transition hover:border-brandBlue hover:text-brandBlue sm:mt-7 sm:py-3 sm:text-sm">
                             Confirm Payment
                             <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"
                                 viewBox="0 0 24 24">
@@ -1349,9 +1427,9 @@
                     </article>
 
 
-                    <!-- 03 Payment Terms -->
+                    <!-- 03 Payment Terms — HIDDEN ON MOBILE, shown on sm+ -->
                     <article
-                        class="pay-card relative flex w-[92%] max-w-[380px] shrink-0 snap-center flex-col overflow-hidden rounded-2xl border border-brandBlue bg-brandBlue p-5 shadow-[0_20px_40px_-16px_rgba(19,109,182,0.4)] sm:w-auto sm:max-w-none sm:p-7 sm:hover:-translate-y-1">
+                        class="pay-card relative hidden w-[92%] max-w-[380px] shrink-0 snap-center flex-col overflow-hidden rounded-2xl border border-brandBlue bg-brandBlue p-5 shadow-[0_20px_40px_-16px_rgba(19,109,182,0.4)] sm:flex sm:w-auto sm:max-w-none sm:p-7 sm:hover:-translate-y-1">
 
                         <div class="flex items-start justify-between">
                             <span
@@ -1431,7 +1509,7 @@
                             </li>
                         </ul>
 
-                        <a href="https://wa.me/255700000000" target="_blank" rel="noopener"
+                        <a href="https://wa.me/255798010073" target="_blank" rel="noopener"
                             class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white py-2.5 text-[13px] font-semibold text-brandBlue transition hover:bg-brandWhite sm:mt-7 sm:py-3 sm:text-sm">
                             Discuss Payment Plan
                             <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2"
@@ -1500,17 +1578,18 @@
             (function () {
                 const payContainer = document.querySelector('[data-pay-container]');
                 const payDotsWrap = document.querySelector('[data-pay-dots]');
-                const payCards = document.querySelectorAll('.pay-card');
+                const allCards = document.querySelectorAll('.pay-card');
 
-                if (!payContainer || !payDotsWrap || !payCards.length) return;
+                function getVisibleCards() {
+                    return [...allCards].filter(c => c.offsetParent !== null);
+                }
+
+                if (!payContainer || !payDotsWrap || !allCards.length) return;
 
                 function isMobilePay() {
                     return window.matchMedia('(max-width: 639px)').matches;
                 }
 
-                /* ============================================================
-                   AUTO-ADVANCE — moves carousel every 8 seconds
-                   ============================================================ */
                 const AUTOPLAY_MS = 8000;
                 let autoplayTimer = null;
                 let currentIndex = 0;
@@ -1518,36 +1597,60 @@
                 let resumeTimeout = null;
 
                 function scrollToCard(index) {
-                    const card = payCards[index];
+                    const cards = getVisibleCards();
+                    if (!cards.length) return;
+                    if (index < 0) index = cards.length - 1;
+                    if (index >= cards.length) index = 0;
+
+                    const card = cards[index];
                     if (!card) return;
-                    const cardLeft = card.offsetLeft;
-                    const cardWidth = card.offsetWidth;
-                    const containerWidth = payContainer.clientWidth;
-                    const targetScroll = cardLeft - (containerWidth - cardWidth) / 2;
-                    payContainer.scrollTo({ left: targetScroll, behavior: 'smooth' });
+
+                    const containerRect = payContainer.getBoundingClientRect();
+                    const cardRect = card.getBoundingClientRect();
+                    const cardOffsetInContainer = (cardRect.left - containerRect.left) + payContainer.scrollLeft;
+                    const targetScroll = cardOffsetInContainer - (containerRect.width - cardRect.width) / 2;
+
+                    payContainer.scrollTo({
+                        left: Math.max(0, targetScroll),
+                        behavior: 'smooth'
+                    });
+
                     currentIndex = index;
+                    setActiveCard(index);
+                }
+
+                function setActiveCard(index) {
+                    const cards = getVisibleCards();
+                    cards.forEach((c, i) => {
+                        c.classList.toggle('is-active', i === index);
+                    });
+                    updatePayDots(index);
                 }
 
                 function startAutoplay() {
                     stopAutoplay();
                     if (!isMobilePay()) return;
+
                     autoplayTimer = setInterval(() => {
                         if (userInteracting) return;
-                        // Only auto-advance if the section is actually visible on screen
+                        const cards = getVisibleCards();
+                        if (cards.length < 2) return;
+
                         const rect = payContainer.getBoundingClientRect();
                         const inView = rect.top < window.innerHeight && rect.bottom > 0;
                         if (!inView) return;
 
-                        const next = (currentIndex + 1) % payCards.length;
-                        scrollToCard(next);
+                        scrollToCard(currentIndex + 1);
                     }, AUTOPLAY_MS);
                 }
 
                 function stopAutoplay() {
-                    if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+                    if (autoplayTimer) {
+                        clearInterval(autoplayTimer);
+                        autoplayTimer = null;
+                    }
                 }
 
-                /* Pause autoplay while user is touching/swiping; resume after 6s idle */
                 function pauseForUser() {
                     userInteracting = true;
                     if (resumeTimeout) clearTimeout(resumeTimeout);
@@ -1560,45 +1663,47 @@
                     payContainer.addEventListener(evt, pauseForUser, { passive: true });
                 });
 
-                /* Track which card is closest to center, so autoplay continues from there */
+                let payRaf = null;
                 payContainer.addEventListener('scroll', () => {
                     if (payRaf) return;
                     payRaf = requestAnimationFrame(() => {
                         payRaf = null;
+                        const cards = getVisibleCards();
+                        if (!cards.length) return;
                         const containerRect = payContainer.getBoundingClientRect();
                         const centerX = containerRect.left + containerRect.width / 2;
                         let closest = 0, closestDist = Infinity;
-                        payCards.forEach((card, i) => {
+                        cards.forEach((card, i) => {
                             const r = card.getBoundingClientRect();
                             const c = r.left + r.width / 2;
                             const d = Math.abs(c - centerX);
                             if (d < closestDist) { closestDist = d; closest = i; }
                         });
                         currentIndex = closest;
-                        updatePayDots(closest);
+                        setActiveCard(closest);
                     });
                 }, { passive: true });
 
 
-                /* ============================================================
-                   DOTS
-                   ============================================================ */
                 function buildPayDots() {
                     if (!isMobilePay()) {
                         payDotsWrap.innerHTML = '';
+                        allCards.forEach(c => c.classList.remove('is-active'));
                         stopAutoplay();
                         return;
                     }
 
-                    payDotsWrap.innerHTML = [...payCards].map((_, i) => `
-                    <button type="button"
-                        class="pay-dot grid h-8 w-8 place-items-center rounded-full border border-black/[0.08] bg-white text-[11px] font-bold text-black/45 transition-all duration-300"
-                        data-pay-dot="${i}"
-                        role="tab"
-                        aria-label="Go to payment method ${i + 1}">
-                        ${i + 1}
-                    </button>
-                `).join('');
+                    const cards = getVisibleCards();
+
+                    payDotsWrap.innerHTML = cards.map((_, i) => `
+                        <button type="button"
+                            class="pay-dot grid h-8 w-8 place-items-center rounded-full border border-black/[0.08] bg-white text-[11px] font-bold text-black/45 transition-all duration-300"
+                            data-pay-dot="${i}"
+                            role="tab"
+                            aria-label="Go to payment method ${i + 1}">
+                            ${i + 1}
+                        </button>
+                    `).join('');
 
                     payDotsWrap.querySelectorAll('.pay-dot').forEach(dot => {
                         dot.addEventListener('click', () => {
@@ -1608,13 +1713,10 @@
                         });
                     });
 
-                    updatePayDots(currentIndex);
-
-                    // Restart autoplay whenever dots are (re)built on mobile
+                    setActiveCard(currentIndex);
                     startAutoplay();
                 }
 
-                let payRaf = null;
                 function updatePayDots(activeIndex) {
                     if (!isMobilePay()) return;
                     payDotsWrap.querySelectorAll('.pay-dot').forEach((dot, i) => {
@@ -1632,26 +1734,23 @@
                 window.addEventListener('resize', buildPayDots);
 
 
-                /* ============================================================
-                   ENTRANCE ANIMATION — slide in from RIGHT (mobile only)
-                   ============================================================ */
                 function setupPayAnimation() {
                     const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
                     if (!isMobile || !('IntersectionObserver' in window)) {
-                        payCards.forEach(c => c.classList.add('in-view'));
+                        allCards.forEach(c => c.classList.add('in-view'));
                         return;
                     }
 
                     const section = document.getElementById('payment');
                     if (!section) {
-                        payCards.forEach(c => c.classList.add('in-view'));
+                        allCards.forEach(c => c.classList.add('in-view'));
                         return;
                     }
 
                     const obs = new IntersectionObserver((entries) => {
                         if (entries[0].isIntersecting) {
-                            payCards.forEach((card, i) => {
+                            getVisibleCards().forEach((card, i) => {
                                 setTimeout(() => card.classList.add('in-view'), i * 120);
                             });
                             obs.disconnect();
@@ -1664,7 +1763,6 @@
 
                 buildPayDots();
 
-                /* Pause autoplay when tab is hidden, resume when visible */
                 document.addEventListener('visibilitychange', () => {
                     if (document.hidden) stopAutoplay();
                     else startAutoplay();
@@ -2085,6 +2183,27 @@
                     translate: 0 0;
                     opacity: 1;
                 }
+
+                /* Shrink card height on mobile so the button is visible */
+                .web-card .web-card-media {
+                    aspect-ratio: 16 / 9;
+                }
+
+                .web-card .web-card-body {
+                    padding: .9rem;
+                }
+
+                .web-card .web-card-desc {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+
+                /* Hide the cloned card from screen readers */
+                .web-card-clone {
+                    pointer-events: auto;
+                }
             }
 
             @keyframes swipePulse {
@@ -2169,11 +2288,12 @@
 
                     <!-- 01 Tourism -->
                     <article
-                        class="web-card group relative w-[80vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl border border-black/[0.06] bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brandBlue/40 hover:shadow-[0_24px_48px_-16px_rgba(19,109,182,0.15)] sm:w-auto sm:max-w-none"
+                        class="web-card group relative w-[82vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl border border-black/[0.06] bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brandBlue/40 hover:shadow-[0_24px_48px_-16px_rgba(19,109,182,0.15)] sm:w-auto sm:max-w-none"
                         data-web-category="tourism">
                         <div
                             class="relative overflow-hidden rounded-t-3xl border-b border-black/[0.06] bg-brandBlack/95">
-                            <div class="flex items-center justify-between border-b border-white/[0.08] px-4 py-2.5">
+                            <div
+                                class="flex items-center justify-between border-b border-white/[0.08] px-3 py-2 sm:px-4 sm:py-2.5">
                                 <div class="flex items-center gap-1.5">
                                     <span class="h-2 w-2 rounded-full bg-red-400/70"></span>
                                     <span class="h-2 w-2 rounded-full bg-amber-400/70"></span>
@@ -2182,7 +2302,7 @@
                                 <span
                                     class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/30">morix.co.tz</span>
                             </div>
-                            <div class="relative aspect-[16/10] overflow-hidden">
+                            <div class="web-card-media relative aspect-[16/10] overflow-hidden">
                                 <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=1400&q=80"
                                     alt="Tourism website"
                                     class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
@@ -2191,10 +2311,10 @@
                                     class="absolute inset-0 bg-gradient-to-t from-brandBlack/40 via-transparent to-transparent">
                                 </div>
                                 <span
-                                    class="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-xl bg-white/15 text-sm font-bold text-white backdrop-blur-md">01</span>
+                                    class="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-xl bg-white/15 text-sm font-bold text-white backdrop-blur-md sm:right-4 sm:top-4 sm:h-9 sm:w-9">01</span>
                             </div>
                         </div>
-                        <div class="p-6">
+                        <div class="web-card-body p-6">
                             <div class="flex items-start justify-between gap-3">
                                 <div class="min-w-0">
                                     <span
@@ -2206,9 +2326,9 @@
                                 <span
                                     class="shrink-0 text-[10px] font-bold uppercase tracking-wider text-black/35">2024</span>
                             </div>
-                            <p class="mt-2 text-sm leading-relaxed text-black/55">Premium tourism website with booking
-                                inquiries, gallery and multi-language support.</p>
-                            <div class="mt-4 flex flex-wrap gap-1.5">
+                            <p class="web-card-desc mt-2 text-sm leading-relaxed text-black/55">Premium tourism website
+                                with booking inquiries, gallery and multi-language support.</p>
+                            <div class="mt-3 flex flex-wrap gap-1.5 sm:mt-4">
                                 <span
                                     class="rounded-md bg-brandBlue/[0.08] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">Next.js</span>
                                 <span
@@ -2217,7 +2337,8 @@
                                     class="rounded-md bg-brandBlue/[0.08] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">REST
                                     API</span>
                             </div>
-                            <div class="mt-5 flex items-center justify-between border-t border-black/[0.06] pt-5">
+                            <div
+                                class="mt-4 flex items-center justify-between border-t border-black/[0.06] pt-4 sm:mt-5 sm:pt-5">
                                 <div
                                     class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-brandGreen">
                                     <span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>Live
@@ -2239,11 +2360,12 @@
 
                     <!-- 02 E-Commerce -->
                     <article
-                        class="web-card group relative w-[80vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl border border-black/[0.06] bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brandBlue/40 hover:shadow-[0_24px_48px_-16px_rgba(19,109,182,0.15)] sm:w-auto sm:max-w-none"
+                        class="web-card group relative w-[82vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl border border-black/[0.06] bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brandBlue/40 hover:shadow-[0_24px_48px_-16px_rgba(19,109,182,0.15)] sm:w-auto sm:max-w-none"
                         data-web-category="ecommerce">
                         <div
                             class="relative overflow-hidden rounded-t-3xl border-b border-black/[0.06] bg-brandBlack/95">
-                            <div class="flex items-center justify-between border-b border-white/[0.08] px-4 py-2.5">
+                            <div
+                                class="flex items-center justify-between border-b border-white/[0.08] px-3 py-2 sm:px-4 sm:py-2.5">
                                 <div class="flex items-center gap-1.5">
                                     <span class="h-2 w-2 rounded-full bg-red-400/70"></span>
                                     <span class="h-2 w-2 rounded-full bg-amber-400/70"></span>
@@ -2252,7 +2374,7 @@
                                 <span
                                     class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/30">shop.example.co.tz</span>
                             </div>
-                            <div class="relative aspect-[16/10] overflow-hidden">
+                            <div class="web-card-media relative aspect-[16/10] overflow-hidden">
                                 <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1400&q=80"
                                     alt="E-commerce"
                                     class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
@@ -2261,10 +2383,10 @@
                                     class="absolute inset-0 bg-gradient-to-t from-brandBlack/40 via-transparent to-transparent">
                                 </div>
                                 <span
-                                    class="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-xl bg-white/15 text-sm font-bold text-white backdrop-blur-md">02</span>
+                                    class="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-xl bg-white/15 text-sm font-bold text-white backdrop-blur-md sm:right-4 sm:top-4 sm:h-9 sm:w-9">02</span>
                             </div>
                         </div>
-                        <div class="p-6">
+                        <div class="web-card-body p-6">
                             <div class="flex items-start justify-between gap-3">
                                 <div class="min-w-0">
                                     <span
@@ -2276,9 +2398,9 @@
                                 <span
                                     class="shrink-0 text-[10px] font-bold uppercase tracking-wider text-black/35">2024</span>
                             </div>
-                            <p class="mt-2 text-sm leading-relaxed text-black/55">Full online store with mobile money
-                                &amp; card checkout, inventory management and admin dashboard.</p>
-                            <div class="mt-4 flex flex-wrap gap-1.5">
+                            <p class="web-card-desc mt-2 text-sm leading-relaxed text-black/55">Full online store with
+                                mobile money &amp; card checkout, inventory management and admin dashboard.</p>
+                            <div class="mt-3 flex flex-wrap gap-1.5 sm:mt-4">
                                 <span
                                     class="rounded-md bg-brandBlue/[0.08] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">Django</span>
                                 <span
@@ -2286,7 +2408,8 @@
                                 <span
                                     class="rounded-md bg-brandBlue/[0.08] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">Tailwind</span>
                             </div>
-                            <div class="mt-5 flex items-center justify-between border-t border-black/[0.06] pt-5">
+                            <div
+                                class="mt-4 flex items-center justify-between border-t border-black/[0.06] pt-4 sm:mt-5 sm:pt-5">
                                 <div
                                     class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-brandGreen">
                                     <span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>Live
@@ -2308,11 +2431,12 @@
 
                     <!-- 03 NGO -->
                     <article
-                        class="web-card group relative w-[80vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl border border-black/[0.06] bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brandBlue/40 hover:shadow-[0_24px_48px_-16px_rgba(19,109,182,0.15)] sm:w-auto sm:max-w-none"
+                        class="web-card group relative w-[82vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl border border-black/[0.06] bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brandBlue/40 hover:shadow-[0_24px_48px_-16px_rgba(19,109,182,0.15)] sm:w-auto sm:max-w-none"
                         data-web-category="ngo">
                         <div
                             class="relative overflow-hidden rounded-t-3xl border-b border-black/[0.06] bg-brandBlack/95">
-                            <div class="flex items-center justify-between border-b border-white/[0.08] px-4 py-2.5">
+                            <div
+                                class="flex items-center justify-between border-b border-white/[0.08] px-3 py-2 sm:px-4 sm:py-2.5">
                                 <div class="flex items-center gap-1.5">
                                     <span class="h-2 w-2 rounded-full bg-red-400/70"></span>
                                     <span class="h-2 w-2 rounded-full bg-amber-400/70"></span>
@@ -2321,7 +2445,7 @@
                                 <span
                                     class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/30">mrtree.org</span>
                             </div>
-                            <div class="relative aspect-[16/10] overflow-hidden">
+                            <div class="web-card-media relative aspect-[16/10] overflow-hidden">
                                 <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1400&q=80"
                                     alt="NGO website"
                                     class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
@@ -2330,10 +2454,10 @@
                                     class="absolute inset-0 bg-gradient-to-t from-brandBlack/40 via-transparent to-transparent">
                                 </div>
                                 <span
-                                    class="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-xl bg-white/15 text-sm font-bold text-white backdrop-blur-md">03</span>
+                                    class="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-xl bg-white/15 text-sm font-bold text-white backdrop-blur-md sm:right-4 sm:top-4 sm:h-9 sm:w-9">03</span>
                             </div>
                         </div>
-                        <div class="p-6">
+                        <div class="web-card-body p-6">
                             <div class="flex items-start justify-between gap-3">
                                 <div class="min-w-0">
                                     <span
@@ -2345,9 +2469,9 @@
                                 <span
                                     class="shrink-0 text-[10px] font-bold uppercase tracking-wider text-black/35">2024</span>
                             </div>
-                            <p class="mt-2 text-sm leading-relaxed text-black/55">Digital platform and storytelling
-                                website for a conservation NGO.</p>
-                            <div class="mt-4 flex flex-wrap gap-1.5">
+                            <p class="web-card-desc mt-2 text-sm leading-relaxed text-black/55">Digital platform and
+                                storytelling website for a conservation NGO.</p>
+                            <div class="mt-3 flex flex-wrap gap-1.5 sm:mt-4">
                                 <span
                                     class="rounded-md bg-brandBlue/[0.08] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">Django</span>
                                 <span
@@ -2356,7 +2480,8 @@
                                     class="rounded-md bg-brandBlue/[0.08] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">REST
                                     API</span>
                             </div>
-                            <div class="mt-5 flex items-center justify-between border-t border-black/[0.06] pt-5">
+                            <div
+                                class="mt-4 flex items-center justify-between border-t border-black/[0.06] pt-4 sm:mt-5 sm:pt-5">
                                 <div
                                     class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-brandGreen">
                                     <span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>Live
@@ -2378,11 +2503,12 @@
 
                     <!-- 04 Custom System -->
                     <article
-                        class="web-card group relative w-[80vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl border border-black/[0.06] bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brandBlue/40 hover:shadow-[0_24px_48px_-16px_rgba(19,109,182,0.15)] sm:w-auto sm:max-w-none"
+                        class="web-card group relative w-[82vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl border border-black/[0.06] bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brandBlue/40 hover:shadow-[0_24px_48px_-16px_rgba(19,109,182,0.15)] sm:w-auto sm:max-w-none"
                         data-web-category="custom">
                         <div
                             class="relative overflow-hidden rounded-t-3xl border-b border-black/[0.06] bg-brandBlack/95">
-                            <div class="flex items-center justify-between border-b border-white/[0.08] px-4 py-2.5">
+                            <div
+                                class="flex items-center justify-between border-b border-white/[0.08] px-3 py-2 sm:px-4 sm:py-2.5">
                                 <div class="flex items-center gap-1.5">
                                     <span class="h-2 w-2 rounded-full bg-red-400/70"></span>
                                     <span class="h-2 w-2 rounded-full bg-amber-400/70"></span>
@@ -2391,7 +2517,7 @@
                                 <span
                                     class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/30">portal.example.org</span>
                             </div>
-                            <div class="relative aspect-[16/10] overflow-hidden">
+                            <div class="web-card-media relative aspect-[16/10] overflow-hidden">
                                 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80"
                                     alt="Custom system"
                                     class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
@@ -2400,10 +2526,10 @@
                                     class="absolute inset-0 bg-gradient-to-t from-brandBlack/40 via-transparent to-transparent">
                                 </div>
                                 <span
-                                    class="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-xl bg-white/15 text-sm font-bold text-white backdrop-blur-md">04</span>
+                                    class="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-xl bg-white/15 text-sm font-bold text-white backdrop-blur-md sm:right-4 sm:top-4 sm:h-9 sm:w-9">04</span>
                             </div>
                         </div>
-                        <div class="p-6">
+                        <div class="web-card-body p-6">
                             <div class="flex items-start justify-between gap-3">
                                 <div class="min-w-0">
                                     <span
@@ -2415,9 +2541,9 @@
                                 <span
                                     class="shrink-0 text-[10px] font-bold uppercase tracking-wider text-black/35">2023</span>
                             </div>
-                            <p class="mt-2 text-sm leading-relaxed text-black/55">Management portal for a national
-                                student association — memberships, events and admin.</p>
-                            <div class="mt-4 flex flex-wrap gap-1.5">
+                            <p class="web-card-desc mt-2 text-sm leading-relaxed text-black/55">Management portal for a
+                                national student association — memberships, events and admin.</p>
+                            <div class="mt-3 flex flex-wrap gap-1.5 sm:mt-4">
                                 <span
                                     class="rounded-md bg-brandBlue/[0.08] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">Django</span>
                                 <span
@@ -2426,7 +2552,8 @@
                                     class="rounded-md bg-brandBlue/[0.08] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">REST
                                     API</span>
                             </div>
-                            <div class="mt-5 flex items-center justify-between border-t border-black/[0.06] pt-5">
+                            <div
+                                class="mt-4 flex items-center justify-between border-t border-black/[0.06] pt-4 sm:mt-5 sm:pt-5">
                                 <div
                                     class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-brandGreen">
                                     <span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>Live
@@ -2448,11 +2575,12 @@
 
                     <!-- 05 Consultancy -->
                     <article
-                        class="web-card group relative w-[80vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl border border-black/[0.06] bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brandBlue/40 hover:shadow-[0_24px_48px_-16px_rgba(19,109,182,0.15)] sm:w-auto sm:max-w-none"
+                        class="web-card group relative w-[82vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl border border-black/[0.06] bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brandBlue/40 hover:shadow-[0_24px_48px_-16px_rgba(19,109,182,0.15)] sm:w-auto sm:max-w-none"
                         data-web-category="consultancy">
                         <div
                             class="relative overflow-hidden rounded-t-3xl border-b border-black/[0.06] bg-brandBlack/95">
-                            <div class="flex items-center justify-between border-b border-white/[0.08] px-4 py-2.5">
+                            <div
+                                class="flex items-center justify-between border-b border-white/[0.08] px-3 py-2 sm:px-4 sm:py-2.5">
                                 <div class="flex items-center gap-1.5">
                                     <span class="h-2 w-2 rounded-full bg-red-400/70"></span>
                                     <span class="h-2 w-2 rounded-full bg-amber-400/70"></span>
@@ -2461,7 +2589,7 @@
                                 <span
                                     class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/30">consultancy.co.tz</span>
                             </div>
-                            <div class="relative aspect-[16/10] overflow-hidden">
+                            <div class="web-card-media relative aspect-[16/10] overflow-hidden">
                                 <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1400&q=80"
                                     alt="Consultancy"
                                     class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
@@ -2470,10 +2598,10 @@
                                     class="absolute inset-0 bg-gradient-to-t from-brandBlack/40 via-transparent to-transparent">
                                 </div>
                                 <span
-                                    class="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-xl bg-white/15 text-sm font-bold text-white backdrop-blur-md">05</span>
+                                    class="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-xl bg-white/15 text-sm font-bold text-white backdrop-blur-md sm:right-4 sm:top-4 sm:h-9 sm:w-9">05</span>
                             </div>
                         </div>
-                        <div class="p-6">
+                        <div class="web-card-body p-6">
                             <div class="flex items-start justify-between gap-3">
                                 <div class="min-w-0">
                                     <span
@@ -2485,9 +2613,9 @@
                                 <span
                                     class="shrink-0 text-[10px] font-bold uppercase tracking-wider text-black/35">2023</span>
                             </div>
-                            <p class="mt-2 text-sm leading-relaxed text-black/55">Corporate website for an established
-                                consultancy — services, team and case studies.</p>
-                            <div class="mt-4 flex flex-wrap gap-1.5">
+                            <p class="web-card-desc mt-2 text-sm leading-relaxed text-black/55">Corporate website for an
+                                established consultancy — services, team and case studies.</p>
+                            <div class="mt-3 flex flex-wrap gap-1.5 sm:mt-4">
                                 <span
                                     class="rounded-md bg-brandBlue/[0.08] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">Next.js</span>
                                 <span
@@ -2496,7 +2624,8 @@
                                     class="rounded-md bg-brandBlue/[0.08] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">REST
                                     API</span>
                             </div>
-                            <div class="mt-5 flex items-center justify-between border-t border-black/[0.06] pt-5">
+                            <div
+                                class="mt-4 flex items-center justify-between border-t border-black/[0.06] pt-4 sm:mt-5 sm:pt-5">
                                 <div
                                     class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-brandGreen">
                                     <span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>Live
@@ -2518,11 +2647,12 @@
 
                     <!-- 06 E-Commerce -->
                     <article
-                        class="web-card group relative w-[80vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl border border-black/[0.06] bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brandBlue/40 hover:shadow-[0_24px_48px_-16px_rgba(19,109,182,0.15)] sm:w-auto sm:max-w-none"
+                        class="web-card group relative w-[82vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-3xl border border-black/[0.06] bg-white transition duration-500 hover:-translate-y-1.5 hover:border-brandBlue/40 hover:shadow-[0_24px_48px_-16px_rgba(19,109,182,0.15)] sm:w-auto sm:max-w-none"
                         data-web-category="ecommerce">
                         <div
                             class="relative overflow-hidden rounded-t-3xl border-b border-black/[0.06] bg-brandBlack/95">
-                            <div class="flex items-center justify-between border-b border-white/[0.08] px-4 py-2.5">
+                            <div
+                                class="flex items-center justify-between border-b border-white/[0.08] px-3 py-2 sm:px-4 sm:py-2.5">
                                 <div class="flex items-center gap-1.5">
                                     <span class="h-2 w-2 rounded-full bg-red-400/70"></span>
                                     <span class="h-2 w-2 rounded-full bg-amber-400/70"></span>
@@ -2531,7 +2661,7 @@
                                 <span
                                     class="text-[9px] font-bold uppercase tracking-[0.2em] text-white/30">freshmart.co.tz</span>
                             </div>
-                            <div class="relative aspect-[16/10] overflow-hidden">
+                            <div class="web-card-media relative aspect-[16/10] overflow-hidden">
                                 <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1400&q=80"
                                     alt="Grocery e-commerce"
                                     class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
@@ -2540,10 +2670,10 @@
                                     class="absolute inset-0 bg-gradient-to-t from-brandBlack/40 via-transparent to-transparent">
                                 </div>
                                 <span
-                                    class="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-xl bg-white/15 text-sm font-bold text-white backdrop-blur-md">06</span>
+                                    class="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-xl bg-white/15 text-sm font-bold text-white backdrop-blur-md sm:right-4 sm:top-4 sm:h-9 sm:w-9">06</span>
                             </div>
                         </div>
-                        <div class="p-6">
+                        <div class="web-card-body p-6">
                             <div class="flex items-start justify-between gap-3">
                                 <div class="min-w-0">
                                     <span
@@ -2555,9 +2685,9 @@
                                 <span
                                     class="shrink-0 text-[10px] font-bold uppercase tracking-wider text-black/35">2023</span>
                             </div>
-                            <p class="mt-2 text-sm leading-relaxed text-black/55">Online grocery platform with delivery
-                                zones, order tracking and multi-vendor support.</p>
-                            <div class="mt-4 flex flex-wrap gap-1.5">
+                            <p class="web-card-desc mt-2 text-sm leading-relaxed text-black/55">Online grocery platform
+                                with delivery zones, order tracking and multi-vendor support.</p>
+                            <div class="mt-3 flex flex-wrap gap-1.5 sm:mt-4">
                                 <span
                                     class="rounded-md bg-brandBlue/[0.08] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">Django</span>
                                 <span
@@ -2565,7 +2695,8 @@
                                 <span
                                     class="rounded-md bg-brandBlue/[0.08] px-2 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">Next.js</span>
                             </div>
-                            <div class="mt-5 flex items-center justify-between border-t border-black/[0.06] pt-5">
+                            <div
+                                class="mt-4 flex items-center justify-between border-t border-black/[0.06] pt-4 sm:mt-5 sm:pt-5">
                                 <div
                                     class="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-brandGreen">
                                     <span class="h-1.5 w-1.5 rounded-full bg-brandGreen"></span>Live
@@ -2716,7 +2847,7 @@
     <script>
         (function () {
             /* ============================================================
-               WEB FILTER + CAROUSEL DOTS
+               WEB FILTER + CAROUSEL + AUTOPLAY + INFINITE LOOP
                ============================================================ */
             const webChips = document.querySelectorAll('.web-chip');
             const webCards = document.querySelectorAll('.web-card');
@@ -2726,86 +2857,218 @@
 
             const webStyle = document.createElement('style');
             webStyle.textContent = `
-        .web-chip.active {
-            background-color: #136db6 !important;
-            border-color: #136db6 !important;
-            color: #ffffff !important;
-        }
-    `;
+                .web-chip.active {
+                    background-color: #136db6 !important;
+                    border-color: #136db6 !important;
+                    color: #ffffff !important;
+                }
+            `;
             document.head.appendChild(webStyle);
 
-            function getVisibleWebCards() {
-                return [...document.querySelectorAll('.web-card')].filter(c => !c.classList.contains('hidden'));
-            }
-
+            /* ---------- Helpers ---------- */
             function isMobileCarousel() {
                 return window.matchMedia('(max-width: 639px)').matches;
             }
 
+            // Real, filtered, non-clone cards
+            function getVisibleWebCards() {
+                return [...document.querySelectorAll('.web-card')].filter(
+                    c => !c.classList.contains('hidden') && !c.classList.contains('web-card-clone')
+                );
+            }
+
+            /* ---------- Dots ---------- */
             function buildWebDots() {
                 if (!webDotsWrap || !webCarousel) return;
                 if (!isMobileCarousel()) { webDotsWrap.innerHTML = ''; return; }
 
                 const cards = getVisibleWebCards();
                 webDotsWrap.innerHTML = cards.map((_, i) => `
-            <button type="button"
-                class="web-dot h-1.5 w-1.5 rounded-full bg-black/20 transition-all duration-300"
-                data-dot-index="${i}"
-                role="tab"
-                aria-label="Go to project ${i + 1}"></button>
-        `).join('');
+                    <button type="button"
+                        class="web-dot h-1.5 w-1.5 rounded-full bg-black/20 transition-all duration-300"
+                        data-dot-index="${i}"
+                        role="tab"
+                        aria-label="Go to project ${i + 1}"></button>
+                `).join('');
 
                 webDotsWrap.querySelectorAll('.web-dot').forEach(dot => {
                     dot.addEventListener('click', () => {
                         const i = +dot.dataset.dotIndex;
-                        const card = cards[i];
-                        if (card) {
-                            card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                        }
+                        scrollToRealIndex(i, true);
+                        pauseForUser();
                     });
                 });
 
-                updateWebDots();
+                updateWebDots(webCurrentIndex);
             }
 
-            let dotsRaf = null;
-            function updateWebDots() {
-                if (!webDotsWrap || !webCarousel || !isMobileCarousel()) return;
-                if (dotsRaf) return;
-                dotsRaf = requestAnimationFrame(() => {
-                    dotsRaf = null;
-                    const cards = getVisibleWebCards();
-                    if (!cards.length) return;
+            let webCurrentIndex = 0;
 
-                    const containerRect = webCarousel.getBoundingClientRect();
-                    const centerX = containerRect.left + containerRect.width / 2;
+            function updateWebDots(activeIndex) {
+                if (!webDotsWrap || !isMobileCarousel()) return;
+                webDotsWrap.querySelectorAll('.web-dot').forEach((dot, i) => {
+                    const active = i === activeIndex;
+                    dot.classList.toggle('bg-brandBlue', active);
+                    dot.classList.toggle('bg-black/20', !active);
+                    dot.classList.toggle('w-6', active);
+                    dot.classList.toggle('w-1.5', !active);
+                });
+            }
+
+            /* ---------- Scroll to a real card ---------- */
+            function scrollToRealIndex(index, smooth = true) {
+                const cards = getVisibleWebCards();
+                if (!cards.length) return;
+                index = ((index % cards.length) + cards.length) % cards.length;
+
+                const card = cards[index];
+                const cRect = webCarousel.getBoundingClientRect();
+                const cardRect = card.getBoundingClientRect();
+                const cardOffset = (cardRect.left - cRect.left) + webCarousel.scrollLeft;
+                const target = cardOffset - (cRect.width - cardRect.width) / 2;
+
+                webCarousel.scrollTo({
+                    left: Math.max(0, target),
+                    behavior: smooth ? 'smooth' : 'auto'
+                });
+                webCurrentIndex = index;
+            }
+
+            /* ---------- Clone for infinite loop ---------- */
+            let webWrapCheckTimer = null;
+            let webScrollDebounce = null;
+
+            function addClone() {
+                webCarousel.querySelectorAll('.web-card-clone').forEach(c => c.remove());
+                if (!isMobileCarousel()) return;
+
+                const real = getVisibleWebCards();
+                if (real.length < 2) return;
+
+                const clone = real[0].cloneNode(true);
+                clone.classList.add('web-card-clone');
+                clone.classList.add('in-view');
+                clone.setAttribute('aria-hidden', 'true');
+                webCarousel.appendChild(clone);
+            }
+
+            /* ---------- Autoplay (8s) ---------- */
+            let webAutoplayTimer = null;
+            let webResumeTimer = null;
+            let webUserInteracting = false;
+            const WEB_AUTOPLAY_MS = 8000;
+
+            function advanceAutoplay() {
+                if (webUserInteracting) return;
+                const real = getVisibleWebCards();
+                if (real.length < 2) return;
+
+                const rect = webCarousel.getBoundingClientRect();
+                const inView = rect.top < window.innerHeight && rect.bottom > 0;
+                if (!inView) return;
+
+                const next = webCurrentIndex + 1;
+
+                if (next >= real.length) {
+                    // Scroll to the clone (looks like first card), no rewind visually
+                    const clone = webCarousel.querySelector('.web-card-clone');
+                    if (clone) {
+                        const cRect = webCarousel.getBoundingClientRect();
+                        const cloneRect = clone.getBoundingClientRect();
+                        const cloneOffset = (cloneRect.left - cRect.left) + webCarousel.scrollLeft;
+                        const target = cloneOffset - (cRect.width - cloneRect.width) / 2;
+                        webCarousel.scrollTo({
+                            left: Math.max(0, target),
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        scrollToRealIndex(0);
+                    }
+                } else {
+                    scrollToRealIndex(next);
+                }
+            }
+
+            function startWebAutoplay() {
+                stopWebAutoplay();
+                if (!isMobileCarousel()) return;
+                webAutoplayTimer = setInterval(advanceAutoplay, WEB_AUTOPLAY_MS);
+            }
+
+            function stopWebAutoplay() {
+                if (webAutoplayTimer) {
+                    clearInterval(webAutoplayTimer);
+                    webAutoplayTimer = null;
+                }
+            }
+
+            function pauseForUser() {
+                webUserInteracting = true;
+                if (webResumeTimer) clearTimeout(webResumeTimer);
+                webResumeTimer = setTimeout(() => { webUserInteracting = false; }, 6000);
+            }
+
+            ['touchstart', 'touchmove', 'pointerdown', 'wheel'].forEach(evt => {
+                if (webCarousel) webCarousel.addEventListener(evt, pauseForUser, { passive: true });
+            });
+
+            /* ---------- Scroll handler: track index + wrap-around ---------- */
+            if (webCarousel) {
+                webCarousel.addEventListener('scroll', () => {
+                    const real = getVisibleWebCards();
+                    if (!real.length) return;
+
+                    const cRect = webCarousel.getBoundingClientRect();
+                    const centerX = cRect.left + cRect.width / 2;
 
                     let closest = 0, closestDist = Infinity;
-                    cards.forEach((card, i) => {
+                    real.forEach((card, i) => {
                         const r = card.getBoundingClientRect();
                         const c = r.left + r.width / 2;
                         const d = Math.abs(c - centerX);
                         if (d < closestDist) { closestDist = d; closest = i; }
                     });
+                    webCurrentIndex = closest;
+                    updateWebDots(closest);
 
-                    webDotsWrap.querySelectorAll('.web-dot').forEach((dot, i) => {
-                        const active = i === closest;
-                        dot.classList.toggle('bg-brandBlue', active);
-                        dot.classList.toggle('bg-black/20', !active);
-                        dot.classList.toggle('w-6', active);
-                        dot.classList.toggle('w-1.5', !active);
-                    });
-                });
+                    // Wrap check (debounced) — reset from clone back to real first
+                    if (webScrollDebounce) clearTimeout(webScrollDebounce);
+                    webScrollDebounce = setTimeout(() => {
+                        const clone = webCarousel.querySelector('.web-card-clone');
+                        if (!clone || !isMobileCarousel()) return;
+
+                        const cRect2 = webCarousel.getBoundingClientRect();
+                        const centerX2 = cRect2.left + cRect2.width / 2;
+                        const cloneRect = clone.getBoundingClientRect();
+                        const cloneCenter = cloneRect.left + cloneRect.width / 2;
+
+                        if (Math.abs(cloneCenter - centerX2) < cloneRect.width * 0.4) {
+                            const real2 = getVisibleWebCards();
+                            if (!real2.length) return;
+                            const firstRect = real2[0].getBoundingClientRect();
+                            const offset = (firstRect.left - cRect2.left) + webCarousel.scrollLeft;
+                            webCarousel.scrollTo({
+                                left: Math.max(0, offset - (cRect2.width - firstRect.width) / 2),
+                                behavior: 'auto'
+                            });
+                            webCurrentIndex = 0;
+                            updateWebDots(0);
+                        }
+                    }, 200);
+                }, { passive: true });
             }
 
-            if (webCarousel) {
-                webCarousel.addEventListener('scroll', updateWebDots, { passive: true });
-            }
-            window.addEventListener('resize', buildWebDots);
+            window.addEventListener('resize', () => {
+                buildWebDots();
+                addClone();
+                startWebAutoplay();
+            });
 
+            /* ---------- Filter ---------- */
             function applyWebFilter(filter) {
                 let visible = 0;
                 webCards.forEach(card => {
+                    if (card.classList.contains('web-card-clone')) return;
                     const cat = card.dataset.webCategory || '';
                     const show = (filter === 'all') || (cat === filter);
                     card.classList.toggle('hidden', !show);
@@ -2813,11 +3076,14 @@
                 });
                 if (webCount) webCount.textContent = visible;
 
-                // Reset carousel on mobile after filtering
                 if (webCarousel && isMobileCarousel()) {
                     webCarousel.scrollTo({ left: 0, behavior: 'auto' });
                 }
+                webCurrentIndex = 0;
+
+                addClone();
                 buildWebDots();
+                startWebAutoplay();
             }
 
             webChips.forEach(chip => {
@@ -2830,9 +3096,7 @@
 
 
             /* ============================================================
-               ENTRANCE ANIMATION (slide in from the RIGHT)
-               - Mobile carousel: observe section, stagger all cards once
-               - Desktop grid:   observe each card individually
+               ENTRANCE ANIMATION
                ============================================================ */
             function setupWebAnimation() {
                 const isMobile = window.matchMedia('(max-width: 767px)').matches;
@@ -2872,7 +3136,7 @@
 
 
             /* ============================================================
-               MODAL (unchanged)
+               MODAL
                ============================================================ */
             const webModal = document.getElementById('webProjectModal');
             const wEl = {
@@ -2937,10 +3201,10 @@
                 galleryIndex = 0;
 
                 wEl.gallery.innerHTML = galleryImages.map((src, i) => `
-            <div class="h-full min-w-full shrink-0">
-                <img src="${src}" alt="${data.title} image ${i + 1}" class="block h-full w-full object-cover" loading="lazy" />
-            </div>
-        `).join('');
+                    <div class="h-full min-w-full shrink-0">
+                        <img src="${src}" alt="${data.title} image ${i + 1}" class="block h-full w-full object-cover" loading="lazy" />
+                    </div>
+                `).join('');
 
                 const galleryViewport = wEl.gallery.parentElement;
                 galleryViewport.style.height = window.matchMedia('(min-width: 640px)').matches ? '16rem' : '13rem';
@@ -2954,9 +3218,9 @@
                 });
 
                 wEl.galleryDots.innerHTML = galleryImages.map((_, i) => `
-            <button class="web-gallery-dot h-1.5 w-1.5 rounded-full border-0 bg-black/20 p-0 transition-all duration-200 ${i === 0 ? 'w-5 bg-brandBlue' : ''}" type="button" role="tab"
-                aria-label="Show image ${i + 1}" aria-current="${i === 0}"></button>
-        `).join('');
+                    <button class="web-gallery-dot h-1.5 w-1.5 rounded-full border-0 bg-black/20 p-0 transition-all duration-200 ${i === 0 ? 'w-5 bg-brandBlue' : ''}" type="button" role="tab"
+                        aria-label="Show image ${i + 1}" aria-current="${i === 0}"></button>
+                `).join('');
 
                 wEl.galleryDots.querySelectorAll('.web-gallery-dot').forEach((dot, dotIndex) => {
                     dot.addEventListener('click', () => {
@@ -2969,19 +3233,19 @@
                 startGalleryTimer();
 
                 wEl.stack.innerHTML = (data.stack || []).map(s => `
-            <span class="rounded-lg bg-brandBlue/[0.08] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">${s}</span>
-        `).join('');
+                    <span class="rounded-lg bg-brandBlue/[0.08] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">${s}</span>
+                `).join('');
 
                 wEl.features.innerHTML = (data.features || []).map(f => `
-            <li class="flex items-start gap-2 text-xs text-black/70 sm:text-sm">
-                <span class="mt-1 grid h-3.5 w-3.5 shrink-0 place-items-center rounded-full bg-brandBlue/10">
-                    <svg class="h-2 w-2 text-brandBlue" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/>
-                    </svg>
-                </span>
-                <span>${f}</span>
-            </li>
-        `).join('');
+                    <li class="flex items-start gap-2 text-xs text-black/70 sm:text-sm">
+                        <span class="mt-1 grid h-3.5 w-3.5 shrink-0 place-items-center rounded-full bg-brandBlue/10">
+                            <svg class="h-2 w-2 text-brandBlue" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/>
+                            </svg>
+                        </span>
+                        <span>${f}</span>
+                    </li>
+                `).join('');
 
                 webModal.classList.remove('hidden');
                 webModal.classList.add('flex');
@@ -3010,15 +3274,16 @@
                 startGalleryTimer();
             });
 
-            document.querySelectorAll('.view-web-project').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const card = btn.closest('.web-card');
-                    const dataEl = card.querySelector('.web-data');
-                    if (!dataEl) return;
-                    try {
-                        openWebModal(JSON.parse(dataEl.textContent));
-                    } catch (err) { console.error(err); }
-                });
+            /* Event delegation so cloned cards also open the modal */
+            document.addEventListener('click', e => {
+                const btn = e.target.closest('.view-web-project');
+                if (!btn) return;
+                const card = btn.closest('.web-card');
+                if (!card) return;
+                const dataEl = card.querySelector('.web-data');
+                if (!dataEl) return;
+                try { openWebModal(JSON.parse(dataEl.textContent)); }
+                catch (err) { console.error(err); }
             });
 
 
@@ -3028,7 +3293,6 @@
             applyWebFilter('all');
         })();
     </script>
-
 
 
 
@@ -3061,9 +3325,9 @@
                         Let's Build Together
                     </span>
 
-                    <!-- Heading: 1–2 lines max -->
+                    <!-- ============ FLUID HEADING — shrinks on small screens ============ -->
                     <h2
-                        class="mt-6 text-[26px] font-semibold leading-[1.15] tracking-tight text-white sm:text-4xl sm:leading-[1.1] lg:text-5xl lg:leading-[1.1]">
+                        class="mt-6 text-[clamp(1.25rem,4vw,3rem)] font-semibold leading-[1.15] tracking-tight text-white sm:leading-[1.1]">
                         Ready to launch the website
                         <span class="block">your business deserves?</span>
                     </h2>
@@ -3086,7 +3350,7 @@
                             </svg>
                         </a>
 
-                        <a href="https://wa.me/255700000000" target="_blank" rel="noopener"
+                        <a href="https://wa.me/255798010073" target="_blank" rel="noopener"
                             class="inline-flex flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/15 bg-white/[0.06] px-3 py-3 text-xs font-semibold text-white backdrop-blur transition hover:bg-white/[0.12] sm:flex-none sm:gap-2 sm:px-7 sm:py-3.5 sm:text-sm">
                             <svg class="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" viewBox="0 0 24 24" fill="currentColor">
                                 <path

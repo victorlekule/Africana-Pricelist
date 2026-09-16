@@ -7,6 +7,36 @@
 
     <title>Branding &amp; Creative Pricing | Africana</title>
 
+    <title>Branding & Creative Services Prices in Tanzania | Africana</title>
+
+    <meta name="description"
+        content="Explore branding and creative service prices in Tanzania, including logo design, brand identity, company profiles, graphic design, UI/UX, social media design, packaging and creative services.">
+
+    <meta name="robots" content="index, follow">
+    <title>Branding & Creative Design Pricing Tanzania | Africana</title>
+    <meta name="description"
+        content="Explore Africana's pricing for logos, branding, social media management, video, digital ads and packaging design for businesses across Tanzania.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pricelist.africana.co.tz/branding.html">
+
+    <meta property="og:title" content="Branding & Creative Design Pricing Tanzania | Africana">
+    <meta property="og:description"
+        content="Logos, brand identity, social media, video and digital advertising — priced upfront.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pricelist.africana.co.tz/branding.html">
+    <meta property="og:image" content="https://pricelist.africana.co.tz/images/og-branding.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="canonical" href="https://pricelist.africana.co.tz/branding/">
+
+    <meta property="og:title" content="Branding & Creative Services Prices in Tanzania | Africana">
+    <meta property="og:description"
+        content="View starting prices for logo design, brand identity, company profiles, graphic design, packaging and creative services in Tanzania.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pricelist.africana.co.tz/branding/">
+    <meta property="og:site_name" content="Africana Tech & Branding">
+
     <meta name="description"
         content="Explore Africana's branding, creative design, social media management, video, digital advertising, packaging and creative services.">
 
@@ -17,35 +47,7 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandBlue: '#136db6',
-                        brandBlack: '#0A0A0A',
-                        brandWhite: '#F9FAFB',
-                        brandGreen: '#009444'
-                    },
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif']
-                    },
-                    boxShadow: {
-                        soft: '0 10px 40px -12px rgba(19,109,182,.25)'
-                    },
-                    keyframes: {
-                        fadeUp: {
-                            '0%': { opacity: '0', transform: 'translateY(12px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
-                        }
-                    },
-                    animation: {
-                        fadeUp: 'fadeUp .5s cubic-bezier(.22,.61,.36,1) both'
-                    }
-                }
-            }
-        }
-    </script>
+
 </head>
 
 
@@ -57,7 +59,6 @@
 ========================================================= -->
     <div id="site-header"></div>
     <div id="header-spacer"></div>
-
 
     <!-- =========================================================
      HERO
@@ -77,10 +78,13 @@
                         </span>
                     </div>
 
+                    <!-- ============================================================
+                         FLUID HEADING — one line on mobile, shrinks with screen
+                         ============================================================ -->
                     <h1
-                        class="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-semibold tracking-[-.04em] leading-[.95] sm:leading-[.92] sm:tracking-[-.05em]">
+                        class="whitespace-nowrap text-[clamp(0.9rem,4.4vw,6rem)] font-semibold tracking-[-.04em] leading-[1.05] sm:leading-[.92] sm:tracking-[-.05em]">
                         Creative work
-                        <br>
+                        <br class="hidden sm:block" />
                         <span class="text-brandBlue">built to matter.</span>
                     </h1>
 
@@ -206,8 +210,15 @@
 
                 <div>
                     <p class="text-brandBlue text-xs uppercase tracking-[.25em] font-bold">Our Creative Services</p>
-                    <h2 class="mt-5 text-4xl md:text-6xl font-semibold tracking-tight leading-tight">
-                        Everything your brand needs to look ready for business.
+
+                    <!--
+                    Mobile: forced 2 lines with a break, smaller font (text-2xl / 24px)
+                    sm:    break hidden, font grows to text-3xl (30px)
+                    md:    font jumps to text-6xl (60px) as before
+                -->
+                    <h2 class="mt-5 text-2xl sm:text-3xl md:text-6xl font-semibold tracking-tight leading-tight">
+                        Everything your brand needs<br class="sm:hidden" />
+                        to look ready for business.
                     </h2>
                 </div>
 
@@ -347,7 +358,8 @@
     <main id="services">
 
         <!-- ============ 01 DESIGN & BRANDING ============ -->
-        <section class="category-section bg-brandWhite py-16 sm:py-20" data-category="design" style="display:none;">
+        <section id="design" class="category-section bg-brandWhite py-16 sm:py-20" data-category="design"
+            style="display:none;">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-12 lg:mb-14">
                     <div class="lg:col-span-4">
@@ -557,7 +569,8 @@
 
 
         <!-- ============ 02 SOCIAL MEDIA ============ -->
-        <section class="category-section bg-white py-16 sm:py-24" data-category="social" style="display:none;">
+        <section id="social" class="category-section bg-white py-16 sm:py-24" data-category="social"
+            style="display:none;">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="max-w-3xl mb-10 sm:mb-14">
                     <div class="flex items-center gap-3">
@@ -664,7 +677,7 @@
 
 
         <!-- ============ 03 VIDEO & MOTION ============ -->
-        <section class="category-section bg-brandBlack text-white py-16 sm:py-24" data-category="video"
+        <section id="video" class="category-section bg-brandBlack text-white py-16 sm:py-24" data-category="video"
             style="display:none;">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-end mb-10 lg:mb-16">
@@ -768,7 +781,8 @@
 
 
         <!-- ============ 04 DIGITAL ADVERTISING ============ -->
-        <section class="category-section bg-brandWhite py-16 sm:py-24" data-category="ads" style="display:none;">
+        <section id="ads" class="category-section bg-brandWhite py-16 sm:py-24" data-category="ads"
+            style="display:none;">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 mb-10 lg:mb-14">
                     <div>
@@ -875,7 +889,8 @@
 
 
         <!-- ============ 05 PACKAGING ============ -->
-        <section class="category-section bg-white py-16 sm:py-24" data-category="packaging" style="display:none;">
+        <section id="packaging" class="category-section bg-white py-16 sm:py-24" data-category="packaging"
+            style="display:none;">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="max-w-3xl mb-10 sm:mb-14">
                     <div class="flex items-center gap-3">
@@ -1022,208 +1037,245 @@
 
     </main>
 
-
     <script>
-            (function () {
-                'use strict';
+        (function () {
+            'use strict';
 
-                const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
-                const filterBtns = document.querySelectorAll('.filter-btn');
-                const sections = document.querySelectorAll('.category-section');
+            const isMobile = () => window.matchMedia('(max-width: 767px)').matches;
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const sections = document.querySelectorAll('.category-section');
 
-                /* ============================================================
-                   ANIMATE CARDS — restartable
-                   ============================================================ */
-                function animateCards(section) {
-                    if (!section || !isMobile()) return;
-                    const cards = section.querySelectorAll('.service-card');
-                    if (!cards.length) return;
+            /* ============================================================
+               ANIMATE CARDS — restartable
+               ============================================================ */
+            function animateCards(section) {
+                if (!section || !isMobile()) return;
+                const cards = section.querySelectorAll('.service-card');
+                if (!cards.length) return;
 
-                    // 1. Reset
-                    cards.forEach(card => {
-                        card.classList.remove('animate-in');
-                        card.style.animationDelay = '';
-                    });
+                cards.forEach(card => {
+                    card.classList.remove('animate-in');
+                    card.style.animationDelay = '';
+                });
+                void section.offsetWidth;
+                cards.forEach((card, i) => {
+                    card.style.animationDelay = (60 + i * 90) + 'ms';
+                    card.classList.add('animate-in');
+                });
+            }
 
-                    // 2. Force reflow on the parent so browser flushes the reset
-                    void section.offsetWidth;
-
-                    // 3. Re-apply with stagger
-                    cards.forEach((card, i) => {
-                        card.style.animationDelay = (60 + i * 90) + 'ms';
-                        card.classList.add('animate-in');
-                    });
-                }
-
-                /* ============================================================
-                   INTERSECTION OBSERVER — animate when section scrolls into view
-                   ============================================================ */
-                if ('IntersectionObserver' in window) {
-                    const sectionObserver = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            const section = entry.target;
-
-                            // Skip if section is hidden (display:none)
-                            if (section.style.display === 'none') return;
-
-                            if (entry.isIntersecting) {
-                                // Animate only once per visit
-                                if (section.dataset.animatedOnce !== '1') {
-                                    section.dataset.animatedOnce = '1';
-                                    // Small delay so layout is fully painted
-                                    setTimeout(() => animateCards(section), 50);
-                                }
-                            } else {
-                                // Reset flag when section leaves viewport so it re-animates on next scroll back
-                                section.dataset.animatedOnce = '';
+            /* ============================================================
+               INTERSECTION OBSERVER
+               ============================================================ */
+            if ('IntersectionObserver' in window) {
+                const sectionObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const section = entry.target;
+                        if (section.style.display === 'none') return;
+                        if (entry.isIntersecting) {
+                            if (section.dataset.animatedOnce !== '1') {
+                                section.dataset.animatedOnce = '1';
+                                setTimeout(() => animateCards(section), 50);
                             }
-                        });
-                    }, {
-                        threshold: 0.05,
-                        rootMargin: '0px 0px -60px 0px'
+                        } else {
+                            section.dataset.animatedOnce = '';
+                        }
                     });
+                }, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
+                sections.forEach(s => sectionObserver.observe(s));
+            } else {
+                sections.forEach(s => s.querySelectorAll('.service-card').forEach(c => c.classList.add('animate-in')));
+            }
 
-                    sections.forEach(s => sectionObserver.observe(s));
-                } else {
-                    // No IntersectionObserver support — just show them
-                    sections.forEach(s => s.querySelectorAll('.service-card').forEach(c => c.classList.add('animate-in')));
-                }
+            /* ============================================================
+               FILTER CLICKS
+               ============================================================ */
+            function showSection(name) {
+                sections.forEach(s => {
+                    const match = s.dataset.category === name;
+                    s.style.display = match ? 'block' : 'none';
+                    if (match) s.dataset.animatedOnce = '';
+                });
 
-                /* ============================================================
-                   FILTER CLICKS — show section + animate immediately
-                   ============================================================ */
-                function showSection(name) {
-                    sections.forEach(s => {
-                        const match = s.dataset.category === name;
-                        s.style.display = match ? 'block' : 'none';
-                        if (match) s.dataset.animatedOnce = ''; // force re-animate
-                    });
-
-                    // After layout paints, animate the newly shown section
+                requestAnimationFrame(() => {
                     requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                            const active = document.querySelector(`.category-section[data-category="${name}"]`);
-                            if (active) {
-                                animateCards(active);
-                                active.dataset.animatedOnce = '1';
-                            }
-                        });
-                    });
-                }
-
-                filterBtns.forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        filterBtns.forEach(b => b.classList.remove('active'));
-                        btn.classList.add('active');
-                        showSection(btn.dataset.filter);
-
-                        const bar = document.getElementById('pricing');
-                        if (bar) {
-                            const top = window.scrollY + bar.getBoundingClientRect().top - 80;
-                            window.scrollTo({ top, behavior: 'smooth' });
+                        const active = document.querySelector(`.category-section[data-category="${name}"]`);
+                        if (active) {
+                            animateCards(active);
+                            active.dataset.animatedOnce = '1';
+                            // Rebuild carousel clones for newly visible section
+                            rebuildCarouselsIn(active);
                         }
                     });
                 });
+            }
 
-                document.querySelectorAll('[data-jump]').forEach(el => {
-                    el.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const btn = document.querySelector(`.filter-btn[data-filter="${el.dataset.jump}"]`);
-                        if (btn) btn.click();
-                    });
-                });
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    showSection(btn.dataset.filter);
 
-                /* ============================================================
-                   INITIAL — force correct section visibility on load
-                   ============================================================ */
-                sections.forEach(s => {
-                    s.style.display = (s.dataset.category === 'all') ? 'block' : 'none';
-                });
-
-                /* ============================================================
-                   CAROUSEL — swipe + dots + autoplay
-                   ============================================================ */
-                const AUTOPLAY_MS = 8000;
-                const PAUSE_AFTER_MS = 8000;
-                const carousels = [];
-
-                document.querySelectorAll('[data-carousel-grid]').forEach(grid => {
-                    const dotsWrap = grid.parentElement.querySelector('[data-carousel-dots]');
-                    const cards = Array.from(grid.querySelectorAll('.service-card'));
-                    if (!dotsWrap || !cards.length) return;
-
-                    const state = {
-                        grid, dotsWrap, cards,
-                        index: 0, timer: null,
-                        userPaused: false, pauseTimeout: null, rafId: null,
-                    };
-                    carousels.push(state);
-
-                    function buildDots() {
-                        if (!isMobile()) { dotsWrap.innerHTML = ''; stopAuto(state); return; }
-                        dotsWrap.innerHTML = cards.map((_, i) => `
-                <button type="button" data-dot="${i}" role="tab"
-                    aria-label="Go to item ${i + 1}"
-                    class="grid h-8 w-8 place-items-center rounded-full border border-black/[0.08] bg-white text-[11px] font-bold text-black/45 transition-all duration-300">
-                    ${i + 1}
-                </button>`).join('');
-
-                        dotsWrap.querySelectorAll('[data-dot]').forEach(dot => {
-                            dot.addEventListener('click', () => {
-                                scrollToCard(state, +dot.dataset.dot);
-                                pauseUser(state);
-                            });
-                        });
-                        updateDots(state);
-                        startAuto(state);
+                    const bar = document.getElementById('pricing');
+                    if (bar) {
+                        const top = window.scrollY + bar.getBoundingClientRect().top - 80;
+                        window.scrollTo({ top, behavior: 'smooth' });
                     }
+                });
+            });
 
-                    buildDots();
+            document.querySelectorAll('[data-jump]').forEach(el => {
+                el.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const btn = document.querySelector(`.filter-btn[data-filter="${el.dataset.jump}"]`);
+                    if (btn) btn.click();
+                });
+            });
 
-                    grid.addEventListener('scroll', () => {
-                        if (state.rafId) return;
-                        state.rafId = requestAnimationFrame(() => {
-                            state.rafId = null;
-                            if (!isMobile()) return;
-                            const cRect = grid.getBoundingClientRect();
-                            const cx = cRect.left + cRect.width / 2;
-                            let closest = 0, dist = Infinity;
-                            cards.forEach((card, i) => {
-                                const r = card.getBoundingClientRect();
-                                const cc = r.left + r.width / 2;
-                                const d = Math.abs(cc - cx);
-                                if (d < dist) { dist = d; closest = i; }
-                            });
-                            state.index = closest;
-                            updateDots(state);
+            /* ============================================================
+               INITIAL visibility
+            ============================================================ */
+            const requestedCategory = window.location.hash.slice(1);
+            const initialCategory = [...filterBtns].some(btn => btn.dataset.filter === requestedCategory)
+                ? requestedCategory
+                : 'all';
+
+            sections.forEach(s => {
+                s.style.display = (s.dataset.category === initialCategory) ? 'block' : 'none';
+            });
+            filterBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === initialCategory));
+
+            if (initialCategory !== 'all') {
+                requestAnimationFrame(() => {
+                    const targetSection = document.querySelector(`.category-section[data-category="${initialCategory}"]`);
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: window.scrollY + targetSection.getBoundingClientRect().top - 80,
+                            behavior: 'smooth'
                         });
-                    }, { passive: true });
+                    }
+                });
+            }
 
-                    ['touchstart', 'touchmove', 'pointerdown', 'wheel'].forEach(evt => {
-                        grid.addEventListener(evt, () => pauseUser(state), { passive: true });
+            /* ============================================================
+               CAROUSEL
+               - 8s autoplay
+               - infinite forward loop via clone (no rewind)
+               ============================================================ */
+            const AUTOPLAY_MS = 8000;      // exactly 8 seconds
+            const PAUSE_AFTER_MS = 8000;   // pause 8s after user interaction
+            const carousels = [];
+
+            document.querySelectorAll('[data-carousel-grid]').forEach(grid => {
+                const dotsWrap = grid.parentElement.querySelector('[data-carousel-dots]');
+                // real cards only — exclude clones
+                const cards = Array.from(grid.querySelectorAll('.service-card:not(.service-card-clone)'));
+                if (!dotsWrap || !cards.length) return;
+
+                const state = {
+                    grid, dotsWrap, cards,
+                    index: 0, timer: null,
+                    userPaused: false, pauseTimeout: null, rafId: null,
+                    clone: null,
+                    scrollEndTimer: null,
+                };
+                carousels.push(state);
+
+                /* -------- CLONE -------- */
+                function addClone() {
+                    // remove old
+                    grid.querySelectorAll('.service-card-clone').forEach(c => c.remove());
+                    state.clone = null;
+
+                    if (!isMobile() || cards.length < 2) return;
+
+                    const clone = cards[0].cloneNode(true);
+                    clone.classList.add('service-card-clone');
+                    clone.classList.add('animate-in'); // already in-view
+                    clone.setAttribute('aria-hidden', 'true');
+                    grid.appendChild(clone);
+                    state.clone = clone;
+                }
+
+                /* -------- DOTS -------- */
+                function buildDots() {
+                    if (!isMobile()) {
+                        dotsWrap.innerHTML = '';
+                        stopAuto(state);
+                        addClone();
+                        return;
+                    }
+                    dotsWrap.innerHTML = cards.map((_, i) => `
+                    <button type="button" data-dot="${i}" role="tab"
+                        aria-label="Go to item ${i + 1}"
+                        class="grid h-8 w-8 place-items-center rounded-full border border-black/[0.08] bg-white text-[11px] font-bold text-black/45 transition-all duration-300">
+                        ${i + 1}
+                    </button>`).join('');
+
+                    dotsWrap.querySelectorAll('[data-dot]').forEach(dot => {
+                        dot.addEventListener('click', () => {
+                            scrollToIndex(state, +dot.dataset.dot);
+                            pauseUser(state);
+                        });
+                    });
+                    updateDots(state);
+                    addClone();
+                    startAuto(state);
+                }
+
+                /* -------- SCROLL TO a real card index (or clone) -------- */
+                function scrollToIndex(state, index, instant = false) {
+                    let target;
+                    let isClone = false;
+
+                    if (index >= state.cards.length && state.clone) {
+                        target = state.clone;
+                        isClone = true;
+                    } else if (index < 0) {
+                        index = state.cards.length - 1;
+                        target = state.cards[index];
+                    } else {
+                        target = state.cards[index];
+                    }
+                    if (!target) return;
+
+                    const gRect = state.grid.getBoundingClientRect();
+                    const tRect = target.getBoundingClientRect();
+                    const targetScroll = state.grid.scrollLeft + (tRect.left - gRect.left)
+                        - (gRect.width - tRect.width) / 2;
+
+                    state.grid.scrollTo({
+                        left: Math.max(0, targetScroll),
+                        behavior: instant ? 'auto' : 'smooth'
                     });
 
-                    window.addEventListener('resize', buildDots);
-                });
-
-                function scrollToCard(state, index) {
-                    const card = state.cards[index];
-                    if (!card) return;
-                    const gridRect = state.grid.getBoundingClientRect();
-                    const cardRect = card.getBoundingClientRect();
-                    const target = state.grid.scrollLeft + (cardRect.left - gridRect.left) - (gridRect.width - cardRect.width) / 2;
-                    state.grid.scrollTo({ left: target, behavior: 'smooth' });
-                    state.index = index;
+                    if (!isClone) {
+                        state.index = index;
+                        updateDots(state);
+                    }
                 }
+
+                /* -------- AUTOPLAY -------- */
                 function startAuto(state) {
                     stopAuto(state);
                     if (!isMobile()) return;
+
                     state.timer = setInterval(() => {
                         if (state.userPaused) return;
+
                         const rect = state.grid.getBoundingClientRect();
-                        if (rect.top >= window.innerHeight || rect.bottom <= 0) return;
-                        scrollToCard(state, (state.index + 1) % state.cards.length);
+                        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+                        if (!inView) return;
+
+                        const next = state.index + 1;
+
+                        if (next >= state.cards.length) {
+                            // Move to clone (looks like first card) — no rewind
+                            scrollToIndex(state, state.cards.length);
+                        } else {
+                            scrollToIndex(state, next);
+                        }
                     }, AUTOPLAY_MS);
                 }
                 function stopAuto(state) {
@@ -1234,6 +1286,8 @@
                     if (state.pauseTimeout) clearTimeout(state.pauseTimeout);
                     state.pauseTimeout = setTimeout(() => { state.userPaused = false; }, PAUSE_AFTER_MS);
                 }
+
+                /* -------- DOTS UI -------- */
                 function updateDots(state) {
                     if (!isMobile()) return;
                     state.dotsWrap.querySelectorAll('[data-dot]').forEach((dot, i) => {
@@ -1248,29 +1302,103 @@
                     });
                 }
 
-                document.addEventListener('visibilitychange', () => {
-                    carousels.forEach(s => {
-                        if (document.hidden) stopAuto(s);
-                        else startAuto(s);
+                /* -------- SCROLL LISTENER: track active + wrap from clone -------- */
+                grid.addEventListener('scroll', () => {
+                    if (state.rafId) return;
+                    state.rafId = requestAnimationFrame(() => {
+                        state.rafId = null;
+                        if (!isMobile()) return;
+
+                        const cRect = grid.getBoundingClientRect();
+                        const cx = cRect.left + cRect.width / 2;
+
+                        // Check if clone is centered
+                        if (state.clone) {
+                            const clRect = state.clone.getBoundingClientRect();
+                            const clCenter = clRect.left + clRect.width / 2;
+                            if (Math.abs(clCenter - cx) < clRect.width * 0.35) {
+                                // We've landed on the clone → jump silently to real first card
+                                state.index = 0;
+                                updateDots(state);
+                                // Wait for smooth scroll to settle, then instant snap
+                                if (state.scrollEndTimer) clearTimeout(state.scrollEndTimer);
+                                state.scrollEndTimer = setTimeout(() => {
+                                    scrollToIndex(state, 0, true);
+                                }, 80);
+                                return;
+                            }
+                        }
+
+                        // Track closest real card
+                        let closest = 0, dist = Infinity;
+                        state.cards.forEach((card, i) => {
+                            const r = card.getBoundingClientRect();
+                            const cc = r.left + r.width / 2;
+                            const d = Math.abs(cc - cx);
+                            if (d < dist) { dist = d; closest = i; }
+                        });
+                        state.index = closest;
+                        updateDots(state);
                     });
+                }, { passive: true });
+
+                ['touchstart', 'touchmove', 'pointerdown', 'wheel'].forEach(evt => {
+                    grid.addEventListener(evt, () => pauseUser(state), { passive: true });
                 });
 
-                /* ============================================================
-                   STICKY FILTER BAR
-                   ============================================================ */
-                const filterBar = document.getElementById('pricing');
-                if (filterBar) {
-                    const updateSticky = () => {
-                        const rect = filterBar.getBoundingClientRect();
-                        const threshold = window.innerWidth >= 640 ? 80 : 64;
-                        filterBar.classList.toggle('is-stuck', rect.top <= threshold + 1);
-                    };
-                    window.addEventListener('scroll', updateSticky, { passive: true });
-                    window.addEventListener('resize', updateSticky);
-                    updateSticky();
-                }
+                window.addEventListener('resize', buildDots);
 
-            })();
+                // build everything
+                buildDots();
+            });
+
+            /* Rebuild clones inside a given section (used after filter change) */
+            function rebuildCarouselsIn(section) {
+                carousels.forEach(state => {
+                    if (section.contains(state.grid)) {
+                        // remove old clone, add fresh one
+                        state.grid.querySelectorAll('.service-card-clone').forEach(c => c.remove());
+                        state.clone = null;
+                        if (isMobile() && state.cards.length >= 2) {
+                            const clone = state.cards[0].cloneNode(true);
+                            clone.classList.add('service-card-clone', 'animate-in');
+                            clone.setAttribute('aria-hidden', 'true');
+                            state.grid.appendChild(clone);
+                            state.clone = clone;
+                        }
+                        // reset to first card
+                        state.index = 0;
+                        state.grid.scrollTo({ left: 0, behavior: 'auto' });
+                        updateDots(state);
+                        startAuto(state);
+                    }
+                });
+            }
+
+            /* Pause/resume when tab hidden */
+            document.addEventListener('visibilitychange', () => {
+                carousels.forEach(s => {
+                    if (document.hidden) stopAuto(s);
+                    else startAuto(s);
+                });
+            });
+
+            /* ============================================================
+               STICKY FILTER BAR
+               ============================================================ */
+            const filterBar = document.getElementById('pricing');
+            if (filterBar) {
+                const updateSticky = () => {
+                    const rect = filterBar.getBoundingClientRect();
+                    const threshold = window.innerWidth >= 640 ? 80 : 64;
+                    filterBar.classList.toggle('is-stuck', rect.top <= threshold + 1);
+                };
+                window.addEventListener('scroll', updateSticky, { passive: true });
+                window.addEventListener('resize', updateSticky);
+                updateSticky();
+            }
+
+        })();
     </script>
 
 
@@ -1866,7 +1994,7 @@
                     </div>
                 </div>
 
-                <!-- Filter chips — 3 per row on mobile, wraps -->
+                <!-- Filter chips -->
                 <div class="grid grid-cols-3 sm:flex sm:flex-wrap items-center gap-1.5 sm:gap-2 lg:justify-end">
                     <button type="button" data-creative-filter="all"
                         class="creative-chip active whitespace-nowrap rounded-full border border-black/[0.08] bg-white px-2.5 sm:px-4 py-2 sm:py-2.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-black/65 transition-all duration-300 text-center">All</button>
@@ -2340,7 +2468,6 @@
             class="animate-modalIn relative flex h-full sm:h-auto sm:max-h-[94vh] w-full sm:max-w-4xl flex-col overflow-hidden sm:rounded-2xl border-0 sm:border border-black/[0.06] bg-white shadow-2xl">
             <div class="h-[3px] w-full bg-gradient-to-r from-brandBlue via-brandBlue to-brandGreen"></div>
 
-            <!-- Header -->
             <div class="flex items-start justify-between gap-3 border-b border-black/[0.06] px-4 sm:px-6 py-4 sm:py-5">
                 <div class="min-w-0">
                     <p id="creativeModalLabel"
@@ -2359,10 +2486,8 @@
                 </button>
             </div>
 
-            <!-- Body -->
             <div class="flex-1 overflow-y-auto overscroll-contain">
 
-                <!-- ============ SOCIAL PROFILE HEADER ============ -->
                 <div
                     class="border-b border-black/[0.06] bg-gradient-to-b from-brandWhite to-white px-4 sm:px-6 md:px-8 py-5 sm:py-6 md:py-7">
 
@@ -2379,9 +2504,7 @@
                         </span>
                     </div>
 
-                    <!-- Profile row -->
                     <div class="flex flex-col gap-4 sm:gap-5">
-
                         <div class="flex items-center gap-4">
                             <div class="ig-ring rounded-full p-[3px] shrink-0">
                                 <img id="creativeModalAvatar" src="" alt="Profile"
@@ -2407,7 +2530,6 @@
                             </div>
                         </div>
 
-                        <!-- Stats — 3 columns, stays horizontal on mobile -->
                         <div class="grid grid-cols-3 gap-2 rounded-2xl border border-black/[0.06] bg-white p-3 sm:p-4">
                             <div class="text-center">
                                 <div id="creativeModalPosts"
@@ -2430,14 +2552,12 @@
                         </div>
                     </div>
 
-                    <!-- Bio -->
                     <p id="creativeModalBio"
                         class="mt-4 sm:mt-5 whitespace-pre-line text-[13px] sm:text-sm leading-relaxed text-black/65">
                     </p>
 
                 </div>
 
-                <!-- ============ TABS ============ -->
                 <div class="no-scrollbar flex overflow-x-auto border-b border-black/[0.06] px-4 sm:px-6 md:px-8">
                     <div
                         class="flex shrink-0 items-center gap-2 border-b-2 border-brandBlack py-3 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-brandBlack">
@@ -2467,7 +2587,6 @@
                     </div>
                 </div>
 
-                <!-- ============ POSTS GRID ============ -->
                 <div class="px-4 sm:px-6 md:px-8 py-5 sm:py-6">
                     <p
                         class="mb-3 sm:mb-4 text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.22em] sm:tracking-[0.25em] text-black/40">
@@ -2475,9 +2594,7 @@
                     <div id="creativeModalSocialGrid" class="grid grid-cols-3 gap-1.5 sm:gap-2 md:gap-3"></div>
                 </div>
 
-                <!-- ============ DETAILS ============ -->
                 <div class="border-t border-black/[0.06] px-4 sm:px-6 md:px-8 py-5 sm:py-6">
-
                     <div>
                         <p
                             class="text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.22em] sm:tracking-[0.25em] text-black/40">
@@ -2486,7 +2603,6 @@
                             class="mt-2.5 sm:mt-3 text-[13px] sm:text-sm leading-relaxed text-black/60">Description</p>
                     </div>
 
-                    <!-- Meta row -->
                     <div
                         class="mt-5 sm:mt-6 grid grid-cols-3 gap-3 rounded-2xl border border-black/[0.06] bg-brandWhite p-3 sm:p-4">
                         <div>
@@ -2543,7 +2659,6 @@
                 </div>
             </div>
 
-            <!-- Footer -->
             <div
                 class="flex items-center justify-between gap-3 border-t border-black/[0.06] bg-brandWhite px-4 sm:px-6 py-3.5 sm:py-4">
                 <button data-close-creative-project type="button"
@@ -2563,81 +2678,289 @@
     <script>
         (function () {
             /* ============================================================
-               CREATIVE FILTER + DOTS
+               CREATIVE PORTFOLIO
+               - 8s autoplay
+               - infinite forward loop (clone-based, no rewind)
+               - correct mobile centering using getBoundingClientRect
+               - re-animates cards when section scrolls into view
                ============================================================ */
             const creativeChips = document.querySelectorAll('.creative-chip');
-            const creativeCards = document.querySelectorAll('.creative-card');
+            const allCreativeCards = document.querySelectorAll('.creative-card');
             const creativeCount = document.querySelector('[data-creative-count]');
             const creativeCarousel = document.querySelector('[data-creative-container]');
             const creativeDotsWrap = document.querySelector('[data-creative-dots]');
 
             const creativeStyle = document.createElement('style');
-            creativeStyle.textContent = `.creative-chip.active { background-color: #136db6 !important; border-color: #136db6 !important; color: #ffffff !important; }`;
+            creativeStyle.textContent = `
+                .creative-chip.active {
+                    background-color: #136db6 !important;
+                    border-color: #136db6 !important;
+                    color: #ffffff !important;
+                }
+            `;
             document.head.appendChild(creativeStyle);
 
-            function getVisibleCreativeCards() {
-                return [...document.querySelectorAll('.creative-card')].filter(c => !c.classList.contains('hidden'));
+            function isMobileCreative() {
+                return window.matchMedia('(max-width: 639px)').matches;
             }
-            function isMobileCreative() { return window.matchMedia('(max-width: 639px)').matches; }
 
+            // Real, visible, non-clone cards
+            function getVisibleCreativeCards() {
+                return [...document.querySelectorAll('.creative-card')].filter(
+                    c => !c.classList.contains('hidden') && !c.classList.contains('creative-card-clone')
+                );
+            }
+
+            /* ============================================================
+               STATE
+               ============================================================ */
+            const AUTOPLAY_MS = 8000;         // exactly 8 seconds
+            const PAUSE_AFTER_MS = 8000;      // pause 8s after user interaction
+
+            const state = {
+                index: 0,
+                timer: null,
+                userPaused: false,
+                pauseTimeout: null,
+                rafId: null,
+                scrollEndTimer: null,
+                clone: null,
+            };
+
+            /* ============================================================
+               DOTS
+               ============================================================ */
             function buildCreativeDots() {
                 if (!creativeDotsWrap || !creativeCarousel) return;
-                if (!isMobileCreative()) { creativeDotsWrap.innerHTML = ''; return; }
+
+                if (!isMobileCreative()) {
+                    creativeDotsWrap.innerHTML = '';
+                    stopAuto();
+                    addClone();
+                    return;
+                }
+
                 const cards = getVisibleCreativeCards();
                 creativeDotsWrap.innerHTML = cards.map((_, i) => `
-            <button type="button" class="creative-dot h-1.5 w-1.5 rounded-full bg-black/20 transition-all duration-300" data-dot-index="${i}" role="tab" aria-label="Go to project ${i + 1}"></button>
-        `).join('');
+                    <button type="button"
+                        class="creative-dot h-1.5 w-1.5 rounded-full bg-black/20 transition-all duration-300"
+                        data-dot-index="${i}"
+                        role="tab"
+                        aria-label="Go to project ${i + 1}"></button>
+                `).join('');
+
                 creativeDotsWrap.querySelectorAll('.creative-dot').forEach(dot => {
                     dot.addEventListener('click', () => {
-                        const i = +dot.dataset.dotIndex;
-                        const card = cards[i];
-                        if (card) card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                        scrollToCreativeIndex(+dot.dataset.dotIndex, true);
+                        pauseUser();
                     });
                 });
-                updateCreativeDots();
+
+                updateCreativeDots(state.index);
+                addClone();
+                startAuto();
             }
 
-            let dotsRaf = null;
-            function updateCreativeDots() {
-                if (!creativeDotsWrap || !creativeCarousel || !isMobileCreative()) return;
-                if (dotsRaf) return;
-                dotsRaf = requestAnimationFrame(() => {
-                    dotsRaf = null;
+            function updateCreativeDots(activeIndex) {
+                if (!creativeDotsWrap || !isMobileCreative()) return;
+                creativeDotsWrap.querySelectorAll('.creative-dot').forEach((dot, i) => {
+                    const active = i === activeIndex;
+                    dot.classList.toggle('bg-brandBlue', active);
+                    dot.classList.toggle('bg-black/20', !active);
+                    dot.classList.toggle('w-6', active);
+                    dot.classList.toggle('w-1.5', !active);
+                });
+            }
+
+            /* ============================================================
+               SCROLL HELPERS — accurate centering via getBoundingClientRect
+               ============================================================ */
+            function scrollToCreativeIndex(index, smooth = true) {
+                if (!creativeCarousel) return;
+
+                const cards = getVisibleCreativeCards();
+                if (!cards.length) return;
+
+                // wrap index
+                index = ((index % cards.length) + cards.length) % cards.length;
+
+                const card = cards[index];
+                if (!card) return;
+
+                const containerRect = creativeCarousel.getBoundingClientRect();
+                const cardRect = card.getBoundingClientRect();
+
+                // Position of card inside container's scrollable content
+                const cardLeftInContainer =
+                    (cardRect.left - containerRect.left) + creativeCarousel.scrollLeft;
+
+                // Center the card horizontally
+                const targetScroll =
+                    cardLeftInContainer - (containerRect.width - cardRect.width) / 2;
+
+                creativeCarousel.scrollTo({
+                    left: Math.max(0, targetScroll),
+                    behavior: smooth ? 'smooth' : 'auto'
+                });
+
+                state.index = index;
+                updateCreativeDots(index);
+            }
+
+            // Scroll to the cloned first card (used at end of autoplay)
+            function scrollToCreativeClone() {
+                if (!creativeCarousel || !state.clone) return;
+                const containerRect = creativeCarousel.getBoundingClientRect();
+                const cloneRect = state.clone.getBoundingClientRect();
+                const cloneLeftInContainer =
+                    (cloneRect.left - containerRect.left) + creativeCarousel.scrollLeft;
+                const targetScroll =
+                    cloneLeftInContainer - (containerRect.width - cloneRect.width) / 2;
+
+                creativeCarousel.scrollTo({
+                    left: Math.max(0, targetScroll),
+                    behavior: 'smooth'
+                });
+            }
+
+            /* ============================================================
+               CLONE — for infinite forward loop
+               ============================================================ */
+            function addClone() {
+                if (!creativeCarousel) return;
+
+                // Remove old clone
+                creativeCarousel.querySelectorAll('.creative-card-clone').forEach(c => c.remove());
+                state.clone = null;
+
+                if (!isMobileCreative()) return;
+
+                const cards = getVisibleCreativeCards();
+                if (cards.length < 2) return;
+
+                const clone = cards[0].cloneNode(true);
+                clone.classList.add('creative-card-clone');
+                clone.classList.add('in-view');    // instantly visible
+                clone.setAttribute('aria-hidden', 'true');
+                creativeCarousel.appendChild(clone);
+                state.clone = clone;
+            }
+
+            /* ============================================================
+               AUTOPLAY
+               ============================================================ */
+            function startAuto() {
+                stopAuto();
+                if (!isMobileCreative()) return;
+
+                state.timer = setInterval(() => {
+                    if (state.userPaused) return;
+                    if (!creativeCarousel) return;
+
+                    const rect = creativeCarousel.getBoundingClientRect();
+                    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+                    if (!inView) return;
+
                     const cards = getVisibleCreativeCards();
-                    if (!cards.length) return;
-                    const containerRect = creativeCarousel.getBoundingClientRect();
-                    const centerX = containerRect.left + containerRect.width / 2;
-                    let closest = 0, closestDist = Infinity;
-                    cards.forEach((card, i) => {
-                        const r = card.getBoundingClientRect();
-                        const c = r.left + r.width / 2;
-                        const d = Math.abs(c - centerX);
-                        if (d < closestDist) { closestDist = d; closest = i; }
+                    if (cards.length < 2) return;
+
+                    const next = state.index + 1;
+
+                    if (next >= cards.length) {
+                        // Move to clone — looks like first card, no rewind
+                        scrollToCreativeClone();
+                    } else {
+                        scrollToCreativeIndex(next, true);
+                    }
+                }, AUTOPLAY_MS);
+            }
+
+            function stopAuto() {
+                if (state.timer) { clearInterval(state.timer); state.timer = null; }
+            }
+
+            function pauseUser() {
+                state.userPaused = true;
+                if (state.pauseTimeout) clearTimeout(state.pauseTimeout);
+                state.pauseTimeout = setTimeout(() => { state.userPaused = false; }, PAUSE_AFTER_MS);
+            }
+
+            /* ============================================================
+               SCROLL LISTENER — track active + wrap from clone
+               ============================================================ */
+            if (creativeCarousel) {
+                creativeCarousel.addEventListener('scroll', () => {
+                    if (state.rafId) return;
+                    state.rafId = requestAnimationFrame(() => {
+                        state.rafId = null;
+                        if (!isMobileCreative()) return;
+
+                        const cRect = creativeCarousel.getBoundingClientRect();
+                        const centerX = cRect.left + cRect.width / 2;
+
+                        // Check if clone is centered → instantly snap to real first card
+                        if (state.clone) {
+                            const clRect = state.clone.getBoundingClientRect();
+                            const clCenter = clRect.left + clRect.width / 2;
+                            if (Math.abs(clCenter - centerX) < clRect.width * 0.35) {
+                                state.index = 0;
+                                updateCreativeDots(0);
+                                if (state.scrollEndTimer) clearTimeout(state.scrollEndTimer);
+                                state.scrollEndTimer = setTimeout(() => {
+                                    // Silent snap — same visual position, no rewind
+                                    scrollToCreativeIndex(0, false);
+                                }, 120);
+                                return;
+                            }
+                        }
+
+                        // Track closest real card
+                        const cards = getVisibleCreativeCards();
+                        let closest = 0, dist = Infinity;
+                        cards.forEach((card, i) => {
+                            const r = card.getBoundingClientRect();
+                            const cc = r.left + r.width / 2;
+                            const d = Math.abs(cc - centerX);
+                            if (d < dist) { dist = d; closest = i; }
+                        });
+                        state.index = closest;
+                        updateCreativeDots(closest);
                     });
-                    creativeDotsWrap.querySelectorAll('.creative-dot').forEach((dot, i) => {
-                        const active = i === closest;
-                        dot.classList.toggle('bg-brandBlue', active);
-                        dot.classList.toggle('bg-black/20', !active);
-                        dot.classList.toggle('w-6', active);
-                        dot.classList.toggle('w-1.5', !active);
-                    });
+                }, { passive: true });
+
+                ['touchstart', 'touchmove', 'pointerdown', 'wheel'].forEach(evt => {
+                    creativeCarousel.addEventListener(evt, pauseUser, { passive: true });
                 });
             }
 
-            if (creativeCarousel) creativeCarousel.addEventListener('scroll', updateCreativeDots, { passive: true });
-            window.addEventListener('resize', buildCreativeDots);
+            window.addEventListener('resize', () => {
+                buildCreativeDots();
+                addClone();
+                startAuto();
+            });
 
+            /* ============================================================
+               FILTER
+               ============================================================ */
             function applyCreativeFilter(filter) {
                 let visible = 0;
-                creativeCards.forEach(card => {
+                allCreativeCards.forEach(card => {
+                    if (card.classList.contains('creative-card-clone')) return;
                     const cat = card.dataset.creativeCategory || '';
                     const show = (filter === 'all') || (cat === filter);
                     card.classList.toggle('hidden', !show);
                     if (show) visible++;
                 });
                 if (creativeCount) creativeCount.textContent = visible;
-                if (creativeCarousel && isMobileCreative()) creativeCarousel.scrollTo({ left: 0, behavior: 'auto' });
+
+                if (creativeCarousel && isMobileCreative()) {
+                    creativeCarousel.scrollTo({ left: 0, behavior: 'auto' });
+                }
+                state.index = 0;
+
+                addClone();
                 buildCreativeDots();
+                startAuto();
             }
 
             creativeChips.forEach(chip => {
@@ -2648,28 +2971,29 @@
                 });
             });
 
-
             /* ============================================================
                ENTRANCE ANIMATION
                ============================================================ */
             function setupCreativeAnimation() {
                 const isMobile = window.matchMedia('(max-width: 767px)').matches;
+
                 if (isMobile) {
                     const section = document.querySelector('#creative-portfolio');
                     if (!section || !('IntersectionObserver' in window)) {
-                        creativeCards.forEach(c => c.classList.add('in-view'));
+                        allCreativeCards.forEach(c => c.classList.add('in-view'));
                         return;
                     }
                     const obs = new IntersectionObserver((entries) => {
                         if (entries[0].isIntersecting) {
-                            creativeCards.forEach((card, i) => setTimeout(() => card.classList.add('in-view'), i * 90));
+                            allCreativeCards.forEach((card, i) =>
+                                setTimeout(() => card.classList.add('in-view'), i * 90));
                             obs.disconnect();
                         }
                     }, { threshold: 0.05 });
                     obs.observe(section);
                 } else {
                     if (!('IntersectionObserver' in window)) {
-                        creativeCards.forEach(c => c.classList.add('in-view'));
+                        allCreativeCards.forEach(c => c.classList.add('in-view'));
                         return;
                     }
                     const cardObs = new IntersectionObserver((entries) => {
@@ -2680,11 +3004,10 @@
                             }
                         });
                     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-                    creativeCards.forEach(card => cardObs.observe(card));
+                    allCreativeCards.forEach(card => cardObs.observe(card));
                 }
             }
             setupCreativeAnimation();
-
 
             /* ============================================================
                MODAL
@@ -2744,24 +3067,24 @@
 
                 const posts = data.socialPosts || data.gallery || [];
                 cEl.socialGrid.innerHTML = posts.slice(0, 9).map((src, i) => `
-            <div class="group relative aspect-square overflow-hidden rounded-lg bg-brandWhite">
-                <img src="${src}" alt="Post ${i + 1}" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
-                <div class="absolute inset-0 bg-black/0 transition group-hover:bg-black/20"></div>
-            </div>
-        `).join('');
+                    <div class="group relative aspect-square overflow-hidden rounded-lg bg-brandWhite">
+                        <img src="${src}" alt="Post ${i + 1}" class="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+                        <div class="absolute inset-0 bg-black/0 transition group-hover:bg-black/20"></div>
+                    </div>
+                `).join('');
 
                 cEl.stack.innerHTML = (data.stack || []).map(s => `
-            <span class="rounded-lg bg-brandBlue/[0.08] px-2 sm:px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">${s}</span>
-        `).join('');
+                    <span class="rounded-lg bg-brandBlue/[0.08] px-2 sm:px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brandBlue">${s}</span>
+                `).join('');
 
                 cEl.features.innerHTML = (data.features || []).map(f => `
-            <li class="flex items-start gap-2 text-[12px] sm:text-sm text-black/70">
-                <span class="mt-1 grid h-3.5 w-3.5 shrink-0 place-items-center rounded-full bg-brandBlue/10">
-                    <svg class="h-2 w-2 text-brandBlue" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>
-                </span>
-                <span>${f}</span>
-            </li>
-        `).join('');
+                    <li class="flex items-start gap-2 text-[12px] sm:text-sm text-black/70">
+                        <span class="mt-1 grid h-3.5 w-3.5 shrink-0 place-items-center rounded-full bg-brandBlue/10">
+                            <svg class="h-2 w-2 text-brandBlue" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m5 13 4 4L19 7"/></svg>
+                        </span>
+                        <span>${f}</span>
+                    </li>
+                `).join('');
 
                 creativeModal.classList.remove('hidden');
                 creativeModal.classList.add('flex');
@@ -2779,27 +3102,35 @@
             document.addEventListener('click', e => {
                 if (e.target.closest('[data-close-creative-project]')) closeCreativeModal();
             });
+
             document.addEventListener('keydown', e => {
                 if (e.key === 'Escape' && !creativeModal.classList.contains('hidden')) closeCreativeModal();
             });
 
-            document.querySelectorAll('.view-creative-project').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const card = btn.closest('.creative-card');
-                    const dataEl = card.querySelector('.creative-data');
-                    if (!dataEl) return;
-                    try { openCreativeModal(JSON.parse(dataEl.textContent)); } catch (err) { console.error(err); }
-                });
+            // Event delegation — works for real cards AND clones
+            document.addEventListener('click', e => {
+                const btn = e.target.closest('.view-creative-project');
+                if (!btn) return;
+                const card = btn.closest('.creative-card');
+                if (!card) return;
+                const dataEl = card.querySelector('.creative-data');
+                if (!dataEl) return;
+                try { openCreativeModal(JSON.parse(dataEl.textContent)); }
+                catch (err) { console.error(err); }
             });
-
 
             /* ============================================================
                INIT
                ============================================================ */
             applyCreativeFilter('all');
+
+            /* Pause/resume when tab hidden */
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) stopAuto();
+                else startAuto();
+            });
         })();
     </script>
-
 
     <!-- =========================================================
      FINAL CTA
@@ -2867,7 +3198,7 @@
                             </svg>
                         </a>
 
-                        <a href="https://wa.me/255700000000" target="_blank" rel="noopener"
+                        <a href="https://wa.me/255798010073" target="_blank" rel="noopener"
                             class="group inline-flex flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-white/20 bg-white/[0.04] px-3.5 py-3 text-[13px] font-semibold text-white backdrop-blur transition hover:bg-white/[0.1] sm:flex-none sm:gap-2 sm:px-8 sm:py-4 sm:text-base">
                             <svg class="h-3.5 w-3.5 shrink-0 sm:h-4 sm:w-4" viewBox="0 0 24 24" fill="currentColor">
                                 <path
@@ -2963,9 +3294,9 @@
                                         </span>
                                         <div class="min-w-0">
                                             <p class="text-[10px] uppercase tracking-[0.2em] text-white/40">Email</p>
-                                            <a href="mailto:info@africana-tech.com"
+                                            <a href="mailto:info@africana.co.tz"
                                                 class="mt-0.5 block truncate text-sm font-medium text-white hover:text-brandGreen transition">
-                                                info@africana-tech.com
+                                                info@africana.co.tz
                                             </a>
                                         </div>
                                     </li>
@@ -2981,9 +3312,9 @@
                                         </span>
                                         <div class="min-w-0">
                                             <p class="text-[10px] uppercase tracking-[0.2em] text-white/40">Phone</p>
-                                            <a href="tel:+255700000000"
+                                            <a href="tel:+255798010073"
                                                 class="mt-0.5 block text-sm font-medium text-white hover:text-brandGreen transition">
-                                                +255 700 000 000
+                                                +255 798 010 073
                                             </a>
                                         </div>
                                     </li>
@@ -3000,7 +3331,7 @@
                                         </span>
                                         <div class="min-w-0">
                                             <p class="text-[10px] uppercase tracking-[0.2em] text-white/40">Location</p>
-                                            <p class="mt-0.5 text-sm font-medium text-white">Dar es Salaam, Tanzania</p>
+                                            <p class="mt-0.5 text-sm font-medium text-white">Arusha, Tanzania</p>
                                         </div>
                                     </li>
 

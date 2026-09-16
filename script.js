@@ -44,7 +44,7 @@ const AfricanaSite = (() => {
     name: 'Africana Tech & Branding Ltd',
     tagline: 'Tech · Branding · Print',
     location: 'Arusha, Tanzania',
-    phone: '+255 672 743 065',
+    phone: '+255 798 010 073',
     whatsapp: 'africana.co.tz',
     email: 'info@africana.co.tz',
     social: {
@@ -63,92 +63,179 @@ const AfricanaSite = (() => {
     { label: 'Contact', href: 'contact.html', route: 'contact' }
   ];
 
+  /* Storage keys used by the quotation page */
+  const ITEM_STORAGE_KEYS = [
+    'africana_quote_items',
+    'africana_printing_items',
+    'africana_branding_items',
+    'africana_web_items',
+    'africana_selected_items'
+  ];
+
   const getCurrentFile = () => {
     const p = window.location.pathname.split('/').pop();
     return p === '' ? 'index.html' : p;
   };
 
   /* =========================================================
-     TOP INFO BAR (brandBlack + brandGreen icons)
+     QUOTE COUNT — read all items from localStorage
+     ========================================================= */
+  function getQuoteCount() {
+    let total = 0;
+    ITEM_STORAGE_KEYS.forEach(key => {
+      try {
+        const raw = localStorage.getItem(key);
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+        const arr = Array.isArray(parsed) ? parsed : (parsed.items || []);
+        if (Array.isArray(arr)) total += arr.length;
+      } catch (e) { /* ignore */ }
+    });
+    return total;
+  }
+
+  /* =========================================================
+     UPDATE ALL QUOTE BADGES
+     ========================================================= */
+  function updateQuoteBadges() {
+    const count = getQuoteCount();
+    document.querySelectorAll('[data-quote-badge]').forEach(badge => {
+      if (count > 0) {
+        badge.textContent = count > 99 ? '99+' : String(count);
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    });
+  }
+
+  /* =========================================================
+     TOP INFO BAR
      ========================================================= */
   function buildInfoBar() {
+    const phoneClean = COMPANY.phone.replace(/\s+/g, '');
+    const whatsappNumber = phoneClean.replace(/^\+/, '');
+    const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+    const mapsUrl = `https://maps.google.com/?q=${encodeURIComponent(COMPANY.location)}`;
+
+    const socialIcon = (network, url, svgPath, isFilled = true) => `
+      <a href="${url}" target="_blank" rel="noopener" aria-label="${network}"
+          class="grid h-6 w-6 place-items-center rounded-full bg-brandWhite text-brandBlack transition
+            hover:bg-yellow-400 hover:text-brandBlack hover:scale-110">
+        <svg class="h-3 w-3" viewBox="0 0 24 24"
+             ${isFilled ? 'fill="currentColor"' : 'fill="none" stroke="currentColor" stroke-width="2"'}>
+          ${svgPath}
+        </svg>
+      </a>`;
+
+    const socialsDesktop = [
+      socialIcon('Facebook',
+        COMPANY.social.facebook,
+        `<path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.5V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.1H7.5v3h2.7V21h3.3Z"/>`),
+      socialIcon('Instagram',
+        COMPANY.social.instagram,
+        `<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>`,
+        false),
+      socialIcon('Twitter / X',
+        COMPANY.social.twitter,
+        `<path d="M17.5 3h3.2l-7 8 8.3 10h-6.5l-5-6.2L4.7 21H1.5l7.5-8.6L1 3h6.7l4.5 5.7L17.5 3Zm-1.1 16h1.8L7.7 4.9H5.8L16.4 19Z"/>`),
+      socialIcon('LinkedIn',
+        COMPANY.social.linkedin,
+        `<path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9Z"/>`)
+    ].join('');
+
+    const desktopQuickLinks = [
+      { label: 'Privacy', href: 'privacy.html' },
+      { label: 'Terms', href: 'terms.html' },
+      { label: 'FAQs', href: 'faqs.html' },
+      { label: 'How It Works', href: 'how.html' }
+    ].map((l, i, arr) => `
+      <a href="${l.href}"
+         class="text-brandWhite transition-colors hover:text-yellow-400">${l.label}</a>
+      ${i < arr.length - 1 ? '<span class="h-3 w-px bg-brandWhite/15" aria-hidden="true"></span>' : ''}
+    `).join('');
+
     return `
-    <div class="w-full bg-brandBlack text-brandWhite">
+    <div class="w-full bg-brandBlue text-brandWhite">
       <div class="w-full px-4 sm:px-6 lg:px-8">
 
-        <!-- Full layout (md and up) -->
-        <div class="hidden h-10 items-center justify-between text-[13px] md:flex">
-          <div class="flex items-center gap-6">
-            <a href="https://maps.google.com/?q=${encodeURIComponent(COMPANY.location)}"
-               target="_blank" rel="noopener"
-               class="flex items-center gap-2 text-brandWhite/70 transition-colors hover:text-brandGreen">
-              <svg class="h-3.5 w-3.5 text-brandGreen" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <!-- DESKTOP (md+) -->
+        <div class="hidden h-10 items-center text-[12px] md:grid md:grid-cols-3">
+
+          <!-- LEFT: Contact info -->
+          <div class="flex min-w-0 items-center gap-3">
+            <a href="${whatsappUrl}" target="_blank" rel="noopener"
+               class="group flex min-w-0 items-center gap-1.5 text-brandWhite transition-colors hover:text-yellow-400">
+              <svg class="h-3.5 w-3.5 shrink-0 text-brandWhite transition-colors group-hover:text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4zM12 21.5c-1.7 0-3.4-.5-4.9-1.4l-.3-.2-3.6 1 1-3.5-.2-.3C2 15.5 1.5 13.8 1.5 12 1.5 6.2 6.2 1.5 12 1.5S22.5 6.2 22.5 12 17.8 21.5 12 21.5z"/>
+              </svg>
+              <span class="truncate">${COMPANY.phone}</span>
+            </a>
+            <span class="h-3.5 w-px shrink-0 bg-brandWhite/15" aria-hidden="true"></span>
+            <a href="${mapsUrl}" target="_blank" rel="noopener"
+               class="group flex min-w-0 items-center gap-1.5 text-brandWhite transition-colors hover:text-yellow-400">
+              <svg class="h-3.5 w-3.5 shrink-0 text-brandWhite transition-colors group-hover:text-yellow-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-5.7-7-11a7 7 0 1 1 14 0c0 5.3-7 11-7 11Z"/>
                 <circle cx="12" cy="10" r="2.5"/>
               </svg>
-              ${COMPANY.location}
+              <span class="truncate">${COMPANY.location}</span>
             </a>
-            <span class="h-4 w-px bg-brandWhite/15"></span>
+            <span class="h-3.5 w-px shrink-0 bg-brandWhite/15" aria-hidden="true"></span>
             <a href="mailto:${COMPANY.email}"
-               class="flex items-center gap-2 text-brandWhite/70 transition-colors hover:text-brandGreen">
-              <svg class="h-3.5 w-3.5 text-brandGreen" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+               class="group flex min-w-0 items-center gap-1.5 text-brandWhite transition-colors hover:text-yellow-400">
+              <svg class="h-3.5 w-3.5 shrink-0 text-brandWhite transition-colors group-hover:text-yellow-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                 <rect x="3" y="5" width="18" height="14" rx="2.5"/>
                 <path stroke-linecap="round" stroke-linejoin="round" d="m3 7 9 6 9-6"/>
               </svg>
-              ${COMPANY.email}
-            </a>
-            <span class="h-4 w-px bg-brandWhite/15"></span>
-            <a href="tel:${COMPANY.phone.replace(/\s+/g, '')}"
-               class="flex items-center gap-2 text-brandWhite/70 transition-colors hover:text-brandGreen">
-              <svg class="h-3.5 w-3.5 text-brandGreen" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/>
-              </svg>
-              ${COMPANY.phone}
+              <span class="truncate">${COMPANY.email}</span>
             </a>
           </div>
 
-          <div class="flex items-center gap-1.5">
-            <span class="mr-1 text-[11px] font-semibold uppercase tracking-wider text-brandWhite/50">Follow us</span>
+          <!-- CENTER: Social icons -->
+          <div class="flex items-center justify-center gap-1.5">
+            ${socialsDesktop}
+          </div>
 
-            <a href="${COMPANY.social.facebook}" target="_blank" rel="noopener" aria-label="Facebook"
-               class="grid h-7 w-7 place-items-center rounded-full bg-brandWhite/10 text-brandWhite transition-colors hover:bg-brandGreen">
-              <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.5V4.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.1H7.5v3h2.7V21h3.3Z"/></svg>
-            </a>
-            <a href="${COMPANY.social.instagram}" target="_blank" rel="noopener" aria-label="Instagram"
-               class="grid h-7 w-7 place-items-center rounded-full bg-brandWhite/10 text-brandWhite transition-colors hover:bg-brandGreen">
-              <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-            </a>
-            <a href="${COMPANY.social.twitter}" target="_blank" rel="noopener" aria-label="Twitter / X"
-               class="grid h-7 w-7 place-items-center rounded-full bg-brandWhite/10 text-brandWhite transition-colors hover:bg-brandGreen">
-              <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3.2l-7 8 8.3 10h-6.5l-5-6.2L4.7 21H1.5l7.5-8.6L1 3h6.7l4.5 5.7L17.5 3Zm-1.1 16h1.8L7.7 4.9H5.8L16.4 19Z"/></svg>
-            </a>
-            <a href="${COMPANY.social.linkedin}" target="_blank" rel="noopener" aria-label="LinkedIn"
-               class="grid h-7 w-7 place-items-center rounded-full bg-brandWhite/10 text-brandWhite transition-colors hover:bg-brandGreen">
-              <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21h-4V9Z"/></svg>
-            </a>
+          <!-- RIGHT: Quick legal links -->
+          <div class="flex items-center justify-end gap-3 font-medium">
+            ${desktopQuickLinks}
           </div>
         </div>
 
-        <!-- Compact layout (mobile) -->
-           <div class="flex w-full items-center gap-2 overflow-hidden py-2 text-[10px] sm:gap-3 sm:text-[11px] md:hidden">
-          <a href="tel:${COMPANY.phone.replace(/\s+/g, '')}"
-             class="flex min-w-0 flex-1 items-center gap-1 whitespace-nowrap text-brandWhite/70">
-              <svg class="h-3.5 w-3.5 text-brandGreen" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                  d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.4 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/>
-              </svg>
-              ${COMPANY.phone}
+        <!-- MOBILE (<md) — WhatsApp · Email · How It Works -->
+        <div class="flex w-full items-center justify-between gap-2 py-2 text-[11px] md:hidden">
+
+          <a href="${whatsappUrl}" target="_blank" rel="noopener"
+             class="group flex min-w-0 items-center gap-1.5 font-medium text-brandWhite transition-colors hover:text-yellow-400">
+            <svg class="h-3.5 w-3.5 shrink-0 text-brandWhite transition-colors group-hover:text-yellow-400" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.6-.5-.5 -.7-.5h-.6c-.2 0 -.5.1 -.8.4 -.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.
+    </svg>
+            <span class="truncate font-semibold">${COMPANY.phone}</span>
           </a>
+
+          <span class="h-3 w-px shrink-0 bg-brandWhite/20" aria-hidden="true"></span>
+
           <a href="mailto:${COMPANY.email}"
-             class="flex min-w-0 flex-1 items-center gap-1 truncate text-brandWhite/70">
-            <svg class="h-3.5 w-3.5 text-brandGreen" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                 class="group flex min-w-0 flex-1 items-center justify-center gap-1 font-medium text-brandWhite transition-colors hover:text-yellow-400">
+                <svg class="h-3.5 w-3.5 shrink-0 text-brandWhite transition-colors group-hover:text-yellow-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <rect x="3" y="5" width="18" height="14" rx="2.5"/>
               <path stroke-linecap="round" stroke-linejoin="round" d="m3 7 9 6 9-6"/>
             </svg>
-            ${COMPANY.email}
+            <span class="truncate">${COMPANY.email}</span>
+          </a>
+
+          <span class="h-3 w-px shrink-0 bg-brandWhite/20" aria-hidden="true"></span>
+
+          <a href="how-it-works.html"
+             class="group flex min-w-0 shrink-0 items-center gap-1 font-medium text-brandWhite transition-colors hover:text-yellow-400">
+            <svg class="h-3.5 w-3.5 shrink-0 text-brandWhite transition-colors group-hover:text-yellow-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 16v-4M12 8h.01"/>
+            </svg>
+            <span class="truncate">How It Works</span>
           </a>
         </div>
+
       </div>
     </div>`;
   }
@@ -173,20 +260,41 @@ const AfricanaSite = (() => {
     const active = item.href === current;
     return `
       <a href="${item.href}"
-         class="flex items-center justify-between rounded-lg px-4 py-2.5 text-[15px] font-medium transition
+         class="flex items-center justify-between rounded-xl px-3.5 py-2.5 text-[14px] font-medium transition
                 ${active
         ? 'bg-brandBlue/10 text-brandBlue font-semibold'
         : 'text-brandBlack/80 hover:bg-brandBlack/5'}">
-        <span>${item.label}</span>
-        <svg class="h-4 w-4 opacity-40" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <span class="truncate">${item.label}</span>
+        <svg class="h-3.5 w-3.5 shrink-0 opacity-40" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="m9 5 7 7-7 7"/>
         </svg>
       </a>`;
   }
 
   /* =========================================================
-     MAIN HEADER BAR (logo · nav · quotation · hamburger)
-     NO WhatsApp button — removed as requested
+     QUOTATION ICON (clipboard-list — clearly a "quote")
+     ========================================================= */
+  const QUOTE_ICON = `
+    <svg class="h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2"
+         stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+      <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+      <rect x="9" y="3" width="6" height="4" rx="1"/>
+      <path d="M9 12h6M9 16h4"/>
+    </svg>`;
+
+  /* =========================================================
+     QUOTE BADGE (live count)
+     ========================================================= */
+  const QUOTE_BADGE = `
+    <span data-quote-badge
+          class="absolute -top-1.5 -right-1.5 hidden grid h-4 min-w-[1rem] place-items-center
+                 rounded-full bg-red-500 px-1 text-[9px] font-extrabold text-white
+                 shadow-md ring-2 ring-white leading-none">
+      0
+    </span>`;
+
+  /* =========================================================
+     MAIN HEADER BAR
      ========================================================= */
   function buildMainHeader() {
     const current = getCurrentFile();
@@ -194,27 +302,18 @@ const AfricanaSite = (() => {
     const mobileLinks = NAV.map(i => mobileLink(i, current)).join('');
 
     return `
-    <div class="w-full border-b border-brandBlack/10 bg-white/95 backdrop-blur-xl">
+    <div class="relative w-full border-b border-brandBlack/10 bg-white/95 backdrop-blur-xl">
       <div class="w-full px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between gap-3 lg:h-[72px]">
 
-          <!-- Logo -->
-          <a href="index.html" class="group flex shrink-0 items-center gap-3">
-            <span class="relative grid h-10 w-10 sm:h-11 sm:w-11 place-items-center overflow-hidden rounded-xl
-                         bg-brandBlue text-lg font-extrabold text-white shadow-lg
-                         transition-transform group-hover:scale-105">
-              A
-              <span class="absolute -right-2 -top-2 h-5 w-5 rounded-full bg-brandGreen/60 blur-md"></span>
-              <span class="absolute -bottom-2 -left-2 h-5 w-5 rounded-full bg-brandWhite/40 blur-md"></span>
-            </span>
-            <span class="leading-tight">
-              <span class="block text-[13px] font-extrabold tracking-tight text-brandBlack sm:text-base">
-                Africana <span class="text-brandBlue">Tech</span>
-                <span class="text-brandGreen"> &amp; </span>
-                <span class="text-brandBlack">Branding</span>
+          <!-- LOGO -->
+          <a href="index.html" class="group flex shrink-0 items-center gap-2.5 sm:gap-3">
+                       <span class="flex flex-col leading-none">
+              <span class="block text-[14px] sm:text-lg font-extrabold tracking-tight text-brandBlack leading-none">
+                Africana Tech <span class="text-brandBlue"> Branding ltd
               </span>
-              <span class="hidden text-[10px] font-semibold uppercase tracking-[0.18em] text-brandBlack/40 sm:block">
-                ${COMPANY.tagline}
+              <span class="mt-1 block text-center text-[8.5px] sm:text-[10.5px] font-bold uppercase tracking-[0.3em] text-brandBlue leading-none">
+                Services Pricelist
               </span>
             </span>
           </a>
@@ -224,55 +323,65 @@ const AfricanaSite = (() => {
             ${desktopLinks}
           </nav>
 
-          <!-- Right actions -->
-          <div class="flex shrink-0 items-center gap-2">
+          <!-- Right actions (compact) -->
+          <div class="flex shrink-0 items-center gap-1.5">
 
-            <!-- Quotation button — icon-only on mobile, full on sm+ -->
+            <!-- Quotation button — with live count badge -->
             <a href="quotation.html"
-               class="hidden items-center gap-2 rounded-xl bg-brandBlue
-                      px-3 py-2 text-xs font-bold text-white
-                      shadow-lg shadow-brandBlue/25 transition-colors hover:bg-brandBlue/90
-                 sm:inline-flex sm:px-5 sm:py-2.5 sm:text-sm">
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6M9 8h6M5 4h14v16H5z"/>
-              </svg>
-              <span class="hidden sm:inline">Quotation</span>
+               class="relative hidden items-center gap-1.5 rounded-lg bg-brandBlue
+                      px-3 py-2 text-[11px] font-bold text-white
+                      shadow-md shadow-brandBlue/25 transition-colors hover:bg-brandBlue/90
+                 sm:inline-flex sm:px-4 sm:py-2 sm:text-xs lg:px-5 lg:py-2.5 lg:text-sm">
+              ${QUOTE_ICON}
+              <span class="hidden lg:inline">Quotation</span>
+              ${QUOTE_BADGE}
             </a>
 
-            <!-- Hamburger -->
+            <!-- Hamburger — compact -->
             <button id="menuBtn" type="button"
-              class="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-xl bg-brandBlack text-brandWhite
+              class="grid h-9 w-9 place-items-center rounded-lg bg-brandBlack text-brandWhite
                      transition-colors hover:bg-brandBlue lg:hidden"
               aria-label="Open menu" aria-expanded="false">
-              <svg id="menuIcon" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <svg id="menuIcon" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/>
               </svg>
             </button>
           </div>
         </div>
+      </div>
 
-        <!-- Mobile menu -->
-        <div id="mobileMenu"
-             class="max-h-0 overflow-hidden transition-[max-height] duration-300 ease-out lg:hidden">
-          <nav class="space-y-0.5 py-2">
-            ${mobileLinks}
-            <a href="quotation.html"
-               class="flex items-center justify-between rounded-lg bg-brandBlue px-4 py-2.5
-                      text-[15px] font-bold text-white shadow-md shadow-brandBlue/20
-                      transition-colors hover:bg-brandBlue/90">
+      <!-- ============================================
+           MOBILE MENU — compact LEFT-anchored panel
+           ============================================ -->
+      <div id="mobileMenu"
+           class="pointer-events-none absolute left-3 sm:left-5 top-full mt-2 z-50 w-[min(260px,calc(100vw-1.5rem))]
+                  max-h-0 origin-top-left overflow-hidden opacity-0
+                  transition-[max-height,opacity] duration-300 ease-out lg:hidden">
+        <nav class="rounded-2xl border border-black/[0.06] bg-white p-2 shadow-2xl shadow-black/10 space-y-0.5">
+          ${mobileLinks}
+
+          <!-- Quotation link in mobile menu — with live count -->
+          <a href="quotation.html"
+             class="relative flex items-center justify-between rounded-xl bg-brandBlue px-3.5 py-2.5
+                    text-[14px] font-bold text-white shadow-md shadow-brandBlue/20
+                    transition-colors hover:bg-brandBlue/90">
+            <span class="flex items-center gap-2">
+              ${QUOTE_ICON}
               <span>Quotation</span>
-              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6M9 8h6M5 4h14v16H5z"/>
-              </svg>
-            </a>
-          </nav>
-        </div>
+            </span>
+            <span data-quote-badge
+                  class="hidden grid h-5 min-w-[1.25rem] place-items-center rounded-full
+                         bg-red-500 px-1 text-[10px] font-extrabold text-white shadow ring-2 ring-brandBlue leading-none">
+              0
+            </span>
+          </a>
+        </nav>
       </div>
     </div>`;
   }
 
   /* =========================================================
-     FULL HEADER — fixed overlay
+     FULL HEADER
      ========================================================= */
   function buildHeader() {
     return `
@@ -284,20 +393,13 @@ const AfricanaSite = (() => {
   }
 
   /* =========================================================
-     SPACER — keeps body content below the fixed header
+     SPACER — always match header height exactly
      ========================================================= */
   function adjustSpacer() {
     const header = document.getElementById('header');
     const spacer = document.getElementById('header-spacer');
     if (!header || !spacer) return;
-
-    // Measure only when mobile menu is closed to avoid content jumps
-    const menu = document.getElementById('mobileMenu');
-    const menuOpen = menu && menu.classList.contains('max-h-\[600px\]');
-
-    if (!menuOpen) {
-      spacer.style.height = header.offsetHeight + 'px';
-    }
+    spacer.style.height = header.offsetHeight + 'px';
   }
 
   /* =========================================================
@@ -309,25 +411,58 @@ const AfricanaSite = (() => {
     const icon = document.getElementById('menuIcon');
     const head = document.getElementById('header');
 
+    /* Create backdrop once */
+    let backdrop = document.getElementById('menuBackdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.id = 'menuBackdrop';
+      backdrop.className = 'fixed left-0 right-0 bottom-0 z-40 hidden bg-brandBlack/25 backdrop-blur-md lg:hidden';
+      backdrop.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(backdrop);
+    }
+
+    const positionBackdrop = () => {
+      if (!head) return;
+      backdrop.style.top = head.offsetHeight + 'px';
+    };
+
     if (btn && menu && icon) {
+      const openMenu = () => {
+        positionBackdrop();
+        menu.classList.remove('max-h-0', 'opacity-0', 'pointer-events-none');
+        menu.classList.add('max-h-[600px]', 'opacity-100');
+        btn.setAttribute('aria-expanded', 'true');
+        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/>';
+        backdrop.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      };
+
+      const closeMenu = () => {
+        menu.classList.add('max-h-0', 'opacity-0', 'pointer-events-none');
+        menu.classList.remove('max-h-[600px]', 'opacity-100');
+        btn.setAttribute('aria-expanded', 'false');
+        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/>';
+        backdrop.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+        adjustSpacer();
+      };
+
       btn.addEventListener('click', () => {
         const isOpen = menu.classList.contains('max-h-0');
-        menu.classList.toggle('max-h-0', !isOpen);
-        menu.classList.toggle('max-h-[600px]', isOpen);
-        btn.setAttribute('aria-expanded', String(isOpen));
-
-        icon.innerHTML = isOpen
-          ? '<path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M18 6L6 18"/>'
-          : '<path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/>';
+        isOpen ? openMenu() : closeMenu();
       });
 
-      menu.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          menu.classList.add('max-h-0');
-          menu.classList.remove('max-h-[600px]');
-          btn.setAttribute('aria-expanded', 'false');
-          icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/>';
-        });
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      backdrop.addEventListener('click', closeMenu);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !menu.classList.contains('max-h-0')) closeMenu();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024 && !menu.classList.contains('max-h-0')) {
+          closeMenu();
+        }
       });
     }
 
@@ -335,11 +470,39 @@ const AfricanaSite = (() => {
       const onScroll = () => head.classList.toggle('shadow-lg', window.scrollY > 8);
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+
+      if ('ResizeObserver' in window) {
+        new ResizeObserver(() => {
+          adjustSpacer();
+          positionBackdrop();
+        }).observe(head);
+      }
     }
 
-    // Keep spacer synced on resize / orientation change
-    window.addEventListener('resize', adjustSpacer);
-    window.addEventListener('orientationchange', adjustSpacer);
+    window.addEventListener('resize', () => {
+      adjustSpacer();
+      positionBackdrop();
+    });
+    window.addEventListener('orientationchange', () => {
+      adjustSpacer();
+      positionBackdrop();
+    });
+
+    /* =========================================================
+       LIVE QUOTE COUNT LISTENERS
+       - storage event   → cross-tab updates
+       - quote:updated   → custom event the quotation page can fire
+       - light polling   → same-tab fallback (every 800ms)
+       ========================================================= */
+    window.addEventListener('storage', (e) => {
+      if (!e.key || ITEM_STORAGE_KEYS.includes(e.key)) {
+        updateQuoteBadges();
+      }
+    });
+
+    window.addEventListener('quote:updated', updateQuoteBadges);
+
+    setInterval(updateQuoteBadges, 800);
   }
 
   /* =========================================================
@@ -352,28 +515,39 @@ const AfricanaSite = (() => {
     mount.innerHTML = buildHeader();
     bindEvents();
 
-    // Size the spacer after the header renders
-    requestAnimationFrame(() => {
+    const sync = () => {
       adjustSpacer();
-      // Re-check once fonts / layout settle
-      setTimeout(adjustSpacer, 200);
-    });
+      updateQuoteBadges();
+    };
+
+    requestAnimationFrame(sync);
+    setTimeout(sync, 100);
+    setTimeout(sync, 400);
+
+    window.addEventListener('load', sync);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(sync);
+    }
   }
 
-  return { init, COMPANY, NAV };
+  return {
+    init,
+    COMPANY,
+    NAV,
+    /* Public method — call after adding/removing items on the quotation page */
+    updateQuoteCount: updateQuoteBadges
+  };
 })();
 
 
 /* ---------------------------------------------------------
-   3. SELF-INITIALIZE
+   SELF-INITIALIZE
    --------------------------------------------------------- */
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', AfricanaSite.init);
 } else {
   AfricanaSite.init();
 }
-
-
 
 
 
@@ -394,32 +568,34 @@ if (document.readyState === 'loading') {
     quickLinks: {
       title: "Quick Links",
       links: [
-        { label: "Web Prices", url: "#web-prices" },
-        { label: "Branding & Printing", url: "#branding-printing" },
-        { label: "FAQs", url: "#faqs" },
-        { label: "Terms & Conditions", url: "#terms" }
+        { label: "HOME", url: "index.html" },
+        { label: "PRINTING", url: "printing.html" },
+        { label: "CONTACT", url: "contact.html" },
+        { label: "FAQS", url: "faqs.html" },
+        { label: "TERMS", url: "terms.html" },
+        { label: "PRIVACY", url: "privacy.html" }
       ]
     },
 
     webServices: {
       title: "Web Services",
       links: [
-        { label: "Website Design", url: "#web-design" },
-        { label: "E-Commerce Stores", url: "#ecommerce" },
-        { label: "Web Hosting", url: "#hosting" },
-        { label: "SEO Optimization", url: "#seo" },
-        { label: "Domain Registration", url: "#domains" }
+        { label: "WEBSITE", url: "web.html#web" },
+        { label: "SOFTWARE", url: "web.html#software" },
+        { label: "MOBILE", url: "web.html#mobile" },
+        { label: "MAINTENANCE", url: "web.html#maintenance" },
+        { label: "SECURITY", url: "web.html#security" }
       ]
     },
 
     branding: {
       title: "Branding",
       links: [
-        { label: "Logo Design", url: "#logo-design" },
-        { label: "Business Cards", url: "#business-cards" },
-        { label: "Banners & Posters", url: "#banners" },
-        { label: "T-Shirt Printing", url: "#tshirts" },
-        { label: "Company Profile", url: "#company-profile" }
+        { label: "DESIGN", url: "branding.html#design" },
+        { label: "SOCIAL MEDIA", url: "branding.html#social" },
+        { label: "VIDEO", url: "branding.html#video" },
+        { label: "ADS", url: "branding.html#ads" },
+        { label: "PACKAGING", url: "branding.html#packaging" }
       ]
     },
 
@@ -447,9 +623,9 @@ if (document.readyState === 'loading') {
 
     getInTouch: {
       title: "Get In Touch",
-      phone: "+255 700 000 000",
-      email: "info@africana.com",
-      address: "123 Africana Street, Dar es Salaam, Tanzania",
+      phone: "+255 798 010 073",
+      email: "info@africana.co.tz",
+      address: "Arusha, Tanzania",
       hours: "Mon – Sat: 8:00 AM – 6:00 PM"
     },
 
