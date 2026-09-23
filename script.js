@@ -222,7 +222,7 @@ const AfricanaSite = (() => {
             <span class="truncate">${COMPANY.email}</span>
           </a>
 
-          <a href="how-it-works.html"
+          <a href="how.html"
              class="group flex shrink-0 items-center gap-1 whitespace-nowrap font-medium text-brandWhite transition-colors hover:text-yellow-400">
             <svg class="h-3 w-3 shrink-0 text-brandWhite transition-colors group-hover:text-yellow-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10"/>
@@ -622,7 +622,7 @@ if (document.readyState === 'loading') {
       phone: "+255 798 010 073",
       email: "info@africana.co.tz",
       address: "Arusha, Tanzania",
-      hours: "Mon – Sat: 8:00 AM – 6:00 PM"
+      hours: "Mon – Sat: 8:00 AM – 4:00 PM"
     },
 
     copyright: `© ${new Date().getFullYear()} Africana. All rights reserved.`
