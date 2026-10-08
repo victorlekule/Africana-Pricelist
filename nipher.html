@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="sw">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Pendekezo la Duka la Mtandaoni – Niffer Cosmetic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Manrope:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #FCF3F5;
+            --surface: #FFFFFF;
+            --ink: #251530;
+            --muted: #6B5873;
+            --line: #EBD5DC;
+            --accent: #B83A6E;
+            --accent-soft: #F7DDE5;
+            --deep: #2A1533;
+            --deep-ink: #FBEFF3;
+            --deep-muted: #D9C0D2;
+            --rose: #C9467A;
+            --gold: #E2B26B;
+            --serif: "Gloock", Georgia, "Times New Roman", serif;
+            --sans: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+
+        html {
+            scroll-padding-top: env(safe-area-inset-top, 0px);
+            background: var(--deep)
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 17px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact
+        }
+
+        .wrap {
+            width: min(1080px, 100% - 48px);
+            margin-inline: auto
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin: 0
+        }
+
+        p {
+            margin: 0
+        }
+
+        /* ---------- Hero ---------- */
+        .hero {
+            background: var(--deep);
+            color: var(--deep-ink);
+            overflow: hidden
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 26px 0 0;
+            font-size: .95rem
+        }
+
+        .logo {
+            font-weight: 700;
+            letter-spacing: .01em
+        }
+
+        .doc {
+            color: var(--deep-muted)
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 48px;
+            align-items: center;
+            padding: 48px 0 72px
+        }
+
+        .hero h1 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(2.5rem, 5.6vw, 4.4rem);
+            line-height: 1.04;
+            letter-spacing: -.01em;
+            margin-bottom: 24px
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            color: var(--deep-muted);
+            max-width: 44ch
+        }
+
+        .meta {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr .8fr;
+            gap: 24px;
+            margin: 44px 0 0;
+            padding-top: 22px;
+            border-top: 1px solid rgba(255, 255, 255, .2)
+        }
+
+        .meta div {
+            min-width: 0
+        }
+
+        .meta dt {
+            font-size: .85rem;
+            color: var(--deep-muted);
+            margin-bottom: 2px
+        }
+
+        .meta dd {
+            margin: 0;
+            font-weight: 600;
+            line-height: 1.4
+        }
+
+        .stage {
+            position: relative;
+            display: grid;
+            place-items: center;
+            min-height: 600px
+        }
+
+        .orb {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: min(400px, 86%);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: var(--rose);
+            transform: translate(-42%, -52%)
+        }
+
+        /* ---------- Phone mock ---------- */
+        .phone {
+            position: relative;
+            z-index: 1;
+            width: min(280px, 72vw);
+            height: 556px;
+            background: #FFF8FA;
+            border: 9px solid #12081A;
+            border-radius: 44px;
+            padding: 36px 14px 0;
+            color: #2A1533;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, .35);
+            overflow: hidden;
+            font-family: var(--sans)
+        }
+
+        .phone::before {
+            content: "";
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            width: 72px;
+            height: 18px;
+            margin-left: -36px;
+            background: #12081A;
+            border-radius: 12px
+        }
+
+        .ph-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px
+        }
+
+        .ph-brand {
+            font-family: var(--serif);
+            font-size: 16px;
+            line-height: 1
+        }
+
+        .ph-cart {
+            position: relative;
+            display: grid;
+            place-items: center;
+            width: 30px;
+            height: 30px
+        }
+
+        .ph-cart svg {
+            width: 22px;
+            height: 22px
+        }
+
+        .badge {
+            position: absolute;
+            top: -2px;
+            right: -3px;
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;
+            background: #C9467A;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            animation: pop .4s 1.6s both
+        }
+
+        .badge i {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font-style: normal
+        }
+
+        .badge i:first-child {
+            animation: fadeOut .2s 1.6s forwards
+        }
+
+        .badge i:last-child {
+            opacity: 0;
+            animation: fadeIn .2s 1.6s forwards
+        }
+
+        .ph-search {
+            height: 34px;
+            border-radius: 17px;
+            background: #F6E7EC;
+            color: #8A7590;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            padding: 0 14px;
+            margin-bottom: 10px
+        }
+
+        .ph-chips {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 12px;
+            font-size: 11px;
+            font-weight: 700
+        }
+
+        .ph-chips span {
+            padding: 5px 11px;
+            border-radius: 14px;
+            background: #F6E7EC;
+            color: #6B5873
+        }
+
+        .ph-chips span.on {
+            background: #2A1533;
+            color: #fff
+        }
+
+        .ph-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px
+        }
+
+        .tile {
+            background: #fff;
+            border: 1px solid #F0DCE3;
+            border-radius: 16px;
+            padding: 8px
+        }
+
+        .art {
+            height: 84px;
+            border-radius: 12px;
+            background: #FBE6EC;
+            display: grid;
+            place-items: center
+        }
+
+        .art svg {
+            width: 44px;
+            height: 60px
+        }
+
+        .tile p {
+            font-size: 11.5px;
+            font-weight: 700;
+            margin: 7px 2px 7px
+        }
+
+        .add {
+            position: relative;
+            display: block;
+            height: 26px;
+            border-radius: 13px;
+            border: 1.5px solid #C9467A;
+            color: #B83A6E;
+            font-size: 11px;
+            font-weight: 700
+        }
+
+        .add em {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font-style: normal
+        }
+
+        .tile.pick .add {
+            animation: addfill .25s 1.5s forwards
+        }
+
+        .tile.pick .add .a {
+            animation: fadeOut .2s 1.5s forwards
+        }
+
+        .tile.pick .add .b {
+            opacity: 0;
+            animation: fadeIn .2s 1.6s forwards
+        }
+
+        .bar {
+            position: absolute;
+            left: 12px;
+            right: 12px;
+            bottom: 12px;
+            height: 44px;
+            border-radius: 22px;
+            background: #2A1533;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 13px;
+            transform: translateY(170%);
+            animation: barIn .5s cubic-bezier(.2, .8, .2, 1) 1.9s forwards
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes addfill {
+            to {
+                background: #C9467A;
+                color: #fff
+            }
+        }
+
+        @keyframes barIn {
+            to {
+                transform: none
+            }
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(1)
+            }
+
+            50% {
+                transform: scale(1.4)
+            }
+
+            100% {
+                transform: scale(1)
+            }
+        }
+
+        /* ---------- Sections ---------- */
+        .block {
+            padding: 76px 0;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .split {
+            display: grid;
+            grid-template-columns: minmax(0, .85fr) minmax(0, 2fr);
+            gap: 40px
+        }
+
+        h2 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+            line-height: 1.12
+        }
+
+        h3 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 1.35rem;
+            line-height: 1.25
+        }
+
+        .intro {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            max-width: 56ch
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        .goals {
+            list-style: none;
+            margin: 32px 0 0;
+            padding: 0
+        }
+
+        .goals li {
+            padding: 16px 0;
+            border-top: 1px solid var(--line);
+            font-weight: 600
+        }
+
+        .goals li:last-child {
+            border-bottom: 1px solid var(--line)
+        }
+
+        /* Steps */
+        .sub {
+            margin-top: 12px;
+            max-width: 52ch
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+            margin: 52px 0 0;
+            padding: 0;
+            list-style: none
+        }
+
+        .step {
+            position: relative;
+            padding-top: 30px;
+            border-top: 2px solid var(--line)
+        }
+
+        .step .n {
+            position: absolute;
+            top: -19px;
+            left: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            font-weight: 700;
+            font-size: 15px
+        }
+
+        .step h3 {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 1.12rem;
+            margin-bottom: 6px
+        }
+
+        .step p {
+            color: var(--muted);
+            font-size: .98rem;
+            line-height: 1.55
+        }
+
+        /* Features */
+        .cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px
+        }
+
+        .cols h3 {
+            margin-bottom: 14px
+        }
+
+        .tick {
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .tick li {
+            position: relative;
+            padding: 12px 0 12px 30px;
+            border-top: 1px solid var(--line);
+            font-size: .98rem;
+            line-height: 1.5
+        }
+
+        .tick li::before {
+            content: "";
+            position: absolute;
+            left: 1px;
+            top: 17px;
+            width: 13px;
+            height: 7px;
+            border-left: 2.5px solid var(--accent);
+            border-bottom: 2.5px solid var(--accent);
+            transform: rotate(-45deg)
+        }
+
+        /* Timeline */
+        .tl {
+            list-style: none;
+            margin: 0;
+            padding: 0 0 0 28px;
+            border-left: 2px solid var(--line)
+        }
+
+        .tl li {
+            position: relative;
+            padding: 0 0 26px
+        }
+
+        .tl li:last-child {
+            padding-bottom: 0
+        }
+
+        .tl li::before {
+            content: "";
+            position: absolute;
+            left: -36px;
+            top: 6px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--bg);
+            border: 3px solid var(--accent)
+        }
+
+        .tl b {
+            display: block;
+            font-size: 1.05rem
+        }
+
+        .tl span {
+            color: var(--muted);
+            font-size: .98rem
+        }
+
+        .need {
+            margin-top: 44px
+        }
+
+        .need h3 {
+            margin-bottom: 14px
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 0;
+            padding: 0;
+            list-style: none
+        }
+
+        .chips li {
+            padding: 8px 16px;
+            border: 1.5px solid var(--line);
+            border-radius: 999px;
+            background: var(--surface);
+            font-weight: 600;
+            font-size: .95rem
+        }
+
+        .note {
+            margin-top: 16px;
+            font-size: .93rem;
+            color: var(--muted)
+        }
+
+        /* Why */
+        .why {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-top: 40px
+        }
+
+        .why>div {
+            padding: 0 28px;
+            border-left: 1px solid var(--line)
+        }
+
+        .why>div:first-child {
+            padding-left: 0;
+            border-left: 0
+        }
+
+        .why b {
+            display: block;
+            font-size: 1.08rem;
+            margin-bottom: 8px
+        }
+
+        .why p {
+            color: var(--muted);
+            font-size: .98rem;
+            line-height: 1.6
+        }
+
+        /* Next */
+        .next {
+            background: var(--deep);
+            color: var(--deep-ink);
+            border-radius: 32px;
+            padding: 56px clamp(24px, 5vw, 64px);
+            margin: 76px 0
+        }
+
+        .next h2 {
+            max-width: 20ch
+        }
+
+        .next .lead {
+            margin-top: 18px
+        }
+
+        .agenda {
+            list-style: none;
+            margin: 32px 0 0;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 44px
+        }
+
+        .agenda li {
+            padding: 14px 0;
+            border-top: 1px solid rgba(255, 255, 255, .2);
+            font-weight: 600
+        }
+
+        .sign {
+            margin-top: 36px;
+            color: var(--deep-muted)
+        }
+
+        .sign b {
+            display: block;
+            color: var(--deep-ink);
+            font-size: 1.1rem
+        }
+
+        .foot {
+            background: var(--deep);
+            color: var(--deep-muted);
+            padding: 28px 0;
+            font-size: .9rem
+        }
+
+        /* ---------- Print / Save as PDF button ---------- */
+        .print-fab {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 99;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 20px;
+            border: 0;
+            border-radius: 999px;
+            cursor: pointer;
+            background: #B83A6E;
+            color: #fff;
+            font-family: var(--sans);
+            font-size: .95rem;
+            font-weight: 700;
+            letter-spacing: .01em;
+            box-shadow: 0 14px 34px -10px rgba(184, 58, 110, .7), 0 0 0 1px rgba(255, 255, 255, .05);
+            transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .print-fab:hover {
+            background: #9E2A5C;
+            transform: translateY(-2px);
+            box-shadow: 0 18px 40px -10px rgba(184, 58, 110, .85)
+        }
+
+        .print-fab:active {
+            transform: translateY(0)
+        }
+
+        .print-fab svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0
+        }
+
+        @media (max-width:640px) {
+            .print-fab {
+                right: 14px;
+                bottom: 14px;
+                padding: 13px 17px;
+                font-size: .88rem;
+                gap: 8px
+            }
+
+            .print-fab svg {
+                width: 16px;
+                height: 16px
+            }
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width:900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 36px 0 56px
+            }
+
+            .stage {
+                min-height: 0;
+                padding: 28px 0 8px
+            }
+
+            .meta {
+                grid-template-columns: 1fr;
+                gap: 14px
+            }
+
+            .split {
+                grid-template-columns: 1fr;
+                gap: 22px
+            }
+
+            .cols {
+                grid-template-columns: 1fr;
+                gap: 32px
+            }
+
+            .why {
+                grid-template-columns: 1fr
+            }
+
+            .why>div {
+                padding: 22px 0;
+                border-left: 0;
+                border-top: 1px solid var(--line)
+            }
+
+            .why>div:first-child {
+                border-top: 0;
+                padding-top: 0
+            }
+
+            .agenda {
+                grid-template-columns: 1fr
+            }
+
+            .block {
+                padding: 56px 0
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 0;
+                margin-top: 36px
+            }
+
+            .step {
+                border-top: 0;
+                border-left: 2px solid var(--line);
+                padding: 0 0 28px 34px
+            }
+
+            .step:last-child {
+                padding-bottom: 0
+            }
+
+            .step .n {
+                top: 0;
+                left: -19px
+            }
+        }
+
+        /* =========================================================
+   PRINT — clean PDF, nothing cut, no buttons, no animation
+   ========================================================= */
+        @media print {
+            @page {
+                size: A4;
+                margin: 14mm 12mm;
+            }
+
+            html,
+            body {
+                background: #fff !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                font-size: 13px !important;
+                line-height: 1.5 !important;
+                color: #251530 !important;
+            }
+
+            .wrap {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+
+            /* Kill the FAB everywhere */
+            .print-fab {
+                display: none !important;
+            }
+
+            /* Freeze every animation into its final state */
+            .tile.pick .add {
+                background: #C9467A !important;
+                color: #fff !important;
+            }
+
+            .tile.pick .add .a {
+                opacity: 0 !important;
+            }
+
+            .tile.pick .add .b {
+                opacity: 1 !important;
+            }
+
+            .badge i:first-child {
+                opacity: 0 !important;
+            }
+
+            .badge i:last-child {
+                opacity: 1 !important;
+            }
+
+            .bar {
+                transform: none !important;
+            }
+
+            .badge,
+            .badge i,
+            .tile.pick .add,
+            .tile.pick .add .a,
+            .tile.pick .add .b,
+            .bar {
+                animation: none !important;
+            }
+
+            /* Hero: keep dark band, but let content flow without cropping the phone */
+            .hero {
+                background: #2A1533 !important;
+                color: #FBEFF3 !important;
+                break-after: page;
+                overflow: visible !important;
+                padding: 0 !important;
+            }
+
+            .hero,
+            .hero * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .nav {
+                padding: 16px 0 0 !important;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+                padding: 22px 0 26px !important;
+                align-items: start !important;
+            }
+
+            .hero h1 {
+                font-size: 30px !important;
+                line-height: 1.12 !important;
+                margin-bottom: 12px !important;
+            }
+
+            .lead {
+                font-size: 13px !important;
+                color: #D9C0D2 !important;
+                max-width: none !important;
+            }
+
+            /* Meta grid → 3 columns, tight */
+            .meta {
+                grid-template-columns: 1fr 1fr 1fr !important;
+                gap: 12px !important;
+                margin: 20px 0 0 !important;
+                padding-top: 12px !important;
+                border-top: 1px solid rgba(255, 255, 255, .25) !important;
+                font-size: 11px !important;
+            }
+
+            .meta dt {
+                font-size: 10px !important;
+            }
+
+            .meta dd {
+                font-size: 11.5px !important;
+            }
+
+            /* Phone: scaled down so nothing is cut, stays inside the page */
+            .stage {
+                min-height: 0 !important;
+                padding: 14px 0 0 !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: flex-start !important;
+                page-break-inside: avoid !important;
+                break-inside: avoid !important;
+            }
+
+            .orb {
+                display: none !important;
+            }
+
+            .phone {
+                width: 230px !important;
+                height: 420px !important;
+                border-width: 7px !important;
+                border-radius: 34px !important;
+                padding: 26px 10px 0 !important;
+                box-shadow: none !important;
+                transform: none !important;
+                overflow: hidden !important;
+            }
+
+            .phone::before {
+                width: 60px !important;
+                height: 14px !important;
+                margin-left: -30px !important;
+                top: 6px !important;
+            }
+
+            .ph-grid {
+                gap: 8px !important;
+            }
+
+            .art {
+                height: 62px !important;
+            }
+
+            .art svg {
+                width: 34px !important;
+                height: 46px !important;
+            }
+
+            .tile p {
+                font-size: 10px !important;
+                margin: 5px 2px 5px !important;
+            }
+
+            .add {
+                height: 22px !important;
+                font-size: 9.5px !important;
+                border-radius: 11px !important;
+            }
+
+            .bar {
+                height: 34px !important;
+                font-size: 11px !important;
+                border-radius: 17px !important;
+            }
+
+            .ph-search {
+                height: 28px !important;
+                font-size: 10.5px !important;
+                margin-bottom: 8px !important;
+            }
+
+            .ph-chips {
+                font-size: 9.5px !important;
+                margin-bottom: 9px !important;
+            }
+
+            .ph-chips span {
+                padding: 4px 8px !important;
+                font-size: 9.5px !important;
+            }
+
+            .ph-brand {
+                font-size: 13px !important;
+            }
+
+            /* Sections */
+            .block {
+                padding: 22px 0 !important;
+                border-bottom: 1px solid #EBD5DC !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            .split {
+                grid-template-columns: minmax(0, .8fr) minmax(0, 2fr) !important;
+                gap: 22px !important;
+            }
+
+            h2 {
+                font-size: 22px !important;
+                line-height: 1.15 !important;
+            }
+
+            h3 {
+                font-size: 15px !important;
+                line-height: 1.25 !important;
+            }
+
+            .intro {
+                font-size: 13.5px !important;
+                line-height: 1.55 !important;
+            }
+
+            /* Steps: single column, tight */
+            .steps {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 12px 18px !important;
+                margin-top: 22px !important;
+            }
+
+            .step {
+                border-top: 0 !important;
+                border-left: 2px solid #EBD5DC !important;
+                padding: 0 0 12px 24px !important;
+                position: relative !important;
+                break-inside: avoid !important;
+            }
+
+            .step:last-child {
+                padding-bottom: 0 !important;
+            }
+
+            .step .n {
+                top: 0 !important;
+                left: -15px !important;
+                width: 28px !important;
+                height: 28px !important;
+                font-size: 12px !important;
+            }
+
+            .step h3 {
+                font-size: 13.5px !important;
+                margin-bottom: 3px !important;
+            }
+
+            .step p {
+                font-size: 12px !important;
+                line-height: 1.5 !important;
+            }
+
+            /* Two-column lists */
+            .cols {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 22px !important;
+            }
+
+            .tick li {
+                padding: 7px 0 7px 24px !important;
+                font-size: 12px !important;
+            }
+
+            .tick li::before {
+                top: 12px !important;
+            }
+
+            /* Timeline */
+            .tl {
+                padding-left: 20px !important;
+            }
+
+            .tl li {
+                padding-bottom: 14px !important;
+            }
+
+            .tl li::before {
+                left: -28px !important;
+                width: 10px !important;
+                height: 10px !important;
+                top: 5px !important;
+            }
+
+            .tl b {
+                font-size: 13px !important;
+            }
+
+            .tl span {
+                font-size: 12px !important;
+            }
+
+            /* Chips */
+            .chips li {
+                padding: 5px 11px !important;
+                font-size: 11.5px !important;
+            }
+
+            .need {
+                margin-top: 20px !important;
+            }
+
+            /* Why grid */
+            .why {
+                grid-template-columns: 1fr 1fr 1fr !important;
+                margin-top: 20px !important;
+            }
+
+            .why>div {
+                padding: 0 14px !important;
+                border-left: 1px solid #EBD5DC !important;
+            }
+
+            .why>div:first-child {
+                padding-left: 0 !important;
+                border-left: 0 !important;
+            }
+
+            .why b {
+                font-size: 12.5px !important;
+                margin-bottom: 4px !important;
+            }
+
+            .why p {
+                font-size: 11.5px !important;
+                line-height: 1.5 !important;
+            }
+
+            /* Next (dark) card */
+            .next {
+                background: #2A1533 !important;
+                color: #FBEFF3 !important;
+                border-radius: 14px !important;
+                padding: 26px 22px !important;
+                margin: 22px 0 !important;
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
+            .next,
+            .next * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            .next h2 {
+                font-size: 20px !important;
+            }
+
+            .next .lead {
+                color: #D9C0D2 !important;
+                font-size: 12.5px !important;
+                margin-top: 10px !important;
+            }
+
+            .agenda {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 0 28px !important;
+                margin-top: 16px !important;
+            }
+
+            .agenda li {
+                padding: 8px 0 !important;
+                font-size: 12.5px !important;
+            }
+
+            .sign {
+                margin-top: 18px !important;
+                font-size: 12px !important;
+            }
+
+            .sign b {
+                font-size: 13px !important;
+            }
+
+            /* Footer */
+            .foot {
+                background: #2A1533 !important;
+                color: #D9C0D2 !important;
+                padding: 14px 0 !important;
+                font-size: 11px !important;
+            }
+
+            .foot,
+            .foot * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            /* Prevent any orphan headings */
+            h1,
+            h2,
+            h3 {
+                break-after: avoid !important;
+                page-break-after: avoid !important;
+            }
+
+            ul,
+            ol,
+            p {
+                orphans: 3;
+                widows: 3;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="hero">
+        <div class="wrap nav">
+            <span class="logo">Niffer Cosmetic</span>
+            <span class="doc">Pendekezo la Mradi</span>
+        </div>
+
+        <div class="wrap hero-grid">
+            <div>
+                <h1>Duka la Niffer Cosmetic, sasa mtandaoni.</h1>
+                <p class="lead">Tovuti ya duka la mtandaoni ambapo mteja huchagua bidhaa, hutuma oda, na kusubiri
+                    kuletewa bidhaa zake.</p>
+
+                <dl class="meta">
+                    <div>
+                        <dt>Imeandaliwa kwa</dt>
+                        <dd>Niffer Cosmetic</dd>
+                    </div>
+                    <div>
+                        <dt>Aina ya mradi</dt>
+                        <dd>Duka la mtandaoni</dd>
+                    </div>
+                    <div>
+                        <dt>Tarehe</dt>
+                        <dd>Septemba 2026</dd>
+                    </div>
+                </dl>
+            </div>
+
+            <div class="stage" aria-hidden="false">
+                <div class="orb"></div>
+                <div class="phone" role="img"
+                    aria-label="Mfano wa skrini ya simu ya duka la mtandaoni: bidhaa zinaonyeshwa, mteja anaongeza bidhaa kwenye kikapu na kitufe cha kutuma oda kinaonekana.">
+                    <div class="ph-top">
+                        <span class="ph-brand">Niffer Cosmetic</span>
+                        <span class="ph-cart">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#2A1533" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 8h14l-1.2 11a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Z" />
+                                <path d="M9 8V6.5a3 3 0 0 1 6 0V8" />
+                            </svg>
+                            <b class="badge"><i>0</i><i>1</i></b>
+                        </span>
+                    </div>
+                    <div class="ph-search">Tafuta bidhaa</div>
+                    <div class="ph-chips"><span
+                            class="on">Zote</span><span>Uso</span><span>Mwili</span><span>Midomo</span></div>
+                    <div class="ph-grid">
+                        <div class="tile">
+                            <div class="art"><svg viewBox="0 0 64 84">
+                                    <rect x="18" y="26" width="28" height="52" rx="8" fill="#E9A3BC" />
+                                    <rect x="26" y="14" width="12" height="12" rx="2" fill="#2A1533" />
+                                    <rect x="22" y="8" width="24" height="6" rx="3" fill="#2A1533" />
+                                </svg></div>
+                            <p>Losheni</p>
+                            <span class="add"><em>Ongeza</em></span>
+                        </div>
+                        <div class="tile pick">
+                            <div class="art"><svg viewBox="0 0 64 84">
+                                    <rect x="18" y="34" width="28" height="44" rx="10" fill="#E2B26B" />
+                                    <rect x="27" y="24" width="10" height="10" fill="#2A1533" />
+                                    <ellipse cx="32" cy="14" rx="7" ry="12" fill="#C9467A" />
+                                </svg></div>
+                            <p>Seramu ya uso</p>
+                            <span class="add"><em class="a">Ongeza</em><em class="b">Imeongezwa</em></span>
+                        </div>
+                        <div class="tile">
+                            <div class="art"><svg viewBox="0 0 64 84">
+                                    <rect x="22" y="46" width="20" height="32" rx="3" fill="#2A1533" />
+                                    <rect x="22" y="40" width="20" height="8" fill="#E2B26B" />
+                                    <polygon points="24,40 24,24 40,14 40,40" fill="#C9467A" />
+                                </svg></div>
+                            <p>Lipstiki</p>
+                            <span class="add"><em>Ongeza</em></span>
+                        </div>
+                        <div class="tile">
+                            <div class="art"><svg viewBox="0 0 64 84">
+                                    <rect x="10" y="46" width="44" height="30" rx="9" fill="#D9A0B6" />
+                                    <rect x="8" y="34" width="48" height="14" rx="5" fill="#2A1533" />
+                                </svg></div>
+                            <p>Krimu ya mwili</p>
+                            <span class="add"><em>Ongeza</em></span>
+                        </div>
+                    </div>
+                    <div class="bar">Tuma oda (1)</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="block" id="muhtasari">
+            <div class="wrap split">
+                <h2>Muhtasari</h2>
+                <div>
+                    <p class="intro">Wateja wa vipodozi wanataka kuona bidhaa, kuchagua na kuagiza kwa haraka kupitia
+                        simu zao. Tunapendekeza tovuti ya duka la mtandaoni kwa Niffer Cosmetic yenye mtiririko mfupi na
+                        wazi: mteja anachagua bidhaa, anatuma oda, kisha anasubiri kuletewa.</p>
+                    <ul class="goals">
+                        <li>Wateja waagize saa yoyote, popote walipo, kwa simu au kompyuta.</li>
+                        <li>Chapa ya Niffer Cosmetic ionekane ya kisasa, safi na ya kuaminika.</li>
+                        <li>Oda zipokelewe na kusimamiwa kwa urahisi mahali pamoja.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="block" id="mtiririko">
+            <div class="wrap">
+                <h2>Jinsi mteja anavyonunua</h2>
+                <p class="sub muted">Hatua nne tu, kuanzia kuchagua bidhaa hadi kuletewa.</p>
+                <ol class="steps">
+                    <li class="step"><span class="n">1</span>
+                        <h3>Chagua</h3>
+                        <p>Mteja anaangalia bidhaa, anatafuta au kuchuja kwa kundi analotaka.</p>
+                    </li>
+                    <li class="step"><span class="n">2</span>
+                        <h3>Weka kikapuni</h3>
+                        <p>Anaongeza bidhaa anazopenda na kuchagua kiasi.</p>
+                    </li>
+                    <li class="step"><span class="n">3</span>
+                        <h3>Tuma oda</h3>
+                        <p>Anajaza jina, namba ya simu na anwani ya kuletewa, kisha anatuma.</p>
+                    </li>
+                    <li class="step"><span class="n">4</span>
+                        <h3>Subiri kuletewa</h3>
+                        <p>Niffer Cosmetic inapokea oda, inathibitisha na kumfikishia bidhaa zake.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="block" id="vipengele">
+            <div class="wrap split">
+                <h2>Tunachojenga</h2>
+                <div class="cols">
+                    <div>
+                        <h3>Kwa mteja</h3>
+                        <ul class="tick">
+                            <li>Orodha ya bidhaa yenye picha, maelezo na makundi</li>
+                            <li>Kutafuta na kuchuja bidhaa</li>
+                            <li>Kikapu cha kuweka bidhaa zaidi ya moja</li>
+                            <li>Fomu fupi ya oda na ujumbe wa uthibitisho</li>
+                            <li>Inafanya kazi vizuri kwenye simu, tablet na kompyuta</li>
+                            <li>Kiswahili na Kiingereza</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Kwa Niffer Cosmetic</h3>
+                        <ul class="tick">
+                            <li>Paneli ya kuongeza, kubadilisha na kuondoa bidhaa</li>
+                            <li>Arifa ya oda mpya papo hapo</li>
+                            <li>Kubadilisha hali ya oda: imepokelewa, inaandaliwa, imetumwa, imefikishwa</li>
+                            <li>Orodha ya wateja na historia ya oda zao</li>
+                            <li>Muhtasari wa mauzo</li>
+                            <li>Ulinzi wa taarifa za wateja na usalama wa tovuti</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="block" id="hatua">
+            <div class="wrap split">
+                <h2>Hatua za mradi</h2>
+                <div>
+                    <ul class="tl">
+                        <li><b>Kikao na mahitaji</b><span>Tunaelewa bidhaa, wateja na mahitaji ya Niffer
+                                Cosmetic.</span></li>
+                        <li><b>Usanifu</b><span>Mwonekano wa tovuti unaoendana na chapa yenu, tunauwasilisha kwa idhini
+                                yenu.</span></li>
+                        <li><b>Ujenzi</b><span>Tunajenga duka, kikapu, mfumo wa oda na paneli ya usimamizi.</span></li>
+                        <li><b>Majaribio</b><span>Tunajaribu kila hatua ya kuagiza kabla ya kuzindua.</span></li>
+                        <li><b>Uzinduzi na mafunzo</b><span>Tovuti inaenda hewani, na tunawafundisha jinsi ya
+                                kuitumia.</span></li>
+                    </ul>
+
+                    <div class="need">
+                        <h3>Tunachohitaji kutoka kwenu</h3>
+                        <ul class="chips">
+                            <li>Nembo na rangi za chapa</li>
+                            <li>Picha za bidhaa</li>
+                            <li>Majina na maelezo ya bidhaa</li>
+                            <li>Maeneo mnayofikisha bidhaa</li>
+                        </ul>
+                        <p class="note">Muda kamili wa kila hatua utakubaliwa kikaoni.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="block" id="sisi">
+            <div class="wrap">
+                <h2>Kwa nini mradi huu ni wa muhimu</h2>
+                <div class="why">
+                    <div><b>Wateja wanunua kwa simu</b>
+                        <p>Wateja wengi wa Tanzania hutumia simu. Tovuti nyepesi na rahisi hurahisisha kuagiza popote
+                            walipo.</p>
+                    </div>
+                    <div><b>Chapa ya kisasa</b>
+                        <p>Mwonekano safi na wa kitaalamu huongeza uaminifu na kuvutia wateja wapya.</p>
+                    </div>
+                    <div><b>Oda zisipotee</b>
+                        <p>Oda zote hupokelewa mahali pamoja — historia, arifa na ufuatiliaji rahisi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="wrap">
+            <section class="next" id="kikao">
+                <h2>Tukutane kujadili bei na vifurushi.</h2>
+                <p class="lead">Pendekezo hili halijumuishi bei kwa makusudi. Tunaomba kikao kijacho ili tukubaliane
+                    pamoja kuhusu:</p>
+                <ul class="agenda">
+                    <li>Bei ya mradi</li>
+                    <li>Vifurushi vya huduma</li>
+                    <li>Muda wa utekelezaji</li>
+                    <li>Njia za malipo</li>
+                    <li>Mpango wa kuwasilisha bidhaa kwa wateja</li>
+                    <li>Matengenezo baada ya uzinduzi</li>
+                </ul>
+                <p class="sign">Tunashukuru kwa nafasi ya kuwasilisha pendekezo hili.<b>Niffer Cosmetic</b>Duka la
+                    Mtandaoni</p>
+            </section>
+        </div>
+
+    </main>
+
+    <footer class="foot">
+        <div class="wrap">Bei na masharti kamili yatakubaliwa kwa maandishi baada ya kikao kijacho.</div>
+    </footer>
+
+    <!-- =========================================================
+     PRINT / SAVE AS PDF BUTTON
+     ========================================================= -->
+    <button type="button" id="printBtn" class="print-fab" aria-label="Chapisha au hifadhi kama PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 9V3h12v6" />
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+            <rect x="6" y="14" width="12" height="8" rx="1" />
+        </svg>
+        <span>Chapisha / PDF</span>
+    </button>
+
+    <script>
+        (function () {
+            var btn = document.getElementById('printBtn');
+            if (!btn) return;
+            btn.addEventListener('click', function () {
+                window.print();
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

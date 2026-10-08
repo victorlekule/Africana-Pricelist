@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chanika Wood — Content Creator & Producer | Tanzania</title>
+    <meta name="description"
+        content="Chanika Wood — professional content creation, video production and creative direction from Tanzania. Book your next project." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            DEFAULT: '#df8d01',
+                            dark: '#b87301',
+                            light: '#f0a825',
+                            soft: '#fdf4e3',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['"Playfair Display"', 'Georgia', 'serif'],
+                    },
+                    boxShadow: {
+                        gold: '0 20px 40px -16px rgba(223,141,1,0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .header-blur {
+            backdrop-filter: saturate(180%) blur(14px);
+            -webkit-backdrop-filter: saturate(180%) blur(14px);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background: #df8d01;
+            transition: all .3s cubic-bezier(.22, .61, .36, 1);
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .glow {
+            position: absolute;
+            border-radius: 9999px;
+            filter: blur(90px);
+            pointer-events: none;
+        }
+
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, .04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, .04) 1px, transparent 1px);
+            background-size: 56px 56px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-10px)
+            }
+        }
+
+        .float-slow {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0)
+            }
+
+            to {
+                transform: translateX(-50%)
+            }
+        }
+
+        .marquee-track {
+            animation: marquee 30s linear infinite;
+        }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .35s cubic-bezier(.22, .61, .36, 1);
+        }
+
+        .mobile-menu.open {
+            max-height: 480px;
+        }
+
+        @keyframes pulseRing {
+            0% {
+                box-shadow: 0 0 0 0 rgba(223, 141, 1, .6);
+            }
+
+            100% {
+                box-shadow: 0 0 0 20px rgba(223, 141, 1, 0);
+            }
+        }
+
+        .pulse-gold {
+            animation: pulseRing 2s ease-out infinite;
+        }
+
+        /* Image overlay on the video card */
+        .reel-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .reel-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg,
+                    rgba(0, 0, 0, .35) 0%,
+                    rgba(0, 0, 0, .15) 40%,
+                    rgba(0, 0, 0, .75) 100%);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-black antialiased overflow-x-hidden">
+
+    <!-- ============================================================
+     HEADER
+     ============================================================ -->
+    <header id="siteHeader" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="header-blur bg-white border-b border-white/10">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+                <div class="flex items-center justify-between h-20 lg:h-24">
+
+                    <a href="#" class="flex items-center gap-3 group shrink-0">
+
+                        <span class="leading-none">
+                            <span
+                                class="block font-display  text-center font-bold text-black text-lg lg:text-xl tracking-tight">CHANIKA
+                                WOOD</span>
+                            <span class="block text-[10px] lg:text-[11px] uppercase tracking-[.22em] text-black mt-1">
+                                Producer · Content Creator </span>
+                        </span>
+                    </a>
+
+                    <nav class="hidden lg:flex items-center gap-9 text-[15px] font-medium text-black">
+                        <a href="#" class="nav-link ">Home</a>
+                        <a href="#about" class="nav-link hover:text-white transition">About Us</a>
+                        <a href="#services" class="nav-link hover:text-white transition">Our Services</a>
+                        <a href="#packages" class="nav-link hover:text-white transition">Packages</a>
+                        <a href="#portfolio" class="nav-link hover:text-white transition">Portfolio</a>
+                    </nav>
+
+                    <div class="hidden lg:flex items-center gap-3">
+                        <a href="#book"
+                            class="inline-flex items-center bg-yellow-400 gap-2 rounded-full bg-gold hover:bg-yellow-400 text-black font-bold text-sm px-6 py-3 transition shadow-gold">
+                            Book Now
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <button id="menuToggle"
+                        class="lg:hidden grid place-items-center w-11 h-11 rounded-xl border border-white/15 text-white"
+                        aria-label="Open menu" aria-expanded="false">
+                        <svg id="iconOpen" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+                        </svg>
+                        <svg id="iconClose" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2.2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div id="mobileMenu" class="mobile-menu lg:hidden">
+                    <nav class="flex flex-col gap-1 py-4 border-t border-white/10">
+                        <a href="#" class="px-2 py-3 text-white font-medium rounded-lg hover:bg-white/5">Home</a>
+                        <a href="#about" class="px-2 py-3 text-white/80 font-medium rounded-lg hover:bg-white/5">About
+                            Us</a>
+                        <a href="#services" class="px-2 py-3 text-white/80 font-medium rounded-lg hover:bg-white/5">Our
+                            Services</a>
+                        <a href="#packages"
+                            class="px-2 py-3 text-white/80 font-medium rounded-lg hover:bg-white/5">Packages</a>
+                        <a href="#portfolio"
+                            class="px-2 py-3 text-white/80 font-medium rounded-lg hover:bg-white/5">Portfolio</a>
+                        <a href="#book"
+                            class="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-gold text-black font-bold text-sm px-6 py-3.5">
+                            Book Now
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                            </svg>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ============================================================
+     HERO
+     ============================================================ -->
+    <section class="relative min-h-screen bg-black text-white overflow-hidden">
+
+        <div class="grid-bg absolute inset-0 opacity-60"></div>
+        <div class="glow bg-gold/35 w-[38rem] h-[38rem] -top-40 -right-32"></div>
+        <div class="glow bg-gold/20 w-[30rem] h-[30rem] bottom-[-10rem] left-[-8rem]"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black"></div>
+
+        <div class="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pt-32 lg:pt-40 pb-20 lg:pb-28">
+
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+
+                <!-- LEFT -->
+                <div class="lg:col-span-7">
+
+                    <span
+                        class="inline-flex items-center gap-2.5 rounded-full border border-gold/40 bg-gold/10 px-4 py-2 text-[11px] font-bold uppercase tracking-[.2em] text-gold">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
+                        </span>
+                        Tanzania · Available for 2026
+                    </span>
+
+                    <h1
+                        class="mt-7 font-display font-bold leading-[1.05] tracking-tight text-[clamp(2.4rem,6vw,4.6rem)]">
+                        Stories worth <span class="text-gold">watching.</span><br>
+                        Frames worth <span class="text-gold">keeping.</span>
+                    </h1>
+
+                    <p class="mt-7 max-w-xl text-base sm:text-lg leading-relaxed text-white/70">
+                        Chanika Wood is a content creator and producer based in Tanzania — crafting films, brand
+                        stories, campaigns and visual experiences for businesses, artists and creators across East
+                        Africa.
+                    </p>
+
+                    <div class="mt-9 flex flex-wrap items-center gap-4">
+                        <a href="#book"
+                            class="inline-flex items-center gap-2 rounded-full bg-gold hover:bg-gold-dark text-black font-bold text-sm sm:text-[15px] px-7 py-4 transition shadow-gold pulse-gold">
+                            Book a Project
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                            </svg>
+                        </a>
+                        <a href="#portfolio"
+                            class="inline-flex items-center gap-2 rounded-full border border-white/20 hover:border-white/40 hover:bg-white/5 text-white font-semibold text-sm sm:text-[15px] px-7 py-4 transition">
+                            <svg class="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                            Watch Showreel
+                        </a>
+                    </div>
+
+                    <dl class="mt-14 grid grid-cols-3 gap-6 max-w-lg border-t border-white/10 pt-8">
+                        <div>
+                            <dt class="text-[11px] uppercase tracking-[.2em] text-white/45 font-semibold">Projects</dt>
+                            <dd class="mt-1.5 font-display font-bold text-2xl sm:text-3xl text-white">120<span
+                                    class="text-gold">+</span></dd>
+                        </div>
+                        <div>
+                            <dt class="text-[11px] uppercase tracking-[.2em] text-white/45 font-semibold">Clients</dt>
+                            <dd class="mt-1.5 font-display font-bold text-2xl sm:text-3xl text-white">45<span
+                                    class="text-gold">+</span></dd>
+                        </div>
+                        <div>
+                            <dt class="text-[11px] uppercase tracking-[.2em] text-white/45 font-semibold">Years</dt>
+                            <dd class="mt-1.5 font-display font-bold text-2xl sm:text-3xl text-white">7<span
+                                    class="text-gold">+</span></dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <!-- RIGHT: floating "reel" card with REAL image -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+
+                        <div
+                            class="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-gold/30 via-gold/10 to-transparent blur-2xl">
+                        </div>
+
+                        <div
+                            class="relative float-slow rounded-[2rem] border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl p-6 sm:p-7 shadow-2xl">
+
+                            <!-- Top row -->
+                            <div class="flex items-center justify-between">
+                                <span
+                                    class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[.22em] text-white/60">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                                    Now shooting
+                                </span>
+                                <span class="text-[10px] font-semibold text-white/45">REC · 00:42:18</span>
+                            </div>
+
+                            <!-- Mock video frame WITH REAL IMAGE -->
+                            <div class="mt-5 relative rounded-2xl overflow-hidden bg-black aspect-[4/5]">
+                                <img src="WhatsApp Image 2026-09-17 at 2.09.04 PM.jpeg"
+                                    alt="Chanika Wood behind the camera on a live shoot" class="reel-image"
+                                    loading="eager" fetchpriority="high" />
+                                <div class="reel-overlay"></div>
+
+                                <!-- Play button -->
+                                <button class="absolute inset-0 grid place-items-center group"
+                                    aria-label="Play showreel">
+                                    <span
+                                        class="grid place-items-center w-16 h-16 rounded-full bg-gold text-black shadow-gold transition group-hover:scale-110">
+                                        <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                    </span>
+                                </button>
+
+                                <!-- Corner labels -->
+                                <div
+                                    class="absolute top-3 left-3 rounded-full bg-black/60 backdrop-blur px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-white">
+                                    4K · ProRes</div>
+                                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
+                                    <span
+                                        class="rounded-full bg-black/60 backdrop-blur px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-gold">Showreel
+                                        2026</span>
+                                    <span
+                                        class="rounded-full bg-black/60 backdrop-blur px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider text-white/80">02:14</span>
+                                </div>
+                            </div>
+
+                            <!-- Info row -->
+                            <div class="mt-5 flex items-center justify-between gap-4">
+                                <div class="min-w-0">
+                                    <p class="text-[10px] uppercase tracking-[.2em] text-white/45 font-semibold">
+                                        Featured work</p>
+                                    <p class="mt-1 text-sm font-semibold text-white truncate">Nairobi Brand Film · 2025
+                                    </p>
+                                </div>
+                                <a href="#portfolio"
+                                    class="shrink-0 inline-flex items-center gap-1.5 text-[12px] font-bold text-gold hover:text-gold-light transition">
+                                    View
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M5 12h14m-6-6 6 6-6 6" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Floating badge -->
+                        <div
+                            class="hidden sm:flex absolute -bottom-5 -left-5 items-center gap-3 rounded-2xl border border-white/10 bg-black/90 backdrop-blur-xl px-4 py-3 shadow-2xl">
+                            <span class="grid place-items-center w-10 h-10 rounded-xl bg-gold text-black">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                            </span>
+                            <div>
+                                <p class="text-[10px] uppercase tracking-wider text-white/45 font-bold">Based in</p>
+                                <p class="text-sm font-bold text-white">Dar es Salaam, TZ</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marquee strip -->
+        <div class="relative border-t border-white/10 bg-black/60 backdrop-blur overflow-hidden">
+            <div class="flex marquee-track whitespace-nowrap py-5">
+                <div class="flex items-center gap-12 pr-12 text-white/35 font-display text-lg sm:text-xl">
+                    <span class="text-gold">●</span> Brand Films
+                    <span class="text-gold">●</span> Music Videos
+                    <span class="text-gold">●</span> Documentaries
+                    <span class="text-gold">●</span> Commercials
+                    <span class="text-gold">●</span> Social Content
+                    <span class="text-gold">●</span> Creative Direction
+                    <span class="text-gold">●</span> Post-Production
+                </div>
+                <div class="flex items-center gap-12 pr-12 text-white/35 font-display text-lg sm:text-xl"
+                    aria-hidden="true">
+                    <span class="text-gold">●</span> Brand Films
+                    <span class="text-gold">●</span> Music Videos
+                    <span class="text-gold">●</span> Documentaries
+                    <span class="text-gold">●</span> Commercials
+                    <span class="text-gold">●</span> Social Content
+                    <span class="text-gold">●</span> Creative Direction
+                    <span class="text-gold">●</span> Post-Production
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+     PLACEHOLDER SECTIONS
+     ============================================================ -->
+    <section id="about" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 text-center">
+            <p class="text-[11px] font-bold uppercase tracking-[.28em] text-gold">About Us</p>
+            <h2 class="mt-4 font-display font-bold text-3xl sm:text-4xl text-black">Coming next</h2>
+            <p class="mt-3 max-w-xl mx-auto text-black/60">The full About section will appear here.</p>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-neutral-50">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 text-center">
+            <p class="text-[11px] font-bold uppercase tracking-[.28em] text-gold">Our Services</p>
+            <h2 class="mt-4 font-display font-bold text-3xl sm:text-4xl text-black">Coming next</h2>
+            <p class="mt-3 max-w-xl mx-auto text-black/60">The Services section will appear here.</p>
+        </div>
+    </section>
+
+    <section id="packages" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 text-center">
+            <p class="text-[11px] font-bold uppercase tracking-[.28em] text-gold">Packages</p>
+            <h2 class="mt-4 font-display font-bold text-3xl sm:text-4xl text-black">Coming next</h2>
+            <p class="mt-3 max-w-xl mx-auto text-black/60">The Packages section will appear here.</p>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-24 bg-neutral-50">
+        <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 text-center">
+            <p class="text-[11px] font-bold uppercase tracking-[.28em] text-gold">Portfolio</p>
+            <h2 class="mt-4 font-display font-bold text-3xl sm:text-4xl text-black">Coming next</h2>
+            <p class="mt-3 max-w-xl mx-auto text-black/60">The Portfolio grid will appear here.</p>
+        </div>
+    </section>
+
+    <section id="book" class="py-24 bg-black text-center">
+        <div class="max-w-3xl mx-auto px-5 sm:px-8">
+            <p class="text-[11px] font-bold uppercase tracking-[.28em] text-gold">Book Now</p>
+            <h2 class="mt-4 font-display font-bold text-3xl sm:text-4xl text-white">Let's create something great.</h2>
+            <p class="mt-4 text-white/60">The booking form / contact details will appear here.</p>
+            <a href="#"
+                class="mt-8 inline-flex items-center gap-2 rounded-full bg-gold hover:bg-gold-dark text-black font-bold text-sm px-7 py-4 transition shadow-gold">
+                Start a Project
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+
+    <footer class="bg-black border-t border-white/10 py-8">
+        <div
+            class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-xs text-white/45">© 2026 Chanika Wood · Content Creator & Producer · Tanzania</p>
+            <p class="text-xs text-white/45">Made with <span class="text-gold">●</span> in Dar es Salaam</p>
+        </div>
+    </footer>
+
+
+    <script>
+            (function () {
+                const btn = document.getElementById('menuToggle');
+                const menu = document.getElementById('mobileMenu');
+                const iconOpen = document.getElementById('iconOpen');
+                const iconClose = document.getElementById('iconClose');
+
+                btn.addEventListener('click', () => {
+                    const isOpen = menu.classList.toggle('open');
+                    btn.setAttribute('aria-expanded', String(isOpen));
+                    iconOpen.classList.toggle('hidden', isOpen);
+                    iconClose.classList.toggle('hidden', !isOpen);
+                });
+
+                menu.querySelectorAll('a').forEach(a => {
+                    a.addEventListener('click', () => {
+                        menu.classList.remove('open');
+                        btn.setAttribute('aria-expanded', 'false');
+                        iconOpen.classList.remove('hidden');
+                        iconClose.classList.add('hidden');
+                    });
+                });
+            })();
+
+        (function () {
+            const header = document.getElementById('siteHeader');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('shadow-lg', window.scrollY > 10);
+            }, { passive: true });
+        })();
+    </script>
+
+</body>
+
+</html>
